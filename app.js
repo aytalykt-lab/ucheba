@@ -985,9 +985,9 @@ function renderTutorScout() {
     host.innerHTML = '<p class="hint">Пробелов нет. Можно идти по графику.</p>';
     return;
   }
-  host.innerHTML = gaps.map((item) => (
-    `<div class="err"><div class="err-type">${esc(item.subject)}</div><div>${esc(item.title)} — потренируем</div></div>`
-  )).join("");
+  host.innerHTML = `<table class="desk-table"><thead><tr><th>Предмет</th><th>Тема</th></tr></thead><tbody>${gaps.map((item) => (
+    `<tr class="err"><td class="err-type">${esc(item.subject)}</td><td>${esc(item.title)} — потренируем</td></tr>`
+  )).join("")}</tbody></table>`;
 }
 
 /* ================= ПАНЕЛЬ ТЬЮТОРА ================= */
@@ -1172,22 +1172,31 @@ function renderTutorCalendar() {
     heading.textContent = MONTHS_NOM[d.getMonth()] + " " + d.getFullYear();
     host.appendChild(heading);
 
+    const table = document.createElement("table");
+    table.className = "desk-table";
+    table.innerHTML = "<thead><tr><th>Дата</th><th>Вид</th><th>Занятие</th><th>Итог</th></tr></thead>";
+    const body = document.createElement("tbody");
     month.days.forEach((day) => {
       const passed = day.lessonId && getLessonState(day.lessonId).passed;
-      const row = document.createElement("div");
+      const row = document.createElement("tr");
       row.className = "plan-row mom-day kind-" + day.kind + (day.date === today ? " is-today" : "") + (passed ? " is-done" : "");
       const title = day.kind === "lesson" || day.kind === "return"
         ? day.subject + ". " + day.title
         : day.title;
       const topic = day.lessonId ? lessonGoal(day.lessonId) : (day.text || "");
+      const result = !day.lessonId ? "" : (passed ? "усвоено" : "ещё нет");
       row.innerHTML = `
-        <span class="plan-date">${esc(formatPlanDate(day.date))}</span>
-        <span class="plan-what">
-          <strong>${esc(dayKindLabel(day.kind))}. ${esc(title)}</strong>
+        <td class="plan-date">${esc(formatPlanDate(day.date))}</td>
+        <td>${esc(dayKindLabel(day.kind))}</td>
+        <td class="plan-what">
+          <strong>${esc(title)}</strong>
           <span class="mom-topic">${esc(topic)}</span>
-        </span>`;
-      host.appendChild(row);
+        </td>
+        <td class="${passed ? "status-done" : ""}">${esc(result)}</td>`;
+      body.appendChild(row);
     });
+    table.appendChild(body);
+    host.appendChild(table);
   });
 }
 
@@ -1200,34 +1209,43 @@ function renderTutorProgress() {
     title.textContent = subj.name || subj.title || "";
     wrap.appendChild(title);
 
+    const table = document.createElement("table");
+    table.className = "desk-table";
+    table.innerHTML = "<thead><tr><th>Урок</th><th>Статус</th><th>%</th><th></th></tr></thead>";
+    const body = document.createElement("tbody");
     (subj.lessons || []).forEach((lesson) => {
       const st = getLessonState(lesson.id);
       let cls = "";
-      let icon = "⚪";
+      let status = "status-wait";
+      let label = "не начат";
       if (st.stuck || (st.attempts >= 2 && !st.passed)) {
         cls = "stuck";
-        icon = "🔴";
+        status = "status-stuck";
+        label = "не усвоено";
       } else if (st.passed) {
         cls = "done";
-        icon = "🟢";
+        status = "status-done";
+        label = "усвоено";
       } else if (st.attempts > 0) {
-        icon = "🟡";
+        status = "status-work";
+        label = "в процессе";
       }
 
-      const row = document.createElement("div");
+      const row = document.createElement("tr");
       row.className = "row " + cls;
       const button = !st.passed
         ? `<button onclick="tutorExplain('${esc(lesson.id)}')">Я объяснила →</button>`
         : "";
       row.innerHTML = `
-        <span>${icon} ${esc(lesson.title)}</span>
-        <span>
-          ${st.lastPercent !== undefined ? st.lastPercent + "%" : ""}
-          ${button}
-        </span>
+        <td>${esc(lesson.title)}</td>
+        <td><span class="${status}">${label}</span></td>
+        <td>${st.lastPercent !== undefined ? st.lastPercent + "%" : "—"}</td>
+        <td>${button}</td>
       `;
-      wrap.appendChild(row);
+      body.appendChild(row);
     });
+    table.appendChild(body);
+    wrap.appendChild(table);
   });
   const reset = document.createElement("button");
   reset.type = "button";
@@ -1265,6 +1283,8 @@ function renderTutorErrors() {
     wrap.innerHTML = '<p class="hint">Пока ошибок нет.</p>';
     return;
   }
+  wrap.innerHTML = '<table class="desk-table"><thead><tr><th>Тип</th><th>Урок</th></tr></thead><tbody></tbody></table>';
+  const errorBody = wrap.querySelector("tbody");
 
   const typeNames = {
     concept: "не поняла понятие",
@@ -1279,11 +1299,11 @@ function renderTutorErrors() {
         if (lesson.id === id) title = lesson.title;
       });
     });
-    const div = document.createElement("div");
+    const div = document.createElement("tr");
     div.className = "err";
     const types = [...new Set(st.lastErrors)].map((type) => typeNames[type] || type).join(", ");
-    div.innerHTML = `<div class="err-type">${esc(types)}</div><div>${esc(title)}</div>`;
-    wrap.appendChild(div);
+    div.innerHTML = `<td class="err-type">${esc(types)}</td><td>${esc(title)}</td>`;
+    errorBody.appendChild(div);
   });
 }
 
@@ -1624,7 +1644,7 @@ function renderTutorToday() {
   }
   const behind = due && (!current || due.lessonId !== current.lessonId);
   const when = behind ? "Сначала несданное" : shown.date === today ? "Сегодня" : "Ближайшее";
-  host.innerHTML = `<div class="today-card"><div class="card-status">${esc(when)} · ${esc(formatPlanDate(shown.date))}</div><div class="card-title">${esc(planDayText(shown))}</div><p class="hint"><a href="plan.html">Весь график</a></p></div>`;
+  host.innerHTML = `<div class="today-card desk-today"><table class="desk-table"><tbody><tr><th>Когда</th><td class="card-status">${esc(when)} · ${esc(formatPlanDate(shown.date))}</td></tr><tr><th>Занятие</th><td class="card-title">${esc(planDayText(shown))}</td></tr></tbody></table><p class="hint"><a href="plan.html">Весь график</a></p></div>`;
 }
 
 function renderPlanPage() {

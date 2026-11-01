@@ -6,9 +6,9 @@
   <title>Панель тьютора</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="tutor-page">
   <header>
-    <h1>👩‍🏫 Панель тьютора</h1>
+    <h1>Панель тьютора</h1>
     <nav>
       <a href="plan.html" class="tutor-link">График</a>
       <a href="index.html" class="tutor-link">← К ученику</a>
@@ -43,13 +43,13 @@
 
     <section>
       <h2>Календарь: уроки и темы</h2>
-      <p class="hint">По числам: что проходим и какая тема. Зелёным — уже усвоено на этом компьютере.</p>
+      <p class="hint">По числам: что проходим и какая тема. В колонке «Итог» — что уже усвоено на этом компьютере.</p>
       <div id="tutor-calendar"></div>
     </section>
 
     <section>
       <h2>Прогресс по блокам</h2>
-      <p class="hint">🔴 не усвоено после двух проверок · 🟡 в процессе · 🟢 усвоено</p>
+      <p class="hint"><span class="status-stuck">не усвоено</span> после двух проверок · <span class="status-work">в процессе</span> · <span class="status-done">усвоено</span></p>
       <div id="tutor-progress"></div>
     </section>
 
