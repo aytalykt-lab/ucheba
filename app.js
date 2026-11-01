@@ -43,6 +43,7 @@ let DATA = null;
 let currentSubject = null;
 let currentLesson = null;
 let currentAnswers = {};
+let quizLocked = false;
 let teachCards = [];
 let teachIndex = 0;
 let practiceIndex = 0;
@@ -593,6 +594,7 @@ function startQuiz(form) {
       : "Ответь на вопросы.";
   }
   currentAnswers = {};
+  quizLocked = false;
   renderQuestions(currentLesson);
   const result = document.getElementById("result");
   result.classList.add("hidden");
@@ -666,7 +668,12 @@ function renderQuestions(lesson) {
 }
 
 function selectAnswer(qi, oi) {
+  const same = currentAnswers[qi] === oi;
   currentAnswers[qi] = oi;
+  if (same || !quizLocked) return;
+  quizLocked = false;
+  const button = document.getElementById("check-btn");
+  if (button) button.classList.remove("hidden");
 }
 
 /* ================= ПРОВЕРКА ================= */
@@ -682,6 +689,9 @@ function checkAnswers() {
     result.textContent = "Ответь на каждый вопрос.";
     return;
   }
+  if (quizLocked) return;
+  quizLocked = true;
+  document.getElementById("check-btn").classList.add("hidden");
   let correct = 0;
   const errors = [];
 
@@ -1016,9 +1026,12 @@ function submitTutorCode() {
     if (!tutorCodeSaved()) {
       localStorage.setItem(TUTOR_CODE_KEY, value);
     } else if (localStorage.getItem(TUTOR_CODE_KEY) !== value) {
-      window.alert("Код не подошёл.");
+      const msg = document.getElementById("tutor-code-msg");
+      if (msg) msg.textContent = "Код не подошёл, попробуй ещё раз.";
       return;
     }
+    const msg = document.getElementById("tutor-code-msg");
+    if (msg) msg.textContent = "";
     sessionStorage.setItem(TUTOR_SESSION_KEY, "1");
     input.value = "";
     openTutorPage();
