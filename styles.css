@@ -93,7 +93,7 @@ video, iframe { width: 100%; border-radius: 8px; max-height: 420px; }
 }
 .option:hover { background: #f3f4f6; }
 .option.correct { background: #dcfce7; border-color: #86efac; }
-.option.wrong { background: #fee2e2; border-color: #fca5a5; }
+.option.wrong { background: #fff7ed; border-color: #fdba74; }
 .option input { accent-color: #2563eb; }
 
 button.option {

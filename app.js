@@ -103,7 +103,7 @@ function renderSubjects() {
     div.className = "card";
     div.innerHTML = `
       <div class="card-title">${esc(subj.name || subj.title)}</div>
-      <div class="card-status">${done} из ${total} уроков усвоено</div>
+      <div class="card-status">${done} из ${total} уроков пройдено</div>
     `;
     div.onclick = () => openSubject(subj);
     list.appendChild(div);
@@ -135,7 +135,7 @@ function renderLessons() {
     const div = document.createElement("div");
     div.className = "card" + (unlocked ? "" : " locked") + (state.passed ? " done" : "");
     let status = "🔒 закрыт";
-    if (state.passed) status = "✅ усвоен";
+    if (state.passed) status = "✅ пройден";
     else if (unlocked && state.attempts > 0) status = "🟡 в процессе";
     else if (unlocked) status = "▶️ можно начать";
     div.innerHTML = `
@@ -256,7 +256,7 @@ function showTeachCard() {
   const last = teachIndex >= teachCards.length - 1;
   const hasPractice = currentLesson && Array.isArray(currentLesson.practice) && currentLesson.practice.length;
   if (!last) button.textContent = "Дальше";
-  else if (stage === "corrective") button.textContent = "Вторая проверка";
+  else if (stage === "corrective") button.textContent = "Ещё одна попытка";
   else button.textContent = hasPractice ? "Потренироваться" : "К проверке";
 }
 
@@ -316,7 +316,7 @@ function answerPractice(displayIndex) {
     else if (Number(button.getAttribute("data-o")) === displayIndex) button.classList.add("wrong");
   });
   const why = document.getElementById("practice-why");
-  why.textContent = (chosen === right ? "Верно. " : "Пока не так. ") + (item.why || ("Правильно: " + right));
+  why.textContent = (chosen === right ? "Верно. " : "Почти. ") + (item.why || ("Правильно: " + right));
   why.classList.remove("hidden");
   const next = document.getElementById("practice-next");
   const last = practiceIndex >= currentLesson.practice.length - 1;
@@ -350,11 +350,11 @@ function startQuiz(form) {
   document.getElementById("quiz-block").classList.remove("hidden");
   const title = document.getElementById("quiz-title");
   const hint = document.getElementById("quiz-hint");
-  if (title) title.textContent = quizForm === "b" ? "Вторая проверка" : "Проверка";
+  if (title) title.textContent = quizForm === "b" ? "Ещё одна попытка" : "Проверка";
   if (hint) {
     hint.textContent = quizForm === "b"
-      ? "Другие вопросы про то же умение. Снова нужно не меньше 80%."
-      : "Первая проверка. Урок усвоен, если верно не меньше 80%.";
+      ? "Другие вопросы про то же самое."
+      : "Ответь на вопросы.";
   }
   currentAnswers = {};
   renderQuestions(currentLesson);
@@ -372,10 +372,10 @@ function startCorrective() {
     : ["Посмотрим на это ещё раз, другими словами."];
   stage = "corrective";
   teachCards = steps.map((step, i) => ({
-    kicker: "Коррекция",
+    kicker: "Ещё раз",
     title: "Другое объяснение",
     body: step,
-    label: `Коррекция, шаг ${i + 1} из ${steps.length}`,
+    label: `Ещё раз, шаг ${i + 1} из ${steps.length}`,
   }));
   teachIndex = 0;
   document.getElementById("quiz-block").classList.add("hidden");
@@ -486,7 +486,7 @@ function checkAnswers() {
     state.shaky = false;
     setLessonState(lesson.id, state);
     result.classList.remove("is-wait");
-    result.textContent = `Урок усвоен: ${correct} из ${total} (${percent}%). Следующий можно открывать.`;
+    result.textContent = `Получилось! Урок пройден. Верно: ${correct} из ${total}.`;
     document.getElementById("check-btn").classList.add("hidden");
     document.getElementById("stuck-block").classList.add("hidden");
     setTimeout(() => {
@@ -499,7 +499,7 @@ function checkAnswers() {
     state.stuck = false;
     setLessonState(lesson.id, state);
     result.classList.add("is-wait");
-    result.textContent = `Повтор: ${correct} из ${total} (${percent}%). Завтра снова эта тема. Новую не начинаем.`;
+    result.textContent = `Верно: ${correct} из ${total}. Завтра спокойно повторим эту тему.`;
   } else {
     state.passed = false;
     const canCorrect = quizForm === "a" && Array.isArray(lesson.recheck) && lesson.recheck.length;
@@ -509,8 +509,8 @@ function checkAnswers() {
     result.textContent = "";
     const note = document.createElement("p");
     note.textContent = canCorrect
-      ? `Пока ${correct} из ${total} (${percent}%). Для усвоения нужно 80%. Сейчас будет другое объяснение и вторая проверка.`
-      : `Пока ${correct} из ${total} (${percent}%). После двух проверок порог не взят.`;
+      ? `Верно: ${correct} из ${total}. Хорошая попытка! Давай посмотрим ещё раз другим способом.`
+      : `Верно: ${correct} из ${total}. Давай разберём вместе.`;
     result.appendChild(note);
     if (canCorrect) {
       const button = document.createElement("button");
@@ -549,7 +549,7 @@ function callTutor() {
     note.className = "sent";
     stuck.appendChild(note);
   }
-  note.textContent = "Мама видит, что ты зовёшь. В панели тьютора этот блок отмечен как «застрял».";
+  note.textContent = "Мама скоро придёт помочь.";
 }
 
 /* ================= ПАНЕЛЬ ТЬЮТОРА ================= */
@@ -961,7 +961,7 @@ function renderToday() {
     const behind = due && (!current || due.lessonId !== (current && current.lessonId));
     heading.textContent = behind ? "Сначала этот урок" : current ? "Сегодня" : "Ближайшее занятие";
     let action = "";
-    let note = behind ? "<p>По графику уже другая тема. Она подождёт, пока эта не сдана на 80%.</p>" : "";
+    let note = behind ? "<p>По графику уже другая тема. Она подождёт, пока эта не будет пройдена.</p>" : "";
     const asReturn = shown.kind === "return";
     if (shown.lessonId) {
       const found = findLesson(shown.lessonId);
@@ -1029,7 +1029,7 @@ function renderPlanPage() {
     const lead = document.getElementById("plan-lead");
     const plan = DATA.plan || {};
     lead.textContent = plan.pace === "slow"
-      ? "Темп для медленного усвоения. С понедельника по четверг — один новый урок, около 30 минут. Пятница — диктант или чтение вслух с мамой. Суббота — около 20 минут повтора темы, которая уже была. Новую тему не начинаем, пока прошлая не сдана на 80%: график подождёт. Таблица умножения идёт по одному числу за урок. Жи-ши, ча-ща и чу-щу — тремя уроками. Новые уроки до " + formatPlanDate(plan.lessonsUntil) + ", повторы до " + formatPlanDate(plan.reviewUntil) + ". Каникулы: 31 декабря – 10 января, 23 февраля, 8 марта, 27 марта – 4 апреля."
+      ? "Темп для медленного усвоения. С понедельника по четверг — один новый урок, около 30 минут. Пятница — диктант или чтение вслух с мамой. Суббота — около 20 минут повтора темы, которая уже была. Новую тему не начинаем, пока прошлый урок не пройден: график подождёт. Таблица умножения идёт по одному числу за урок. Жи-ши, ча-ща и чу-щу — тремя уроками. Новые уроки до " + formatPlanDate(plan.lessonsUntil) + ", повторы до " + formatPlanDate(plan.reviewUntil) + ". Каникулы: 31 декабря – 10 января, 23 февраля, 8 марта, 27 марта – 4 апреля."
       : "Домашние занятия к переводу в 3 класс.";
 
     const subjects = document.getElementById("plan-subjects");

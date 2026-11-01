@@ -51,7 +51,7 @@
 
       <div id="practice-block" class="hidden">
         <p id="practice-label" class="hint"></p>
-        <h3>Тренировка. Она на усвоение не влияет.</h3>
+        <h3>Тренировка. Здесь можно пробовать спокойно.</h3>
         <div id="practice-body"></div>
         <p id="practice-why" class="hidden"></p>
         <button id="practice-next" class="action-btn hidden" type="button" onclick="nextPractice()">Дальше</button>
@@ -59,16 +59,16 @@
 
       <div id="quiz-block" class="hidden">
         <h3 id="quiz-title">Проверка</h3>
-        <p id="quiz-hint" class="hint">Первая проверка. Урок усвоен, если верно не меньше 80%.</p>
+        <p id="quiz-hint" class="hint">Ответь на вопросы.</p>
         <div id="questions"></div>
         <button id="check-btn" onclick="checkAnswers()">Проверить</button>
         <div id="result" class="hidden"></div>
       </div>
 
       <div id="stuck-block" class="hidden">
-        <p>Две проверки ниже 80%. Позови маму: после её объяснения урок можно открыть дальше.</p>
+        <p>Давай разберём вместе.</p>
         <button onclick="replayVideo()">🎬 Пересмотреть видео</button>
-        <button onclick="callTutor()">🙋 Позвать маму</button>
+        <button onclick="callTutor()">🙋 Мне нужна помощь</button>
       </div>
     </section>
   </main>
