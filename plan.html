@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Учебный план</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Учебный план</h1>
+    <nav>
+      <a href="index.html" class="tutor-link">К урокам</a>
+      <a href="tutor.html" class="tutor-link">Панель тьютора</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Программа 2 класса</h2>
+      <p id="plan-lead" class="hint"></p>
+      <div id="plan-subjects"></div>
+    </section>
+
+    <section>
+      <h2>График занятий</h2>
+      <p class="hint">Зелёным отмечено то, что уже усвоено на этом компьютере. Синяя рамка — сегодня.</p>
+      <div id="plan-calendar"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    renderPlanPage();
+  </script>
+</body>
+</html>
