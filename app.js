@@ -1303,10 +1303,10 @@ function lessonPassShare() {
   return { total, passed, share: total ? passed / total : 0 };
 }
 
-function openedCityCount(share) {
-  if (share >= 1) return JOURNEY_CITIES.length;
-  const count = Math.floor(share * JOURNEY_CITIES.length);
-  return count > JOURNEY_CITIES.length ? JOURNEY_CITIES.length : count;
+function openedCityCount(passedCount) {
+  const count = Math.floor((passedCount || 0) / 5);
+  if (count >= JOURNEY_CITIES.length) return JOURNEY_CITIES.length;
+  return count < 0 ? 0 : count;
 }
 
 function noteJourneyPass() {
@@ -1354,7 +1354,7 @@ function journeyDateLabel(iso) {
 
 function syncJourneyStamps() {
   const state = readJourney();
-  const openCount = openedCityCount(lessonPassShare().share);
+  const openCount = openedCityCount(lessonPassShare().passed);
   const today = todayISO();
   let changed = false;
   JOURNEY_CITIES.slice(0, openCount).forEach((city) => {
@@ -1373,7 +1373,7 @@ function renderJourney() {
   const streakEl = document.getElementById("journey-streak");
   if (!path || !passport) return;
   const saved = syncJourneyStamps();
-  const openCount = openedCityCount(lessonPassShare().share);
+  const openCount = openedCityCount(lessonPassShare().passed);
   const nextIndex = openCount < JOURNEY_CITIES.length ? openCount : -1;
   const streak = journeyStreak(saved.days);
   if (streakEl) {
@@ -1397,7 +1397,7 @@ function renderJourney() {
     const stroke = next ? "#2563eb" : (open ? "#16a34a" : "#d1d5db");
     return `<g><circle cx="${point.x}" cy="${point.y}" r="${next ? 13 : 10}" fill="${fill}" stroke="${stroke}" stroke-width="${next ? 4 : 2}"></circle><text x="${point.x + 22}" y="${point.y}" dominant-baseline="middle" font-size="16" fill="#1f2937">${esc(point.city.name)}</text></g>`;
   }).join("");
-  path.innerHTML = `<svg viewBox="0 0 280 ${height}" role="img" aria-label="Путь по Вьетнаму"><path d="${line}" fill="none" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"></path>${marks}</svg>`;
+  path.innerHTML = `<svg viewBox="0 0 280 ${height}" role="img" aria-label="Путь по Вьетнаму"><path d="${line}" fill="none" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"></path>${marks}</svg>${openCount >= JOURNEY_CITIES.length ? '<p class="hint">Ты добралась до конца пути!</p>' : ''}`;
   const stamps = JOURNEY_CITIES.filter((city, index) => index < openCount && saved.stamps[city.id]);
   passport.innerHTML = stamps.length
     ? stamps.map((city) => `<div class="stamp"><div class="stamp-city">${esc(city.name)}</div><div class="stamp-date">${esc(journeyDateLabel(saved.stamps[city.id]))}</div></div>`).join("")
