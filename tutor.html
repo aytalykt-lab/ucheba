@@ -16,6 +16,14 @@
   </header>
 
   <main id="tutor-app">
+    <section id="tutor-lock">
+      <h2 id="tutor-lock-title">Код панели</h2>
+      <p id="tutor-lock-hint" class="hint"></p>
+      <input id="tutor-code-input" type="text" inputmode="numeric" maxlength="4" autocomplete="off" onkeydown="if (event.key === 'Enter') submitTutorCode()">
+      <button class="action-btn" type="button" onclick="submitTutorCode()">Открыть</button>
+    </section>
+
+    <div id="tutor-body" class="hidden">
     <section>
       <h2>Сегодня по графику</h2>
       <div id="tutor-today"></div>
@@ -37,11 +45,22 @@
       <h2>Последние ошибки</h2>
       <div id="tutor-errors"></div>
     </section>
+
+    <section id="tutor-save">
+      <h2>Сохранение прогресса</h2>
+      <p class="hint">Файл пригодится, если откроете сайт на другом компьютере.</p>
+      <button class="action-btn" type="button" onclick="downloadProgress()">Скачать прогресс</button>
+      <label class="action-btn file-btn">Загрузить прогресс
+        <input id="progress-file" type="file" accept="application/json,.json" onchange="uploadProgress(this)">
+      </label>
+      <button class="back-btn" type="button" onclick="changeTutorCode()">Сменить код</button>
+    </section>
+    </div>
   </main>
 
   <script src="app.js"></script>
   <script>
-    renderTutorPanel();
+    openTutorPage();
   </script>
 </body>
 </html>

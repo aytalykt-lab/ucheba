@@ -240,6 +240,29 @@ a.plan-row:hover { border-color: #2563eb; }
 .mom-topic { color: #4b5563; font-size: 0.95rem; }
 #tutor-calendar .hint a { color: #2563eb; text-decoration: none; }
 #tutor-calendar .hint a:hover { text-decoration: underline; }
+
+#tutor-lock input {
+  font: inherit;
+  font-size: 1.4rem;
+  letter-spacing: 0.25rem;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  width: 8rem;
+  margin-right: 8px;
+}
+#tutor-save .action-btn { margin-right: 8px; }
+.file-btn {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+.file-btn input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
 .plan-row.kind-mama { background: #fff7ed; border-color: #fdba74; }
 .plan-row.kind-rest { background: #f3f4f6; }
 .plan-row.kind-review, .plan-row.kind-return { background: #eff6ff; border-color: #bfdbfe; }

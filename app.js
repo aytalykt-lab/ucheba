@@ -50,6 +50,9 @@ let practiceAnswered = false;
 let stage = "teach";
 let quizForm = "a";
 let keepPassed = false;
+let optionOrders = {};
+const TUTOR_CODE_KEY = "study_tutor_code_v1";
+const TUTOR_SESSION_KEY = "study_tutor_session_ok";
 
 function showLoadError() {
   const host = document.getElementById("subjects-list") || document.getElementById("tutor-progress") || document.getElementById("plan-calendar");
@@ -180,10 +183,40 @@ function lessonCards(lesson) {
   return cards;
 }
 
+function fisherYates(items) {
+  const copy = items.slice();
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const swap = copy[i];
+    copy[i] = copy[j];
+    copy[j] = swap;
+  }
+  return copy;
+}
+
+function optionOrderKey(scope, index) {
+  const lessonId = currentLesson ? currentLesson.id : "lesson";
+  return lessonId + ":" + scope + ":" + index;
+}
+
+function displayOrder(question, key) {
+  if (!optionOrders[key]) {
+    const indexes = (question.options || []).map((_, index) => index);
+    optionOrders[key] = fisherYates(indexes);
+  }
+  return optionOrders[key];
+}
+
+function correctOptionText(question) {
+  const options = question.options || [];
+  return String(options[question.correct] ?? "");
+}
+
 function openLesson(lesson) {
   currentLesson = lesson;
   keepPassed = getLessonState(lesson.id).passed === true;
   currentAnswers = {};
+  optionOrders = {};
   teachCards = lessonCards(lesson);
   teachIndex = 0;
   practiceIndex = 0;
@@ -261,25 +294,29 @@ function showPractice() {
   why.classList.add("hidden");
   why.textContent = "";
   next.classList.add("hidden");
-  const opts = (item.options || []).map((opt, oi) => (
-    `<button type="button" class="option" onclick="answerPractice(${oi})"><span>${esc(opt)}</span></button>`
+  const order = displayOrder(item, optionOrderKey("practice", practiceIndex));
+  const opts = order.map((originalIndex, displayIndex) => (
+    `<button type="button" class="option" data-o="${displayIndex}" onclick="answerPractice(${displayIndex})"><span>${esc(item.options[originalIndex])}</span></button>`
   )).join("");
   body.innerHTML = `<div class="question"><p>${esc(item.q)}</p><div class="options">${opts}</div></div>`;
 }
 
-function answerPractice(oi) {
+function answerPractice(displayIndex) {
   if (practiceAnswered) return;
   practiceAnswered = true;
   const item = currentLesson.practice[practiceIndex];
+  const order = displayOrder(item, optionOrderKey("practice", practiceIndex));
+  const right = correctOptionText(item);
+  const chosen = String(item.options[order[displayIndex]] ?? "");
   const buttons = document.querySelectorAll("#practice-body .option");
-  buttons.forEach((button, index) => {
+  buttons.forEach((button) => {
+    const shown = String(item.options[order[Number(button.getAttribute("data-o"))]] ?? "");
     button.disabled = true;
-    if (index === item.correct) button.classList.add("correct");
-    else if (index === oi) button.classList.add("wrong");
+    if (shown === right) button.classList.add("correct");
+    else if (Number(button.getAttribute("data-o")) === displayIndex) button.classList.add("wrong");
   });
   const why = document.getElementById("practice-why");
-  const right = item.options[item.correct];
-  why.textContent = (oi === item.correct ? "Верно. " : "Пока не так. ") + (item.why || ("Правильно: " + right));
+  why.textContent = (chosen === right ? "Верно. " : "Пока не так. ") + (item.why || ("Правильно: " + right));
   why.classList.remove("hidden");
   const next = document.getElementById("practice-next");
   const last = practiceIndex >= currentLesson.practice.length - 1;
@@ -376,13 +413,15 @@ function renderVideo(lesson) {
 function renderQuestions(lesson) {
   const wrap = document.getElementById("questions");
   wrap.innerHTML = "";
+  const scope = quizForm === "b" ? "quiz-b" : "quiz-a";
   activeQuestions().forEach((q, qi) => {
     const div = document.createElement("div");
     div.className = "question";
-    const opts = (q.options || []).map((opt, oi) => `
-      <label class="option" data-q="${qi}" data-o="${oi}">
-        <input type="radio" name="q${qi}" value="${oi}" onchange="selectAnswer(${qi}, ${oi})">
-        <span>${esc(opt)}</span>
+    const order = displayOrder(q, optionOrderKey(scope, qi));
+    const opts = order.map((originalIndex, displayIndex) => `
+      <label class="option" data-q="${qi}" data-o="${displayIndex}">
+        <input type="radio" name="q${qi}" value="${displayIndex}" onchange="selectAnswer(${qi}, ${displayIndex})">
+        <span>${esc(q.options[originalIndex])}</span>
       </label>
     `).join("");
     div.innerHTML = `<p>${qi + 1}. ${esc(q.q)}</p><div class="options">${opts}</div>`;
@@ -410,22 +449,25 @@ function checkAnswers() {
   let correct = 0;
   const errors = [];
 
+  const scope = quizForm === "b" ? "quiz-b" : "quiz-a";
   list.forEach((q, qi) => {
     const chosen = currentAnswers[qi];
-    const labels = document.querySelectorAll(`.option[data-q="${qi}"]`);
+    const order = displayOrder(q, optionOrderKey(scope, qi));
+    const right = correctOptionText(q);
+    const chosenText = chosen === undefined ? "" : String(q.options[order[chosen]] ?? "");
+    const labels = document.querySelectorAll(`#questions .option[data-q="${qi}"]`);
     labels.forEach((label) => label.classList.remove("correct", "wrong"));
 
-    const correctLabel = document.querySelector(`.option[data-q="${qi}"][data-o="${q.correct}"]`);
-    if (correctLabel) correctLabel.classList.add("correct");
+    labels.forEach((label) => {
+      const shown = String(q.options[order[Number(label.getAttribute("data-o"))]] ?? "");
+      if (shown === right) label.classList.add("correct");
+      else if (Number(label.getAttribute("data-o")) === chosen) label.classList.add("wrong");
+    });
 
-    if (chosen === q.correct) {
+    if (chosenText === right) {
       correct += 1;
-    } else {
-      if (chosen !== undefined) {
-        const wrongLabel = document.querySelector(`.option[data-q="${qi}"][data-o="${chosen}"]`);
-        if (wrongLabel) wrongLabel.classList.add("wrong");
-      }
-      if (q.type) errors.push(q.type);
+    } else if (q.type) {
+      errors.push(q.type);
     }
   });
 
@@ -518,6 +560,132 @@ function renderTutorPanel() {
     renderTutorProgress();
     renderTutorErrors();
   }).catch(showLoadError);
+}
+
+function tutorCodeSaved() {
+  return /^\d{4}$/.test(localStorage.getItem(TUTOR_CODE_KEY) || "");
+}
+
+function tutorSessionOpen() {
+  try {
+    return sessionStorage.getItem(TUTOR_SESSION_KEY) === "1";
+  } catch (e) {
+    return false;
+  }
+}
+
+function openTutorPage() {
+  const lock = document.getElementById("tutor-lock");
+  const body = document.getElementById("tutor-body");
+  if (!lock || !body) return;
+  const title = document.getElementById("tutor-lock-title");
+  const hint = document.getElementById("tutor-lock-hint");
+  if (tutorSessionOpen() && tutorCodeSaved()) {
+    lock.classList.add("hidden");
+    body.classList.remove("hidden");
+    renderTutorPanel();
+    return;
+  }
+  lock.classList.remove("hidden");
+  body.classList.add("hidden");
+  if (!tutorCodeSaved()) {
+    title.textContent = "Задайте код";
+    hint.textContent = "Четыре цифры. Так ребёнок случайно не откроет панель. Это не настоящий замок.";
+  } else {
+    title.textContent = "Введите код";
+    hint.textContent = "Четыре цифры, которые вы задали для этой панели.";
+  }
+}
+
+function submitTutorCode() {
+  const input = document.getElementById("tutor-code-input");
+  if (!input) return;
+  const value = String(input.value || "").trim();
+  if (!/^\d{4}$/.test(value)) {
+    window.alert("Нужны ровно 4 цифры.");
+    return;
+  }
+  try {
+    if (!tutorCodeSaved()) {
+      localStorage.setItem(TUTOR_CODE_KEY, value);
+    } else if (localStorage.getItem(TUTOR_CODE_KEY) !== value) {
+      window.alert("Код не подошёл.");
+      return;
+    }
+    sessionStorage.setItem(TUTOR_SESSION_KEY, "1");
+    input.value = "";
+    openTutorPage();
+  } catch (e) {
+    window.alert("Не получилось сохранить код.");
+  }
+}
+
+function changeTutorCode() {
+  const next = window.prompt("Новый код из 4 цифр");
+  if (next === null) return;
+  const value = String(next).trim();
+  if (!/^\d{4}$/.test(value)) {
+    window.alert("Нужны ровно 4 цифры.");
+    return;
+  }
+  try {
+    localStorage.setItem(TUTOR_CODE_KEY, value);
+    window.alert("Код обновлён. Он заработает при следующем открытии вкладки.");
+  } catch (e) {
+    window.alert("Не получилось сохранить код.");
+  }
+}
+
+function progressFileName() {
+  const day = new Date();
+  const month = String(day.getMonth() + 1).padStart(2, "0");
+  const date = String(day.getDate()).padStart(2, "0");
+  return "progress-" + day.getFullYear() + "-" + month + "-" + date + ".json";
+}
+
+function downloadProgress() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY) || "{}";
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("shape");
+    const blob = new Blob([JSON.stringify(parsed)], { type: "application/json" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = progressFileName();
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(link.href);
+  } catch (e) {
+    window.alert("Не получилось скачать прогресс.");
+  }
+}
+
+function uploadProgress(input) {
+  const file = input && input.files && input.files[0];
+  if (input) input.value = "";
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onerror = () => window.alert("Файл не прочитался.");
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(String(reader.result || ""));
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+        window.alert("В файле нет прогресса.");
+        return;
+      }
+      if (!window.confirm("Заменить прогресс на этом компьютере данными из файла?")) return;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+      renderTutorPanel();
+    } catch (e) {
+      window.alert("Файл не прочитался.");
+    }
+  };
+  try {
+    reader.readAsText(file);
+  } catch (e) {
+    window.alert("Файл не прочитался.");
+  }
 }
 
 function dayKindLabel(kind) {
