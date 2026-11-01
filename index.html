@@ -27,14 +27,14 @@
       <div id="today-view">
         <h2 id="today-heading">Сегодня</h2>
         <div id="today-card"></div>
-        <h2 id="week-heading">Эта неделя</h2>
-        <div id="week-list" class="week"></div>
+        <h2 id="week-heading" class="hidden">Эта неделя</h2>
+        <div id="week-list" class="week hidden"></div>
         <p class="hint"><a href="plan.html">Весь учебный план и график</a></p>
       </div>
-      <h2>Выбери предмет</h2>
       <button class="action-btn" type="button" onclick="openScout()">Разведка</button>
       <p class="hint">Без оценок. Посмотрим, что уже знакомо.</p>
-      <div id="subjects-list" class="grid"></div>
+      <button class="back-btn" type="button" onclick="toggleSubjects()">Все предметы</button>
+      <div id="subjects-list" class="grid hidden"></div>
     </section>
 
     <section id="scout-view" class="hidden">
@@ -53,6 +53,12 @@
     <section id="lesson-view" class="hidden">
       <button class="back-btn" onclick="backToLessons()">← Назад к урокам</button>
       <h2 id="lesson-title"></h2>
+      <p id="session-timer" class="hint">Время занятия: <span id="session-time">15:00</span></p>
+      <div id="session-note" class="hidden">
+        <p>На сегодня всё, ты молодец!</p>
+        <button class="action-btn" type="button" onclick="finishSession()">Закончить</button>
+        <button class="action-btn" type="button" onclick="stayLonger()">Ещё немного</button>
+      </div>
 
       <div id="video-block" class="video-block hidden">
         <h3>Видео к уроку</h3>

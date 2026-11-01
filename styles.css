@@ -104,8 +104,18 @@ video, iframe { width: 100%; border-radius: 8px; max-height: 420px; }
   min-width: 120px;
   text-align: center;
 }
-.stamp-city { font-weight: 700; }
-.stamp-date { color: #92400e; font-size: 0.9rem; }
+#session-note {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+}
+#session-note .action-btn { margin-right: 8px; }
+.choice-grid { display: grid; gap: 12px; }
+@media (min-width: 700px) {
+  .choice-grid { grid-template-columns: 1fr 1fr; }
+}
 .scout-card { cursor: default; }
 .scout-card.known { border-color: #86efac; background: #f0fdf4; }
 .scout-card.practice { border-color: #bfdbfe; background: #eff6ff; }

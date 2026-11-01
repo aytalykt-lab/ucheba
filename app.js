@@ -150,7 +150,7 @@ function toggleSoftMode() {
   renderSoftMode();
 }
 
-function showSoftResult(result) {
+function showSoftResult(result, passed) {
   result.classList.remove("is-wait");
   result.textContent = "";
   const phrase = document.createElement("p");
@@ -162,6 +162,10 @@ function showSoftResult(result) {
   result.appendChild(stars);
   document.getElementById("check-btn").classList.add("hidden");
   document.getElementById("stuck-block").classList.add("hidden");
+  if (passed) {
+    offerExplain(result);
+    return;
+  }
   setTimeout(() => {
     backToLessons();
     renderLessons();
@@ -174,9 +178,15 @@ function showSubjects() {
   document.getElementById("lessons-view").classList.add("hidden");
   document.getElementById("lesson-view").classList.add("hidden");
   hideScoutView();
+  stopSessionTimer();
   renderToday();
   renderJourney();
   renderSubjects();
+}
+
+function toggleSubjects() {
+  const list = document.getElementById("subjects-list");
+  if (list) list.classList.toggle("hidden");
 }
 
 function renderSubjects() {
@@ -212,6 +222,7 @@ function backToLessons() {
   document.getElementById("lesson-view").classList.add("hidden");
   document.getElementById("lessons-view").classList.remove("hidden");
   hideScoutView();
+  stopSessionTimer();
   renderLessons();
 }
 
@@ -227,6 +238,7 @@ function renderLessons() {
     if (state.passed) status = "✅ пройден";
     else if (unlocked && state.attempts > 0) status = "🟡 в процессе";
     else if (unlocked) status = "▶️ можно начать";
+    if (readExplained()[lesson.id]) status += " ★";
     div.innerHTML = `
       <div class="card-title">${i + 1}. ${esc(lesson.title)}</div>
       <div class="card-status">${status}</div>
@@ -326,10 +338,124 @@ function openLesson(lesson) {
   document.getElementById("practice-why").classList.add("hidden");
   document.getElementById("practice-next").classList.add("hidden");
   document.getElementById("teach-block").classList.remove("hidden");
-  const old = document.getElementById("explain");
+  const old = document.getElementById("explain-mom");
   if (old) old.remove();
   renderVideo(lesson);
   showTeachCard();
+  startSessionTimer();
+}
+
+const SESSION_MS = 15 * 60 * 1000;
+const EXPLAIN_KEY = "study_explain_v1";
+let sessionTimer = null;
+let sessionEndsAt = 0;
+let sessionNoted = false;
+
+function startSessionTimer() {
+  stopSessionTimer();
+  sessionEndsAt = Date.now() + SESSION_MS;
+  sessionNoted = false;
+  const time = document.getElementById("session-time");
+  const note = document.getElementById("session-note");
+  if (time) time.textContent = "15:00";
+  if (note) note.classList.add("hidden");
+  tickSession();
+  sessionTimer = setInterval(tickSession, 1000);
+}
+
+function stopSessionTimer() {
+  if (sessionTimer) clearInterval(sessionTimer);
+  sessionTimer = null;
+}
+
+function tickSession() {
+  const time = document.getElementById("session-time");
+  const note = document.getElementById("session-note");
+  if (!time) return;
+  const left = sessionEndsAt - Date.now();
+  if (left > 0) {
+    const total = Math.ceil(left / 1000);
+    const minutes = Math.floor(total / 60);
+    const seconds = total % 60;
+    time.textContent = minutes + ":" + String(seconds).padStart(2, "0");
+    return;
+  }
+  time.textContent = "0:00";
+  if (!sessionNoted && note) {
+    sessionNoted = true;
+    note.classList.remove("hidden");
+  }
+}
+
+function finishSession() {
+  stopSessionTimer();
+  showSubjects();
+}
+
+function stayLonger() {
+  sessionNoted = true;
+  stopSessionTimer();
+  const note = document.getElementById("session-note");
+  const time = document.getElementById("session-time");
+  if (note) note.classList.add("hidden");
+  if (time) time.textContent = "можно ещё";
+}
+
+function readExplained() {
+  try {
+    const raw = localStorage.getItem(EXPLAIN_KEY);
+    const parsed = raw ? JSON.parse(raw) : {};
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+    return parsed;
+  } catch (e) {
+    return {};
+  }
+}
+
+function explainHints(lesson) {
+  const steps = Array.isArray(lesson.teach) ? lesson.teach : [];
+  return steps.slice(0, 3).map((step) => String(step).trim()).filter(Boolean);
+}
+
+function offerExplain(result) {
+  const explain = document.createElement("button");
+  explain.type = "button";
+  explain.className = "action-btn";
+  explain.textContent = "Объясни маме своими словами";
+  explain.onclick = showExplainHints;
+  result.appendChild(explain);
+  const next = document.createElement("button");
+  next.type = "button";
+  next.className = "action-btn";
+  next.textContent = "Дальше";
+  next.onclick = () => {
+    backToLessons();
+    renderLessons();
+  };
+  result.appendChild(next);
+}
+
+function showExplainHints() {
+  if (!currentLesson) return;
+  const result = document.getElementById("result");
+  let box = document.getElementById("explain-mom");
+  if (!box) {
+    box = document.createElement("div");
+    box.id = "explain-mom";
+    result.appendChild(box);
+  }
+  const hints = explainHints(currentLesson);
+  const lines = hints.length ? hints : ["Расскажи своими словами, о чём был урок."];
+  box.innerHTML = `<p>Расскажи маме своими словами. Это опоры, не готовый ответ.</p>${lines.map((line) => `<p>${esc(line)}</p>`).join("")}<button type="button" class="action-btn" onclick="gaveExplain()">Объяснила!</button>`;
+}
+
+function gaveExplain() {
+  if (!currentLesson) return;
+  const all = readExplained();
+  all[currentLesson.id] = todayISO();
+  localStorage.setItem(EXPLAIN_KEY, JSON.stringify(all));
+  const box = document.getElementById("explain-mom");
+  if (box) box.innerHTML = `<p class="stars">★</p><p>Звезда за рассказ.</p>`;
 }
 
 function showTeachCard() {
@@ -577,7 +703,7 @@ function checkAnswers() {
     else if (keepPassed) state.shaky = true;
     setLessonState(lesson.id, state);
     if (percent >= 80) noteJourneyPass();
-    showSoftResult(result);
+    showSoftResult(result, percent >= 80);
     return;
   }
 
@@ -591,10 +717,7 @@ function checkAnswers() {
     result.textContent = `Получилось! Урок пройден. Верно: ${correct} из ${total}.`;
     document.getElementById("check-btn").classList.add("hidden");
     document.getElementById("stuck-block").classList.add("hidden");
-    setTimeout(() => {
-      backToLessons();
-      renderLessons();
-    }, 2500);
+    offerExplain(result);
   } else if (keepPassed) {
     state.passed = true;
     state.shaky = true;
@@ -1344,6 +1467,29 @@ function planDayText(day) {
   return day.title;
 }
 
+function isChoiceOpen(day) {
+  const found = day && day.lessonId && findLesson(day.lessonId);
+  return !!(found && isLessonUnlocked(found.subject, found.index));
+}
+
+function homeChoices() {
+  const today = todayISO();
+  const days = planDays().filter((day) => day.lessonId && (day.kind === "lesson" || day.kind === "return"));
+  const due = dueWork();
+  const todayLesson = days.find((day) => day.date === today);
+  const upcoming = days.find((day) => day.date >= today);
+  let primary = (due && due.lessonId) ? due : (todayLesson || upcoming || null);
+  if (primary && !isChoiceOpen(primary)) {
+    primary = days.find((day) => isChoiceOpen(day) && !getLessonState(day.lessonId).passed) || primary;
+  }
+  const alternative = days.find((day) => {
+    if (!primary || day.lessonId === primary.lessonId || day.subjectId === primary.subjectId) return false;
+    if (day.date < primary.date) return false;
+    return isChoiceOpen(day);
+  });
+  return { primary, alternative };
+}
+
 function renderToday() {
   const view = document.getElementById("today-view");
   if (!view) return;
@@ -1352,65 +1498,28 @@ function renderToday() {
     view.classList.add("hidden");
     return;
   }
-  const today = todayISO();
-  const due = dueWork();
-  const current = days.find((day) => day.date === today);
-  const next = nearestPlanDay();
-  const shown = due || current || next;
+  view.classList.remove("hidden");
   const heading = document.getElementById("today-heading");
   const card = document.getElementById("today-card");
-  if (!shown) {
-    heading.textContent = "График закончился";
-    card.innerHTML = '<div class="today-card"><p>Новых дат нет. Повторяй уроки, которые ещё не зелёные.</p></div>';
+  const choice = homeChoices();
+  const pair = [choice.primary, choice.alternative].filter(Boolean);
+  heading.textContent = "Выбери одно";
+  if (!pair.length) {
+    card.innerHTML = '<div class="today-card"><p>Новых уроков нет. Можно открыть все предметы.</p></div>';
   } else {
-    const behind = due && (!current || due.lessonId !== (current && current.lessonId));
-    heading.textContent = behind ? "Сначала этот урок" : current ? "Сегодня" : "Ближайшее занятие";
-    let action = "";
-    let note = behind ? "<p>По графику уже другая тема. Она подождёт, пока эта не будет пройдена.</p>" : "";
-    const asReturn = shown.kind === "return";
-    if (shown.lessonId) {
-      const found = findLesson(shown.lessonId);
-      const open = found && isLessonUnlocked(found.subject, found.index);
-      if (open) {
-        action = `<button class="action-btn" type="button" onclick="openScheduledLesson('${esc(shown.lessonId)}', ${asReturn})">Начать урок</button>`;
-      } else {
-        note += "<p>Этот урок ещё закрыт: сначала предыдущий урок по этому предмету.</p>";
-        action = `<button class="action-btn" type="button" onclick="openSubjectById('${esc(shown.subjectId)}')">Открыть предмет</button>`;
-      }
-    } else if (shown.subjectId) {
-      action = `<button class="action-btn" type="button" onclick="openSubjectById('${esc(shown.subjectId)}')">Открыть предмет</button>`;
-    }
-    const when = behind ? "" : current ? "" : " · сегодня выходной или каникулы";
-    card.innerHTML = `
-      <div class="today-card">
-        <div class="card-status">${esc(formatPlanDate(shown.date))}${when}</div>
-        <div class="card-title">${esc(shown.kind === "lesson" || shown.kind === "return" ? shown.subject : shown.title)}</div>
-        <p>${esc(shown.kind === "lesson" || shown.kind === "return" ? shown.title : (shown.text || ""))}</p>
-        ${shown.kind === "return" ? "<p>Повтор уже знакомой темы, около 20 минут.</p>" : ""}
-        ${note}
-        ${action}
-      </div>`;
+    card.innerHTML = `<p class="hint">Можно любое. Второе подождёт.</p><div class="choice-grid">${pair.map((day, index) => {
+      const label = index === 0 ? "Урок дня" : "Другой предмет";
+      const asReturn = day.kind === "return";
+      return `<button type="button" class="card" onclick="openScheduledLesson('${esc(day.lessonId)}', ${asReturn})"><div class="card-status">${label}</div><div class="card-title">${esc(day.subject || "")}</div><p>${esc(day.title || "")}</p></button>`;
+    }).join("")}</div>`;
   }
-
-  const anchor = shown || days[days.length - 1];
-  const week = weekOf(anchor.date);
-  const weekHasToday = week.some((day) => day.date === today) || (today >= week[0].date && today <= week[week.length - 1].date);
-  document.getElementById("week-heading").textContent = weekHasToday ? "Эта неделя" : "Ближайшая неделя";
-  const list = document.getElementById("week-list");
-  list.innerHTML = "";
-  week.forEach((day) => {
-    const div = document.createElement("div");
-    const passed = day.lessonId && getLessonState(day.lessonId).passed;
-    div.className = "card" + (passed ? " done" : "") + (day.date === today ? " is-today" : "");
-    div.innerHTML = `
-      <div class="card-status">${esc(formatPlanDate(day.date))}</div>
-      <div class="card-title">${esc(day.kind === "lesson" ? day.title : day.title)}</div>
-      <div class="card-status">${esc(day.kind === "lesson" ? day.subject : day.kind === "return" ? "повтор" : day.kind === "mama" ? "с мамой, без новой темы" : day.kind === "review" ? "повтор" : "выходной")}</div>`;
-    if (day.kind === "lesson" || day.kind === "return") div.onclick = () => openScheduledLesson(day.lessonId, day.kind === "return");
-    else if (day.subjectId) div.onclick = () => openSubjectById(day.subjectId);
-    else div.style.cursor = "default";
-    list.appendChild(div);
-  });
+  const weekHeading = document.getElementById("week-heading");
+  const weekList = document.getElementById("week-list");
+  if (weekHeading) weekHeading.classList.add("hidden");
+  if (weekList) {
+    weekList.classList.add("hidden");
+    weekList.innerHTML = "";
+  }
 }
 
 function renderTutorToday() {
