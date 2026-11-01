@@ -270,6 +270,35 @@ button.option {
   background: transparent;
 }
 .choice-card:hover { transform: none; box-shadow: none; background: var(--card); }
+.choice-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--control);
+  margin: 0 0 4px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--sea);
+  font: inherit;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.choice-pick {
+  display: block;
+  width: 100%;
+  min-height: var(--control);
+  padding: 10px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+.choice-pick:hover { color: var(--sea); }
 .guide {
   display: flex;
   align-items: center;
@@ -668,6 +697,11 @@ body.tutor-page #tutor-progress td:last-child { width: 1%; white-space: nowrap; 
 body.tutor-page #tutor-progress .row button { margin: 0; }
 body.tutor-page #tutor-errors .err-type,
 body.tutor-page #tutor-scout .err-type { color: var(--desk-red); font-size: 14px; }
+body.tutor-page #tutor-calendar td.desk-result {
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
 
 @media (max-width: 640px) {
   body.tutor-page .desk-table thead { display: none; }
