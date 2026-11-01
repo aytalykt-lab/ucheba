@@ -929,7 +929,7 @@ function renderScoutQuestion() {
   const buttons = order.map((originalIndex, displayIndex) => (
     `<button type="button" class="option" onclick="chooseScout(${displayIndex})"><span>${esc(item.question.options[originalIndex])}</span></button>`
   )).join("");
-  body.innerHTML = `<div class="question"><p>${esc(item.question.q)}</p><div class="options">${buttons}</div></div>`;
+  body.innerHTML = `${stepDots(scoutIndex, scoutItems.length)}<div class="question scout-question"><p>${esc(item.question.q)}</p><div class="options">${buttons}</div></div>`;
 }
 
 function chooseScout(displayIndex) {
@@ -964,7 +964,7 @@ function renderScoutMap(payload) {
       const cls = item.known ? "known" : "practice";
       return `<button type="button" class="card scout-card ${cls}" onclick="openScoutLesson('${esc(item.lessonId)}')"><div class="card-title">${esc(item.title)}</div><div class="card-status">${mark}</div></button>`;
     }).join("");
-    return `<h3>${esc(group.subject)}</h3><div class="grid">${cards}</div>`;
+    return `<h3>${esc(group.subject)}</h3><div class="grid scout-map">${cards}</div>`;
   }).join("") + '<button class="action-btn" type="button" onclick="startScout()">Пройти ещё раз</button>';
 }
 
@@ -1688,16 +1688,20 @@ function renderPlanPage() {
         : day.kind === "return"
           ? "Повтор. " + day.subject + ". " + day.title
           : day.title + (day.text ? ". " + day.text : "");
+      const marks = [];
+      if (day.date === today) marks.push("сегодня");
+      if (passed) marks.push("усвоено");
+      const mark = marks.length ? `<span class="plan-mark">${esc(marks.join(" · "))}</span>` : "";
       if (day.kind === "lesson" || day.kind === "return") {
         const link = document.createElement("a");
         link.className = cls.join(" ");
         link.href = "index.html?lesson=" + encodeURIComponent(day.lessonId) + (day.kind === "return" ? "&return=1" : "");
-        link.innerHTML = `<span class="plan-date">${esc(formatPlanDate(day.date))}</span><span class="plan-what">${esc(label)}</span>`;
+        link.innerHTML = `<span class="plan-date">${esc(formatPlanDate(day.date))}</span><span class="plan-what">${esc(label)}${mark}</span>`;
         calendar.appendChild(link);
       } else {
         const row = document.createElement("div");
         row.className = cls.join(" ");
-        row.innerHTML = `<span class="plan-date">${esc(formatPlanDate(day.date))}</span><span class="plan-what">${esc(label)}</span>`;
+        row.innerHTML = `<span class="plan-date">${esc(formatPlanDate(day.date))}</span><span class="plan-what">${esc(label)}${mark}</span>`;
         calendar.appendChild(row);
       }
     });
