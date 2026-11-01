@@ -17,6 +17,18 @@
 
   <main id="app">
     <section id="subjects-view">
+      <div class="guide">
+        <svg class="guide-lantern" viewBox="0 0 64 80" aria-hidden="true">
+          <path d="M24 8 Q32 2 40 8" fill="none" stroke="#3d2a08" stroke-width="2" stroke-linecap="round"/>
+          <rect x="26" y="8" width="12" height="6" rx="2" fill="#c49212"/>
+          <path d="M16 18 H48 L44 62 H20 Z" fill="#f6c445" stroke="#3d2a08" stroke-width="2"/>
+          <circle cx="28" cy="36" r="2.2" fill="#2c2416"/>
+          <circle cx="38" cy="36" r="2.2" fill="#2c2416"/>
+          <path d="M28 46 Q32 50 36 46" fill="none" stroke="#2c2416" stroke-width="2" stroke-linecap="round"/>
+          <path d="M18 62 H46 L42 70 H22 Z" fill="#c49212"/>
+        </svg>
+        <p>Я фонарик. Сегодня хватит одного спокойного шага.</p>
+      </div>
       <div id="journey">
         <h2>Путешествие по Вьетнаму</h2>
         <p id="journey-streak" class="hint"></p>
@@ -31,7 +43,7 @@
         <div id="week-list" class="week hidden"></div>
         <p class="hint"><a href="plan.html">Весь учебный план и график</a></p>
       </div>
-      <button class="action-btn" type="button" onclick="openScout()">Разведка</button>
+      <button class="action-btn btn-quiet" type="button" onclick="openScout()">Разведка</button>
       <p class="hint">Без оценок. Посмотрим, что уже знакомо.</p>
       <button class="back-btn" type="button" onclick="toggleSubjects()">Все предметы</button>
       <div id="subjects-list" class="grid hidden"></div>

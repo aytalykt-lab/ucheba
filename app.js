@@ -1380,6 +1380,31 @@ function syncJourneyStamps() {
   return state;
 }
 
+function cityMark(id, open) {
+  const color = open ? {
+    hanoi: "#9b3d5c",
+    hue: "#7e2e4a",
+    danang: "#14635f",
+    hoian: "#a67c12",
+    nhatrang: "#1f6b4a",
+    dalat: "#1f6b4a",
+    hochiminh: "#14635f",
+    phuquoc: "#9b3d5c",
+  }[id] || "#14635f" : "#b7aea4";
+  const paper = "#fff6ea";
+  const shapes = {
+    hanoi: `<ellipse cx="14" cy="24" rx="10" ry="3" fill="${color}" opacity="0.35"/><path d="M14 3 L20 9 H8 Z M14 8 L22 15 H6 Z M14 14 L24 23 H4 Z" fill="${color}"/>`,
+    hue: `<path d="M3 25 V11 H8 V5 H20 V11 H25 V25 Z" fill="${color}"/><path d="M11 25 V16 a3 3 0 0 1 6 0 V25 Z" fill="${paper}"/>`,
+    danang: `<path d="M2 16 Q14 4 26 16" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round"/><path d="M2 22 H26" stroke="${color}" stroke-width="2" stroke-linecap="round"/>`,
+    hoian: `<rect x="6" y="5" width="6" height="14" rx="3" fill="${color}"/><rect x="16" y="8" width="6" height="14" rx="3" fill="${color}"/><circle cx="9" cy="11" r="1.2" fill="${paper}"/><circle cx="19" cy="14" r="1.2" fill="${paper}"/>`,
+    nhatrang: `<path d="M2 20 Q8 15 14 20 T26 20 V25 H2 Z" fill="${color}" opacity="0.45"/><path d="M18 22 V7" stroke="${color}" stroke-width="2"/><path d="M18 10 Q25 8 22 18" fill="${color}"/>`,
+    dalat: `<path d="M4 24 L11 8 L18 24 Z" fill="${color}"/><circle cx="20" cy="11" r="3" fill="${color}"/><circle cx="23" cy="16" r="2.2" fill="${color}"/>`,
+    hochiminh: `<path d="M3 25 V14 H9 V5 H16 V12 H25 V25 Z" fill="${color}"/>`,
+    phuquoc: `<ellipse cx="14" cy="17" rx="11" ry="6" fill="${color}"/><path d="M14 16 V7 M14 9 Q19 8 17 14" stroke="${paper}" stroke-width="1.6" fill="none" stroke-linecap="round"/>`,
+  };
+  return `<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">${shapes[id] || ""}</svg>`;
+}
+
 function renderJourney() {
   const path = document.getElementById("journey-path");
   const passport = document.getElementById("journey-passport");
@@ -1394,23 +1419,23 @@ function renderJourney() {
       ? "В пути уже " + streak + " " + journeyDayWord(streak) + " подряд."
       : "";
   }
-  const step = 64;
-  const height = 24 + JOURNEY_CITIES.length * step;
+  const step = 72;
+  const height = 28 + JOURNEY_CITIES.length * step;
   const points = JOURNEY_CITIES.map((city, index) => ({
     city,
     index,
-    x: index % 2 === 0 ? 36 : 108,
-    y: 24 + index * step,
+    x: index % 2 === 0 ? 28 : 96,
+    y: 28 + index * step,
   }));
   const line = points.map((point, index) => (index === 0 ? "M" : "L") + point.x + " " + point.y).join(" ");
   const marks = points.map((point) => {
     const open = point.index < openCount;
     const next = point.index === nextIndex;
     const fill = open ? "#86efac" : (next ? "#dbeafe" : "#e5e7eb");
-    const stroke = next ? "#2563eb" : (open ? "#16a34a" : "#d1d5db");
-    return `<g><circle cx="${point.x}" cy="${point.y}" r="${next ? 13 : 10}" fill="${fill}" stroke="${stroke}" stroke-width="${next ? 4 : 2}"></circle><text x="${point.x + 22}" y="${point.y}" dominant-baseline="middle" font-size="16" fill="#1f2937">${esc(point.city.name)}</text></g>`;
+    const stroke = next ? "#14635f" : (open ? "#1f6b4a" : "#d1d5db");
+    return `<g><circle cx="${point.x}" cy="${point.y}" r="${next ? 12 : 8}" fill="${fill}" stroke="${stroke}" stroke-width="${next ? 4 : 2}"></circle><g transform="translate(${point.x + 18}, ${point.y - 14})">${cityMark(point.city.id, open)}</g><text x="${point.x + 52}" y="${point.y}" dominant-baseline="middle" font-size="16" fill="#2c2416">${esc(point.city.name)}</text></g>`;
   }).join("");
-  path.innerHTML = `<svg viewBox="0 0 280 ${height}" role="img" aria-label="Путь по Вьетнаму"><path d="${line}" fill="none" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"></path>${marks}</svg>${openCount >= JOURNEY_CITIES.length ? '<p class="hint">Ты добралась до конца пути!</p>' : ''}`;
+  path.innerHTML = `<svg viewBox="0 0 320 ${height}" role="img" aria-label="Путь по Вьетнаму"><path d="${line}" fill="none" stroke="#9fd4d0" stroke-width="4" stroke-linecap="round"></path>${marks}</svg>${openCount >= JOURNEY_CITIES.length ? '<p class="hint">Ты добралась до конца пути!</p>' : ''}`;
   const stamps = JOURNEY_CITIES.filter((city, index) => index < openCount && saved.stamps[city.id]);
   passport.innerHTML = stamps.length
     ? stamps.map((city) => `<div class="stamp"><div class="stamp-city">${esc(city.name)}</div><div class="stamp-date">${esc(journeyDateLabel(saved.stamps[city.id]))}</div></div>`).join("")
@@ -1541,13 +1566,17 @@ function renderToday() {
   const choice = homeChoices();
   const pair = [choice.primary, choice.alternative].filter(Boolean);
   heading.textContent = "Выбери одно";
+  const primary = choice.primary;
+  const start = primary && primary.lessonId
+    ? `<button type="button" class="start-day" onclick="openScheduledLesson('${esc(primary.lessonId)}', ${primary.kind === "return"})">Начать сегодняшний урок</button><p class="hint">${esc(primary.subject || "")}${primary.subject ? ". " : ""}${esc(primary.title || "")}</p>`
+    : "";
   if (!pair.length) {
-    card.innerHTML = '<div class="today-card"><p>Новых уроков нет. Можно открыть все предметы.</p></div>';
+    card.innerHTML = start + '<div class="today-card"><p>Новых уроков нет. Можно открыть все предметы.</p></div>';
   } else {
-    card.innerHTML = `<p class="hint">Можно любое. Второе подождёт.</p><div class="choice-grid">${pair.map((day, index) => {
+    card.innerHTML = start + `<p class="hint">Можно любое. Второе подождёт.</p><div class="choice-grid">${pair.map((day, index) => {
       const label = index === 0 ? "Урок дня" : "Другой предмет";
       const asReturn = day.kind === "return";
-      return `<button type="button" class="card" onclick="openScheduledLesson('${esc(day.lessonId)}', ${asReturn})"><div class="card-status">${label}</div><div class="card-title">${esc(day.subject || "")}</div><p>${esc(day.title || "")}</p></button>`;
+      return `<button type="button" class="card choice-card" onclick="openScheduledLesson('${esc(day.lessonId)}', ${asReturn})"><div class="card-status">${label}</div><div class="card-title">${esc(day.subject || "")}</div><p>${esc(day.title || "")}</p></button>`;
     }).join("")}</div>`;
   }
   const weekHeading = document.getElementById("week-heading");
