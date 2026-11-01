@@ -53,6 +53,8 @@ let keepPassed = false;
 let optionOrders = {};
 const TUTOR_CODE_KEY = "study_tutor_code_v1";
 const TUTOR_SESSION_KEY = "study_tutor_session_ok";
+const SOFT_MODE_KEY = "study_soft_mode_v1";
+const SOFT_MODE_MS = 7 * 24 * 60 * 60 * 1000;
 
 function showLoadError() {
   const host = document.getElementById("subjects-list") || document.getElementById("tutor-progress") || document.getElementById("plan-calendar");
@@ -78,9 +80,92 @@ function videoSrc(url) {
 
 /* ================= ЛОГИКА ДОСТУПА ================= */
 function isLessonUnlocked(subject, index) {
+  if (softModeActive()) return true;
   if (index === 0) return true;
   const prev = subject.lessons[index - 1];
   return getLessonState(prev.id).passed === true;
+}
+
+function readSoftMode() {
+  try {
+    const raw = localStorage.getItem(SOFT_MODE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return null;
+    return parsed;
+  } catch (e) {
+    return null;
+  }
+}
+
+function ensureSoftMode() {
+  const existing = readSoftMode();
+  if (existing && existing.startedAt) return existing;
+  const state = { startedAt: new Date().toISOString(), manual: null };
+  try {
+    localStorage.setItem(SOFT_MODE_KEY, JSON.stringify(state));
+  } catch (e) {
+    /* the week still starts for this visit */
+  }
+  return state;
+}
+
+function softModeActive() {
+  const state = ensureSoftMode();
+  if (state.manual === true) return true;
+  if (state.manual === false) return false;
+  const start = new Date(state.startedAt).getTime();
+  if (!start) return true;
+  return Date.now() - start < SOFT_MODE_MS;
+}
+
+function softModeNote() {
+  const state = ensureSoftMode();
+  if (state.manual === true) return "Включён вручную, пока вы сами не выключите. Ребёнок видит звёзды без чисел, следующий урок не закрывается.";
+  if (state.manual === false) return "Выключен вручную. Следующий урок снова открывается после 80%.";
+  const end = new Date(new Date(state.startedAt).getTime() + SOFT_MODE_MS);
+  const months = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+  if (Date.now() >= end.getTime()) return "Семь дней прошли, режим выключился сам. Его можно включить снова.";
+  return "Сам выключится " + end.getDate() + " " + months[end.getMonth()] + ". Ребёнок видит звёзды без чисел, следующий урок не закрывается. Для вас процент сохраняется.";
+}
+
+function renderSoftMode() {
+  const note = document.getElementById("tutor-soft-note");
+  const button = document.getElementById("tutor-soft-toggle");
+  if (!note || !button) return;
+  const on = softModeActive();
+  note.textContent = softModeNote();
+  button.textContent = on ? "Выключить мягкий режим" : "Включить мягкий режим";
+}
+
+function toggleSoftMode() {
+  const state = ensureSoftMode();
+  state.manual = !softModeActive();
+  try {
+    localStorage.setItem(SOFT_MODE_KEY, JSON.stringify(state));
+  } catch (e) {
+    window.alert("Не получилось сохранить настройку.");
+    return;
+  }
+  renderSoftMode();
+}
+
+function showSoftResult(result) {
+  result.classList.remove("is-wait");
+  result.textContent = "";
+  const phrase = document.createElement("p");
+  phrase.textContent = "Ты молодец. Можно спокойно идти дальше.";
+  const stars = document.createElement("p");
+  stars.className = "stars";
+  stars.textContent = "★★★";
+  result.appendChild(phrase);
+  result.appendChild(stars);
+  document.getElementById("check-btn").classList.add("hidden");
+  document.getElementById("stuck-block").classList.add("hidden");
+  setTimeout(() => {
+    backToLessons();
+    renderLessons();
+  }, 2500);
 }
 
 /* ================= ЭКРАН ПРЕДМЕТОВ ================= */
@@ -480,6 +565,16 @@ function checkAnswers() {
   const result = document.getElementById("result");
   result.classList.remove("hidden");
 
+  if (softModeActive()) {
+    state.passed = percent >= 80 || keepPassed === true;
+    state.stuck = false;
+    if (percent >= 80) state.shaky = false;
+    else if (keepPassed) state.shaky = true;
+    setLessonState(lesson.id, state);
+    showSoftResult(result);
+    return;
+  }
+
   if (percent >= 80) {
     state.passed = true;
     state.stuck = false;
@@ -557,6 +652,7 @@ function renderTutorPanel() {
   loadData().then(() => {
     renderTutorToday();
     renderTutorCalendar();
+    renderSoftMode();
     renderTutorProgress();
     renderTutorErrors();
   }).catch(showLoadError);
