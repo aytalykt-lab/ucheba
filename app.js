@@ -173,6 +173,7 @@ function showSubjects() {
   document.getElementById("subjects-view").classList.remove("hidden");
   document.getElementById("lessons-view").classList.add("hidden");
   document.getElementById("lesson-view").classList.add("hidden");
+  hideScoutView();
   renderToday();
   renderSubjects();
 }
@@ -201,6 +202,7 @@ function openSubject(subj) {
   document.getElementById("subjects-view").classList.add("hidden");
   document.getElementById("lessons-view").classList.remove("hidden");
   document.getElementById("lesson-view").classList.add("hidden");
+  hideScoutView();
   document.getElementById("subject-title").textContent = subj.name || subj.title || "";
   renderLessons();
 }
@@ -208,6 +210,7 @@ function openSubject(subj) {
 function backToLessons() {
   document.getElementById("lesson-view").classList.add("hidden");
   document.getElementById("lessons-view").classList.remove("hidden");
+  hideScoutView();
   renderLessons();
 }
 
@@ -310,6 +313,7 @@ function openLesson(lesson) {
   quizForm = "a";
   document.getElementById("lessons-view").classList.add("hidden");
   document.getElementById("lesson-view").classList.remove("hidden");
+  hideScoutView();
   document.getElementById("lesson-title").textContent = lesson.title;
   const result = document.getElementById("result");
   result.classList.add("hidden");
@@ -647,12 +651,169 @@ function callTutor() {
   note.textContent = "Мама скоро придёт помочь.";
 }
 
+/* ================= РАЗВЕДКА ================= */
+const SCOUT_KEY = "study_scout_v1";
+let scoutItems = [];
+let scoutIndex = 0;
+
+function hideScoutView() {
+  const view = document.getElementById("scout-view");
+  if (view) view.classList.add("hidden");
+}
+
+function readScout() {
+  try {
+    const raw = localStorage.getItem(SCOUT_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || !Array.isArray(parsed.items)) return null;
+    return parsed;
+  } catch (e) {
+    return null;
+  }
+}
+
+function saveScout(items) {
+  const payload = {
+    doneAt: new Date().toISOString(),
+    items: items.map((item) => ({
+      subjectId: item.subjectId,
+      subject: item.subject,
+      lessonId: item.lessonId,
+      title: item.title,
+      known: item.known === true,
+    })),
+  };
+  localStorage.setItem(SCOUT_KEY, JSON.stringify(payload));
+  return payload;
+}
+
+// TODO: когда появятся вопросы уровня 1 класса, добавить их в разведку перед уроками 2 класса.
+function scoutPool() {
+  const items = [];
+  (DATA.subjects || []).forEach((subject) => {
+    (subject.lessons || []).slice(0, 4).forEach((lesson) => {
+      const question = (lesson.questions || [])[0];
+      if (!question || !question.options || !question.options.length) return;
+      items.push({
+        subjectId: subject.id,
+        subject: subject.name || subject.title || "",
+        lessonId: lesson.id,
+        title: lesson.title,
+        question: question,
+        known: false,
+      });
+    });
+  });
+  return items;
+}
+
+function showScoutView() {
+  document.getElementById("subjects-view").classList.add("hidden");
+  document.getElementById("lessons-view").classList.add("hidden");
+  document.getElementById("lesson-view").classList.add("hidden");
+  document.getElementById("scout-view").classList.remove("hidden");
+}
+
+function openScout() {
+  const saved = readScout();
+  showScoutView();
+  if (saved) renderScoutMap(saved);
+  else startScout();
+}
+
+function startScout() {
+  scoutItems = scoutPool();
+  scoutIndex = 0;
+  showScoutView();
+  renderScoutQuestion();
+}
+
+function renderScoutQuestion() {
+  const item = scoutItems[scoutIndex];
+  const title = document.getElementById("scout-title");
+  const lead = document.getElementById("scout-lead");
+  const body = document.getElementById("scout-body");
+  if (!item) {
+    const payload = saveScout(scoutItems);
+    renderScoutMap(payload);
+    return;
+  }
+  title.textContent = "Разведка";
+  lead.textContent = item.subject + ". Это не проверка и не оценка.";
+  const order = fisherYates(item.question.options.map((_, index) => index));
+  item.order = order;
+  const buttons = order.map((originalIndex, displayIndex) => (
+    `<button type="button" class="option" onclick="chooseScout(${displayIndex})"><span>${esc(item.question.options[originalIndex])}</span></button>`
+  )).join("");
+  body.innerHTML = `<div class="question"><p>${esc(item.question.q)}</p><div class="options">${buttons}</div></div>`;
+}
+
+function chooseScout(displayIndex) {
+  const item = scoutItems[scoutIndex];
+  if (!item || !item.order) return;
+  const chosen = String(item.question.options[item.order[displayIndex]] ?? "");
+  const right = correctOptionText(item.question);
+  item.known = chosen === right;
+  scoutIndex += 1;
+  renderScoutQuestion();
+}
+
+function renderScoutMap(payload) {
+  const title = document.getElementById("scout-title");
+  const lead = document.getElementById("scout-lead");
+  const body = document.getElementById("scout-body");
+  if (!title || !body) return;
+  title.textContent = "Карта умений";
+  lead.textContent = "«Знаю» — уже знакомо. «Потренируем» — разберём спокойно, без спешки.";
+  const groups = [];
+  (payload.items || []).forEach((item) => {
+    let group = groups.find((entry) => entry.subjectId === item.subjectId);
+    if (!group) {
+      group = { subjectId: item.subjectId, subject: item.subject, items: [] };
+      groups.push(group);
+    }
+    group.items.push(item);
+  });
+  body.innerHTML = groups.map((group) => {
+    const cards = group.items.map((item) => {
+      const mark = item.known ? "знаю" : "потренируем";
+      const cls = item.known ? "known" : "practice";
+      return `<button type="button" class="card scout-card ${cls}" onclick="openScoutLesson('${esc(item.lessonId)}')"><div class="card-title">${esc(item.title)}</div><div class="card-status">${mark}</div></button>`;
+    }).join("");
+    return `<h3>${esc(group.subject)}</h3><div class="grid">${cards}</div>`;
+  }).join("") + '<button class="action-btn" type="button" onclick="startScout()">Пройти ещё раз</button>';
+}
+
+function openScoutLesson(lessonId) {
+  openScheduledLesson(lessonId);
+}
+
+function renderTutorScout() {
+  const host = document.getElementById("tutor-scout");
+  if (!host) return;
+  const payload = readScout();
+  if (!payload) {
+    host.innerHTML = '<p class="hint">Разведка ещё не пройдена.</p>';
+    return;
+  }
+  const gaps = payload.items.filter((item) => !item.known);
+  if (!gaps.length) {
+    host.innerHTML = '<p class="hint">Пробелов нет. Можно идти по графику.</p>';
+    return;
+  }
+  host.innerHTML = gaps.map((item) => (
+    `<div class="err"><div class="err-type">${esc(item.subject)}</div><div>${esc(item.title)} — потренируем</div></div>`
+  )).join("");
+}
+
 /* ================= ПАНЕЛЬ ТЬЮТОРА ================= */
 function renderTutorPanel() {
   loadData().then(() => {
     renderTutorToday();
     renderTutorCalendar();
     renderSoftMode();
+    renderTutorScout();
     renderTutorProgress();
     renderTutorErrors();
   }).catch(showLoadError);

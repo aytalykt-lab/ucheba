@@ -25,7 +25,16 @@
         <p class="hint"><a href="plan.html">Весь учебный план и график</a></p>
       </div>
       <h2>Выбери предмет</h2>
+      <button class="action-btn" type="button" onclick="openScout()">Разведка</button>
+      <p class="hint">Без оценок. Посмотрим, что уже знакомо.</p>
       <div id="subjects-list" class="grid"></div>
+    </section>
+
+    <section id="scout-view" class="hidden">
+      <button class="back-btn" type="button" onclick="showSubjects()">← На главную</button>
+      <h2 id="scout-title">Разведка</h2>
+      <p id="scout-lead" class="hint"></p>
+      <div id="scout-body"></div>
     </section>
 
     <section id="lessons-view" class="hidden">

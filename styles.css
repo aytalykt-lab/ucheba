@@ -95,6 +95,10 @@ video, iframe { width: 100%; border-radius: 8px; max-height: 420px; }
 .option.correct { background: #dcfce7; border-color: #86efac; }
 .option.wrong { background: #fff7ed; border-color: #fdba74; }
 .stars { font-size: 1.8rem; letter-spacing: 0.25rem; color: #d97706; margin-top: 8px; }
+.scout-card { cursor: default; }
+.scout-card.known { border-color: #86efac; background: #f0fdf4; }
+.scout-card.practice { border-color: #bfdbfe; background: #eff6ff; }
+#scout-body .option { margin-bottom: 8px; }
 .option input { accent-color: #2563eb; }
 
 button.option {
