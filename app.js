@@ -175,6 +175,7 @@ function showSubjects() {
   document.getElementById("lesson-view").classList.add("hidden");
   hideScoutView();
   renderToday();
+  renderJourney();
   renderSubjects();
 }
 
@@ -575,6 +576,7 @@ function checkAnswers() {
     if (percent >= 80) state.shaky = false;
     else if (keepPassed) state.shaky = true;
     setLessonState(lesson.id, state);
+    if (percent >= 80) noteJourneyPass();
     showSoftResult(result);
     return;
   }
@@ -584,6 +586,7 @@ function checkAnswers() {
     state.stuck = false;
     state.shaky = false;
     setLessonState(lesson.id, state);
+    noteJourneyPass();
     result.classList.remove("is-wait");
     result.textContent = `Получилось! Урок пройден. Верно: ${correct} из ${total}.`;
     document.getElementById("check-btn").classList.add("hidden");
@@ -1058,10 +1061,12 @@ function renderTutorProgress() {
 
 function tutorExplain(lessonId) {
   const st = getLessonState(lessonId);
+  const fresh = st.passed !== true;
   st.passed = true;
   st.stuck = false;
   st.attempts = 0;
   setLessonState(lessonId, st);
+  if (fresh) noteJourneyPass();
   renderTutorProgress();
   renderTutorErrors();
 }
@@ -1107,6 +1112,149 @@ const WEEKDAYS_SHORT = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
 function todayISO() {
   const d = new Date();
   return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+
+const JOURNEY_KEY = "study_journey_v1";
+const JOURNEY_CITIES = [
+  { id: "hanoi", name: "Ханой" },
+  { id: "hue", name: "Хюэ" },
+  { id: "danang", name: "Дананг" },
+  { id: "hoian", name: "Хойан" },
+  { id: "nhatrang", name: "Нячанг" },
+  { id: "dalat", name: "Далат" },
+  { id: "hochiminh", name: "Хошимин" },
+  { id: "phuquoc", name: "Фукуок" },
+];
+
+function readJourney() {
+  try {
+    const raw = localStorage.getItem(JOURNEY_KEY);
+    const parsed = raw ? JSON.parse(raw) : null;
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return { days: [], stamps: {} };
+    return {
+      days: Array.isArray(parsed.days) ? parsed.days.filter((day) => typeof day === "string") : [],
+      stamps: parsed.stamps && typeof parsed.stamps === "object" && !Array.isArray(parsed.stamps) ? parsed.stamps : {},
+    };
+  } catch (e) {
+    return { days: [], stamps: {} };
+  }
+}
+
+function writeJourney(state) {
+  localStorage.setItem(JOURNEY_KEY, JSON.stringify({ days: state.days, stamps: state.stamps }));
+}
+
+function lessonPassShare() {
+  let total = 0;
+  let passed = 0;
+  (DATA.subjects || []).forEach((subject) => {
+    (subject.lessons || []).forEach((lesson) => {
+      total += 1;
+      if (getLessonState(lesson.id).passed === true) passed += 1;
+    });
+  });
+  return { total, passed, share: total ? passed / total : 0 };
+}
+
+function openedCityCount(share) {
+  if (share >= 1) return JOURNEY_CITIES.length;
+  const count = Math.floor(share * JOURNEY_CITIES.length);
+  return count > JOURNEY_CITIES.length ? JOURNEY_CITIES.length : count;
+}
+
+function noteJourneyPass() {
+  const state = readJourney();
+  const today = todayISO();
+  if (state.days.indexOf(today) < 0) state.days.push(today);
+  writeJourney(state);
+}
+
+function shiftISO(iso, deltaDays) {
+  const date = parseISO(iso);
+  date.setDate(date.getDate() + deltaDays);
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return date.getFullYear() + "-" + month + "-" + day;
+}
+
+function journeyStreak(days) {
+  const have = {};
+  days.forEach((day) => { have[day] = true; });
+  const today = todayISO();
+  let cursor = have[today] ? today : (have[shiftISO(today, -1)] ? shiftISO(today, -1) : "");
+  if (!cursor) return 0;
+  let count = 0;
+  while (have[cursor]) {
+    count += 1;
+    cursor = shiftISO(cursor, -1);
+  }
+  return count;
+}
+
+function journeyDayWord(count) {
+  const n10 = count % 10;
+  const n100 = count % 100;
+  if (n10 === 1 && n100 !== 11) return "день";
+  if (n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14)) return "дня";
+  return "дней";
+}
+
+function journeyDateLabel(iso) {
+  const months = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+  const date = parseISO(iso);
+  return date.getDate() + " " + months[date.getMonth()];
+}
+
+function syncJourneyStamps() {
+  const state = readJourney();
+  const openCount = openedCityCount(lessonPassShare().share);
+  const today = todayISO();
+  let changed = false;
+  JOURNEY_CITIES.slice(0, openCount).forEach((city) => {
+    if (!state.stamps[city.id]) {
+      state.stamps[city.id] = today;
+      changed = true;
+    }
+  });
+  if (changed) writeJourney(state);
+  return state;
+}
+
+function renderJourney() {
+  const path = document.getElementById("journey-path");
+  const passport = document.getElementById("journey-passport");
+  const streakEl = document.getElementById("journey-streak");
+  if (!path || !passport) return;
+  const saved = syncJourneyStamps();
+  const openCount = openedCityCount(lessonPassShare().share);
+  const nextIndex = openCount < JOURNEY_CITIES.length ? openCount : -1;
+  const streak = journeyStreak(saved.days);
+  if (streakEl) {
+    streakEl.textContent = streak > 0
+      ? "В пути уже " + streak + " " + journeyDayWord(streak) + " подряд."
+      : "";
+  }
+  const step = 64;
+  const height = 24 + JOURNEY_CITIES.length * step;
+  const points = JOURNEY_CITIES.map((city, index) => ({
+    city,
+    index,
+    x: index % 2 === 0 ? 36 : 108,
+    y: 24 + index * step,
+  }));
+  const line = points.map((point, index) => (index === 0 ? "M" : "L") + point.x + " " + point.y).join(" ");
+  const marks = points.map((point) => {
+    const open = point.index < openCount;
+    const next = point.index === nextIndex;
+    const fill = open ? "#86efac" : (next ? "#dbeafe" : "#e5e7eb");
+    const stroke = next ? "#2563eb" : (open ? "#16a34a" : "#d1d5db");
+    return `<g><circle cx="${point.x}" cy="${point.y}" r="${next ? 13 : 10}" fill="${fill}" stroke="${stroke}" stroke-width="${next ? 4 : 2}"></circle><text x="${point.x + 22}" y="${point.y}" dominant-baseline="middle" font-size="16" fill="#1f2937">${esc(point.city.name)}</text></g>`;
+  }).join("");
+  path.innerHTML = `<svg viewBox="0 0 280 ${height}" role="img" aria-label="Путь по Вьетнаму"><path d="${line}" fill="none" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"></path>${marks}</svg>`;
+  const stamps = JOURNEY_CITIES.filter((city, index) => index < openCount && saved.stamps[city.id]);
+  passport.innerHTML = stamps.length
+    ? stamps.map((city) => `<div class="stamp"><div class="stamp-city">${esc(city.name)}</div><div class="stamp-date">${esc(journeyDateLabel(saved.stamps[city.id]))}</div></div>`).join("")
+    : '<p class="hint">Первый штамп появится, когда откроется Ханой.</p>';
 }
 
 function parseISO(iso) {
