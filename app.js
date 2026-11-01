@@ -98,22 +98,41 @@ function readSoftMode() {
   }
 }
 
-function ensureSoftMode() {
-  const existing = readSoftMode();
-  if (existing && existing.startedAt) return existing;
-  const state = { startedAt: new Date().toISOString(), manual: null };
+function anyLessonAttempted() {
+  const progress = loadProgress();
+  return Object.keys(progress).some((id) => progress[id] && (progress[id].attempts || 0) > 0);
+}
+
+function saveSoftMode(state) {
   try {
     localStorage.setItem(SOFT_MODE_KEY, JSON.stringify(state));
   } catch (e) {
-    /* the week still starts for this visit */
+    /* the mode still works for this visit */
   }
+}
+
+function ensureSoftMode() {
+  let state = readSoftMode();
+  if (!state) state = { startedAt: null, manual: null };
+  if (state.manual === undefined) state.manual = null;
+  if (!state.startedAt) state.startedAt = null;
+  if (state.startedAt && state.manual == null && !anyLessonAttempted()) state.startedAt = null;
+  saveSoftMode(state);
   return state;
+}
+
+function noteSoftClock() {
+  const state = ensureSoftMode();
+  if (state.startedAt || !anyLessonAttempted()) return;
+  state.startedAt = new Date().toISOString();
+  saveSoftMode(state);
 }
 
 function softModeActive() {
   const state = ensureSoftMode();
   if (state.manual === true) return true;
   if (state.manual === false) return false;
+  if (!state.startedAt) return true;
   const start = new Date(state.startedAt).getTime();
   if (!start) return true;
   return Date.now() - start < SOFT_MODE_MS;
@@ -123,6 +142,7 @@ function softModeNote() {
   const state = ensureSoftMode();
   if (state.manual === true) return "Включён вручную, пока вы сами не выключите. Ребёнок видит звёзды без чисел, следующий урок не закрывается.";
   if (state.manual === false) return "Выключен вручную. Следующий урок снова открывается после 80%.";
+  if (!state.startedAt) return "Начнётся с первого урока и продлится 7 дней.";
   const end = new Date(new Date(state.startedAt).getTime() + SOFT_MODE_MS);
   const months = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
   if (Date.now() >= end.getTime()) return "Семь дней прошли, режим выключился сам. Его можно включить снова.";
@@ -702,6 +722,7 @@ function checkAnswers() {
     if (percent >= 80) state.shaky = false;
     else if (keepPassed) state.shaky = true;
     setLessonState(lesson.id, state);
+    noteSoftClock();
     if (percent >= 80) noteJourneyPass();
     showSoftResult(result, percent >= 80);
     return;
@@ -712,6 +733,7 @@ function checkAnswers() {
     state.stuck = false;
     state.shaky = false;
     setLessonState(lesson.id, state);
+    noteSoftClock();
     noteJourneyPass();
     result.classList.remove("is-wait");
     result.textContent = `Получилось! Урок пройден. Верно: ${correct} из ${total}.`;
@@ -723,6 +745,7 @@ function checkAnswers() {
     state.shaky = true;
     state.stuck = false;
     setLessonState(lesson.id, state);
+    noteSoftClock();
     result.classList.add("is-wait");
     result.textContent = `Верно: ${correct} из ${total}. Завтра спокойно повторим эту тему.`;
   } else {
@@ -730,6 +753,7 @@ function checkAnswers() {
     const canCorrect = quizForm === "a" && Array.isArray(lesson.recheck) && lesson.recheck.length;
     if (!canCorrect) state.stuck = true;
     setLessonState(lesson.id, state);
+    noteSoftClock();
     result.classList.add("is-wait");
     result.textContent = "";
     const note = document.createElement("p");
