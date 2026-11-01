@@ -331,12 +331,84 @@ button.option {
 
 .hint { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 12px; }
 
+#teach-body {
+  padding: 36px 28px;
+  min-height: 240px;
+}
 #teach-body p, #practice-why {
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   line-height: var(--leading);
 }
+#teach-body h3 { margin-top: 0; color: var(--ink-soft); font-size: 1.05rem; }
 
-#teach-body h3 { margin-top: 0; }
+.step-dots { display: flex; flex-wrap: wrap; gap: 8px; min-height: 16px; }
+.step-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.step-dot.is-done { background: var(--rice); }
+.step-dot.is-now { background: var(--lotus); }
+
+.sun-session { margin-bottom: 16px; }
+.sun-track {
+  position: relative;
+  display: block;
+  height: 40px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--lantern-soft), var(--sea-soft));
+  overflow: hidden;
+}
+.session-sun {
+  position: absolute;
+  top: 6px;
+  left: calc(var(--session, 0) * (100% - 28px));
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--lantern);
+  box-shadow: 0 0 0 6px rgba(246, 196, 69, 0.35);
+  transition: left 0.2s linear;
+}
+#session-time:empty { display: none; }
+
+.option.is-chosen {
+  background: var(--lotus-soft);
+  border-color: var(--lotus);
+}
+.option.correct {
+  background: var(--rice-soft);
+  border-color: var(--rice-line);
+}
+.option.wrong {
+  background: var(--wrong-bg);
+  border-color: var(--wrong-line);
+}
+.option.correct span::after { content: " ✓"; color: var(--rice); }
+.option.wrong span::after { content: " ·"; color: var(--wrong-ink); }
+.option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.option { position: relative; }
+.option:focus-within { outline: var(--focus); outline-offset: 3px; }
+
+#stuck-block {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-top: 16px;
+  text-align: left;
+  color: var(--ink);
+}
+#result:not(.is-wait) {
+  background: var(--lantern-soft);
+  border-color: var(--lantern);
+}
 
 #practice-why {
   background: var(--card);

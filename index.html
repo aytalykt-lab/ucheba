@@ -65,7 +65,10 @@
     <section id="lesson-view" class="hidden">
       <button class="back-btn" onclick="backToLessons()">← Назад к урокам</button>
       <h2 id="lesson-title"></h2>
-      <p id="session-timer" class="hint">Время занятия: <span id="session-time">15:00</span></p>
+      <div id="session-timer" class="sun-session">
+        <span class="sun-track" aria-hidden="true"><span class="session-sun"></span></span>
+        <span id="session-time"></span>
+      </div>
       <div id="session-note" class="hidden">
         <p>На сегодня всё, ты молодец!</p>
         <button class="action-btn" type="button" onclick="finishSession()">Закончить</button>
@@ -101,8 +104,8 @@
 
       <div id="stuck-block" class="hidden">
         <p>Давай разберём вместе.</p>
-        <button onclick="replayVideo()">🎬 Пересмотреть видео</button>
-        <button onclick="callTutor()">🙋 Мне нужна помощь</button>
+        <button class="action-btn" type="button" onclick="replayVideo()">Пересмотреть видео</button>
+        <button class="action-btn" type="button" onclick="callTutor()">Мне нужна помощь</button>
       </div>
     </section>
   </main>

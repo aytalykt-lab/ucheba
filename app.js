@@ -378,7 +378,8 @@ function startSessionTimer() {
   sessionNoted = false;
   const time = document.getElementById("session-time");
   const note = document.getElementById("session-note");
-  if (time) time.textContent = "15:00";
+  if (time) time.textContent = "";
+  paintSessionSun(0);
   if (note) note.classList.add("hidden");
   tickSession();
   sessionTimer = setInterval(tickSession, 1000);
@@ -389,19 +390,25 @@ function stopSessionTimer() {
   sessionTimer = null;
 }
 
+function paintSessionSun(progress) {
+  const timer = document.getElementById("session-timer");
+  if (!timer) return;
+  const value = progress < 0 ? 0 : progress > 1 ? 1 : progress;
+  timer.style.setProperty("--session", String(value));
+}
+
 function tickSession() {
   const time = document.getElementById("session-time");
   const note = document.getElementById("session-note");
-  if (!time) return;
+  if (!time && !document.getElementById("session-timer")) return;
   const left = sessionEndsAt - Date.now();
   if (left > 0) {
-    const total = Math.ceil(left / 1000);
-    const minutes = Math.floor(total / 60);
-    const seconds = total % 60;
-    time.textContent = minutes + ":" + String(seconds).padStart(2, "0");
+    paintSessionSun(1 - left / SESSION_MS);
+    if (time) time.textContent = "";
     return;
   }
-  time.textContent = "0:00";
+  paintSessionSun(1);
+  if (time) time.textContent = "";
   if (!sessionNoted && note) {
     sessionNoted = true;
     note.classList.remove("hidden");
@@ -479,6 +486,15 @@ function gaveExplain() {
   if (box) box.innerHTML = `<p class="stars">★</p><p>Звезда за рассказ.</p>`;
 }
 
+function stepDots(index, total) {
+  let dots = "";
+  for (let i = 0; i < total; i++) {
+    const mark = i === index ? " is-now" : i < index ? " is-done" : "";
+    dots += `<span class="step-dot${mark}"></span>`;
+  }
+  return `<span class="step-dots" aria-hidden="true">${dots}</span>`;
+}
+
 function showTeachCard() {
   const card = teachCards[teachIndex];
   const body = document.getElementById("teach-body");
@@ -488,7 +504,7 @@ function showTeachCard() {
     startPractice();
     return;
   }
-  label.textContent = card.label;
+  label.innerHTML = stepDots(teachIndex, teachCards.length);
   body.innerHTML = `<h3>${esc(card.kicker)}. ${esc(card.title)}</h3><p>${esc(card.body)}</p>`;
   const last = teachIndex >= teachCards.length - 1;
   const hasPractice = currentLesson && Array.isArray(currentLesson.practice) && currentLesson.practice.length;
@@ -527,7 +543,7 @@ function showPractice() {
   const body = document.getElementById("practice-body");
   const why = document.getElementById("practice-why");
   const next = document.getElementById("practice-next");
-  label.textContent = `Тренировка ${practiceIndex + 1} из ${items.length}`;
+  label.innerHTML = stepDots(practiceIndex, items.length);
   why.classList.add("hidden");
   why.textContent = "";
   next.classList.add("hidden");
@@ -670,6 +686,9 @@ function renderQuestions(lesson) {
 function selectAnswer(qi, oi) {
   const same = currentAnswers[qi] === oi;
   currentAnswers[qi] = oi;
+  document.querySelectorAll(`#questions .option[data-q="${qi}"]`).forEach((label) => {
+    label.classList.toggle("is-chosen", Number(label.getAttribute("data-o")) === oi);
+  });
   if (same || !quizLocked) return;
   quizLocked = false;
   const button = document.getElementById("check-btn");
@@ -747,6 +766,10 @@ function checkAnswers() {
     noteJourneyPass();
     result.classList.remove("is-wait");
     result.textContent = `Получилось! Урок пройден. Верно: ${correct} из ${total}.`;
+    const stars = document.createElement("p");
+    stars.className = "stars";
+    stars.textContent = "★★★";
+    result.appendChild(stars);
     document.getElementById("check-btn").classList.add("hidden");
     document.getElementById("stuck-block").classList.add("hidden");
     offerExplain(result);
