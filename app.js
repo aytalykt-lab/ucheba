@@ -60,14 +60,25 @@ const SOFT_MODE_MS = 7 * 24 * 60 * 60 * 1000;
 function showLoadError() {
   const host = document.getElementById("subjects-list") || document.getElementById("tutor-progress") || document.getElementById("plan-calendar");
   if (!host) return;
-  host.innerHTML = '<p class="hint">Уроки не открылись. В папке сайта выполните python3 -m http.server 8000 и откройте http://localhost:8000</p>';
+  host.innerHTML = '<p class="hint">Уроки не открылись. Откройте index.html из папки сайта.</p>';
 }
 
 async function loadData() {
-  const res = await fetch("data.json", { cache: "no-store" });
-  if (!res.ok) throw new Error(String(res.status));
-  DATA = await res.json();
+  try {
+    const res = await fetch("data.json", { cache: "no-store" });
+    if (!res.ok) throw new Error(String(res.status));
+    DATA = await res.json();
+  } catch (e) {
+    if (!window.STUDY_DATA) throw e;
+    DATA = window.STUDY_DATA;
+  }
   if (!DATA || !Array.isArray(DATA.subjects)) throw new Error("shape");
+  const extra = window.STUDY_GRADE3;
+  if (extra && Array.isArray(extra.subjects)) {
+    extra.subjects.forEach((subject) => {
+      if (!DATA.subjects.some((item) => item.id === subject.id)) DATA.subjects.push(subject);
+    });
+  }
 }
 
 function videoSrc(url) {
@@ -81,6 +92,10 @@ function videoSrc(url) {
 
 /* ================= ЛОГИКА ДОСТУПА ================= */
 function isLessonUnlocked(subject, index) {
+  if (subject.grade === 3) {
+    const needs = (subject.lessons[index] && subject.lessons[index].needs) || [];
+    return needs.every((id) => getLessonState(id).passed === true);
+  }
   if (softModeActive()) return true;
   if (index === 0) return true;
   const prev = subject.lessons[index - 1];
@@ -210,22 +225,61 @@ function toggleSubjects() {
   if (list) list.classList.toggle("hidden");
 }
 
+const SUBJECT_LOOK = {
+  math: { mark: "1+2", tone: "sea" },
+  russian: { mark: "Аа", tone: "lotus" },
+  reading: { mark: "«»", tone: "lantern" },
+  english: { mark: "Abc", tone: "rice" },
+  world: { mark: "☀", tone: "lantern" },
+  math3: { mark: "×÷", tone: "sea" },
+  rus3: { mark: "Яя", tone: "lotus" },
+};
+
+function subjectCard(subj) {
+  const lessons = subj.lessons || [];
+  const total = lessons.length;
+  const done = lessons.filter((lesson) => getLessonState(lesson.id).passed).length;
+  const look = SUBJECT_LOOK[subj.id] || { mark: "•", tone: "sea" };
+  const div = document.createElement("button");
+  div.type = "button";
+  div.className = "card subject-card tone-" + look.tone;
+  const share = total ? Math.round((done / total) * 100) : 0;
+  div.innerHTML = `
+    <span class="subject-mark" aria-hidden="true">${esc(look.mark)}</span>
+    <span class="subject-text">
+      <span class="card-title">${esc(subj.name || subj.title)}</span>
+      <span class="card-status">${done} из ${total}</span>
+      <span class="bar" aria-hidden="true"><span style="width:${share}%"></span></span>
+    </span>
+  `;
+  div.onclick = () => openSubject(subj);
+  return div;
+}
+
 function renderSubjects() {
   const list = document.getElementById("subjects-list");
   list.innerHTML = "";
-  DATA.subjects.forEach((subj) => {
-    const lessons = subj.lessons || [];
-    const total = lessons.length;
-    const done = lessons.filter((lesson) => getLessonState(lesson.id).passed).length;
-    const div = document.createElement("div");
-    div.className = "card";
-    div.innerHTML = `
-      <div class="card-title">${esc(subj.name || subj.title)}</div>
-      <div class="card-status">${done} из ${total} уроков пройдено</div>
-    `;
-    div.onclick = () => openSubject(subj);
-    list.appendChild(div);
-  });
+  const base = DATA.subjects.filter((subj) => subj.grade !== 3);
+  const next = DATA.subjects.filter((subj) => subj.grade === 3);
+  base.forEach((subj) => list.appendChild(subjectCard(subj)));
+  if (next.length) {
+    const head = document.createElement("h3");
+    head.className = "grid-head";
+    head.textContent = "Ступенька в 3 класс";
+    list.appendChild(head);
+    next.forEach((subj) => list.appendChild(subjectCard(subj)));
+  }
+}
+
+function nextGrade3() {
+  for (const subject of DATA.subjects) {
+    if (subject.grade !== 3) continue;
+    for (let i = 0; i < subject.lessons.length; i += 1) {
+      const lesson = subject.lessons[i];
+      if (isLessonUnlocked(subject, i) && !getLessonState(lesson.id).passed) return { subject, lesson };
+    }
+  }
+  return null;
 }
 
 /* ================= ЭКРАН УРОКОВ ================= */
@@ -250,19 +304,30 @@ function backToLessons() {
 function renderLessons() {
   const list = document.getElementById("lessons-list");
   list.innerHTML = "";
+  let nextShown = false;
   (currentSubject.lessons || []).forEach((lesson, i) => {
     const unlocked = isLessonUnlocked(currentSubject, i);
     const state = getLessonState(lesson.id);
+    const isNext = unlocked && !state.passed && !nextShown;
+    if (isNext) nextShown = true;
     const div = document.createElement("div");
-    div.className = "card" + (unlocked ? "" : " locked") + (state.passed ? " done" : "");
-    let status = "🔒 закрыт";
-    if (state.passed) status = "✅ пройден";
-    else if (unlocked && state.attempts > 0) status = "🟡 в процессе";
-    else if (unlocked) status = "▶️ можно начать";
+    div.className = "card lesson-card" + (unlocked ? "" : " locked") + (state.passed ? " done" : "") + (isNext ? " is-next" : "");
+    let status = "закрыт";
+    if (state.passed) status = "пройден";
+    else if (isNext) status = state.attempts > 0 ? "Продолжи отсюда" : "Начни отсюда";
+    else if (unlocked && state.attempts > 0) status = "в процессе";
+    else if (unlocked) status = "можно начать";
+    else if (currentSubject.grade === 3) {
+      const need = (lesson.needs || []).map((id) => findLesson(id)).filter((item) => item && !getLessonState(item.lesson.id).passed)[0];
+      if (need) status = "Откроется после урока «" + need.lesson.title + "»";
+    }
     if (readExplained()[lesson.id]) status += " ★";
     div.innerHTML = `
-      <div class="card-title">${i + 1}. ${esc(lesson.title)}</div>
-      <div class="card-status">${status}</div>
+      <span class="lesson-num" aria-hidden="true">${state.passed ? "✓" : i + 1}</span>
+      <span class="subject-text">
+        <span class="card-title">${esc(lesson.title)}</span>
+        <span class="card-status">${esc(status)}</span>
+      </span>
     `;
     if (unlocked) div.onclick = () => openLesson(lesson);
     list.appendChild(div);
@@ -362,11 +427,16 @@ function openLesson(lesson) {
   const old = document.getElementById("explain-mom");
   if (old) old.remove();
   renderVideo(lesson);
-  showTeachCard();
+  practiceMode = "practice";
+  warmItems = keepPassed ? [] : warmupFor(lesson);
+  const warmStage = document.querySelector('#stage-strip [data-stage="warm"]');
+  if (warmStage) warmStage.classList.toggle("hidden", !warmItems.length);
+  if (warmItems.length) startWarmup();
+  else showTeachCard();
   startSessionTimer();
 }
 
-const SESSION_MS = 15 * 60 * 1000;
+const SESSION_MS = 20 * 60 * 1000;
 const EXPLAIN_KEY = "study_explain_v1";
 let sessionTimer = null;
 let sessionEndsAt = 0;
@@ -386,6 +456,7 @@ function startSessionTimer() {
 }
 
 function stopSessionTimer() {
+  stopSpeak();
   if (sessionTimer) clearInterval(sessionTimer);
   sessionTimer = null;
 }
@@ -456,10 +527,7 @@ function offerExplain(result) {
   next.type = "button";
   next.className = "action-btn";
   next.textContent = "Дальше";
-  next.onclick = () => {
-    backToLessons();
-    renderLessons();
-  };
+  next.onclick = () => showSubjects();
   result.appendChild(next);
 }
 
@@ -486,6 +554,156 @@ function gaveExplain() {
   if (box) box.innerHTML = `<p class="stars">★</p><p>Звезда за рассказ.</p>`;
 }
 
+let practiceMode = "practice";
+let warmItems = [];
+
+function practiceItems() {
+  if (practiceMode === "warm") return warmItems;
+  return (currentLesson && currentLesson.practice) || [];
+}
+
+/* «Вспомним»: два вопроса из уже пройденного перед новой темой. */
+function warmupFor(lesson) {
+  const found = findLesson(lesson.id);
+  if (!found) return [];
+  let pool;
+  if (found.subject.grade === 3) {
+    pool = (lesson.needs || []).map((id) => findLesson(id)).filter(Boolean).map((item) => item.lesson);
+  } else {
+    pool = found.subject.lessons.slice(0, found.index).filter((item) => getLessonState(item.id).passed === true);
+  }
+  const shaky = pool.filter((item) => getLessonState(item.id).shaky);
+  const picked = [];
+  fisherYates(shaky).concat(fisherYates(pool.slice(-4))).forEach((item) => {
+    if (picked.length < 2 && picked.indexOf(item) < 0) picked.push(item);
+  });
+  return picked.map((item) => {
+    const all = (item.recheck || []).concat(item.questions || []).filter((one) => one && one.options && one.options.length);
+    const one = all[Math.floor(Math.random() * all.length)];
+    return one ? { q: one.q, options: one.options, correct: one.correct, from: item.title } : null;
+  }).filter(Boolean);
+}
+
+function startWarmup() {
+  practiceMode = "warm";
+  practiceIndex = 0;
+  document.getElementById("teach-block").classList.add("hidden");
+  document.getElementById("practice-block").classList.remove("hidden");
+  showPractice();
+}
+
+function plural(count, one, few, many) {
+  const n10 = count % 10;
+  const n100 = count % 100;
+  if (n10 === 1 && n100 !== 11) return one;
+  if (n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14)) return few;
+  return many;
+}
+
+/* Картинка к карточке: ряды точек для умножения и деления, клетки для площади. */
+function gridPic(perRow, total, caption, square) {
+  const cell = 30;
+  const rows = Math.ceil(total / perRow);
+  const full = Math.floor(total / perRow) * perRow;
+  let marks = "";
+  for (let i = 0; i < total; i += 1) {
+    const x = (i % perRow) * cell;
+    const y = Math.floor(i / perRow) * cell;
+    const cls = i >= full ? "pic-rest" : "pic-dot";
+    marks += square
+      ? `<rect class="${cls}" x="${x + 2}" y="${y + 2}" width="${cell - 4}" height="${cell - 4}" rx="4"></rect>`
+      : `<circle class="${cls}" cx="${x + cell / 2}" cy="${y + cell / 2}" r="${cell / 2 - 5}"></circle>`;
+  }
+  return `<figure class="pic"><svg viewBox="0 0 ${perRow * cell} ${rows * cell}" width="${perRow * cell}" height="${rows * cell}" aria-hidden="true">${marks}</svg><figcaption>${esc(caption)}</figcaption></figure>`;
+}
+
+function placePic(text) {
+  const seen = [];
+  (String(text).match(/\d+/g) || []).forEach((raw) => {
+    const n = Number(raw);
+    if (n >= 10 && n <= 999 && seen.indexOf(n) < 0 && seen.length < 2) seen.push(n);
+  });
+  return seen.map((n) => {
+    const h = Math.floor(n / 100);
+    const t = Math.floor((n % 100) / 10);
+    const u = n % 10;
+    const blocks = '<span class="b100"></span>'.repeat(h) + '<span class="b10"></span>'.repeat(t) + '<span class="b1"></span>'.repeat(u);
+    const parts = [];
+    if (h) parts.push(h + " сот.");
+    parts.push(t + " дес.");
+    parts.push(u + " ед.");
+    return `<figure class="pic place"><div class="place-blocks" aria-hidden="true">${blocks}</div><figcaption><b>${n}</b> — ${parts.join(" · ")}</figcaption></figure>`;
+  }).join("");
+}
+
+function lessonPic(text) {
+  if (!currentLesson) return "";
+  const found = findLesson(currentLesson.id);
+  if (!found || (found.subject.id !== "math" && found.subject.id !== "math3")) return "";
+  const id = currentLesson.id;
+  if (currentLesson.pic === "place" || id === "math-01" || id === "math-f-compare") return placePic(text);
+  if (id === "math-f-time") return "";
+  const mul = /(\d+)\s*×\s*(\d+)/.exec(text);
+  const div = /(\d+)\s*:\s*(\d+)/.exec(text);
+  if (mul && (!div || mul.index < div.index)) {
+    const a = Number(mul[1]);
+    const b = Number(mul[2]);
+    if (a < 1 || b < 1 || a > 10 || b > 10) return "";
+    const square = currentLesson.pic === "area";
+    const what = square ? plural(a, "клетке", "клетки", "клеток") : plural(a, "точке", "точки", "точек");
+    return gridPic(a, a * b, b + " " + plural(b, "ряд", "ряда", "рядов") + " по " + a + " " + what, square);
+  }
+  if (div) {
+    const n = Number(div[1]);
+    const d = Number(div[2]);
+    if (d < 2 || d > 10 || n < d || n > 40) return "";
+    const rest = n % d;
+    const rows = Math.floor(n / d);
+    return gridPic(d, n, rows + " " + plural(rows, "ряд", "ряда", "рядов") + " по " + d + (rest ? ", осталось " + rest : ""), false);
+  }
+  return "";
+}
+
+function setStage(name) {
+  const items = Array.from(document.querySelectorAll("#stage-strip li"));
+  const index = items.findIndex((item) => item.getAttribute("data-stage") === name);
+  items.forEach((item, i) => {
+    item.classList.toggle("is-now", i === index);
+    item.classList.toggle("is-done", i < index);
+  });
+}
+
+function canSpeak() {
+  return "speechSynthesis" in window && typeof SpeechSynthesisUtterance === "function";
+}
+
+function stopSpeak() {
+  if (canSpeak()) window.speechSynthesis.cancel();
+}
+
+function speak(text) {
+  if (!canSpeak() || !text) return;
+  window.speechSynthesis.cancel();
+  const voice = new SpeechSynthesisUtterance(String(text));
+  voice.lang = /[а-яё]/i.test(text) ? "ru-RU" : "en-US";
+  voice.rate = 0.8;
+  window.speechSynthesis.speak(voice);
+}
+
+function speakCard() {
+  const card = teachCards[teachIndex];
+  if (card) speak(card.body);
+}
+
+/* Одна мысль на строку; числа и слова в кавычках выделены. */
+function richLines(text) {
+  const lines = String(text || "").split(/(?<!ост\.)(?<=[.!?])\s+(?=[A-ZА-ЯЁ«0-9])/).filter(Boolean);
+  return lines.map((line) => {
+    const marked = esc(line).replace(/«[^»]+»|\d+(?:\s*[+−×:=·-]\s*\d+)*/g, (hit) => `<b class="key">${hit}</b>`);
+    return `<p class="line">${marked}</p>`;
+  }).join("");
+}
+
 function stepDots(index, total) {
   let dots = "";
   for (let i = 0; i < total; i++) {
@@ -504,13 +722,25 @@ function showTeachCard() {
     startPractice();
     return;
   }
+  stopSpeak();
+  setStage(card.kicker === "Разберём вместе" ? "walk" : "teach");
   label.innerHTML = stepDots(teachIndex, teachCards.length);
-  body.innerHTML = `<h3>${esc(card.kicker)}. ${esc(card.title)}</h3><p>${esc(card.body)}</p>`;
+  body.innerHTML = `<h3>${esc(card.kicker)}. ${esc(card.title)}</h3>${richLines(card.body)}${lessonPic(card.body)}`;
+  const back = document.getElementById("teach-back");
+  if (back) back.classList.toggle("is-off", teachIndex === 0);
+  const listen = document.getElementById("teach-listen");
+  if (listen) listen.classList.toggle("hidden", !canSpeak());
   const last = teachIndex >= teachCards.length - 1;
   const hasPractice = currentLesson && Array.isArray(currentLesson.practice) && currentLesson.practice.length;
   if (!last) button.textContent = "Дальше";
   else if (stage === "corrective") button.textContent = "Ещё одна попытка";
   else button.textContent = hasPractice ? "Потренироваться" : "К проверке";
+}
+
+function prevTeachStep() {
+  if (teachIndex <= 0) return;
+  teachIndex -= 1;
+  showTeachCard();
 }
 
 function nextTeachStep() {
@@ -531,14 +761,20 @@ function startPractice() {
     return;
   }
   practiceIndex = 0;
+  practiceMode = "practice";
   document.getElementById("practice-block").classList.remove("hidden");
   showPractice();
 }
 
 function showPractice() {
-  const items = currentLesson.practice || [];
+  const items = practiceItems();
   const item = items[practiceIndex];
   practiceAnswered = false;
+  stopSpeak();
+  const warm = practiceMode === "warm";
+  setStage(warm ? "warm" : "practice");
+  const heading = document.getElementById("practice-heading");
+  if (heading) heading.textContent = warm ? "Вспомним, что уже было." : "Тренировка. Здесь можно пробовать спокойно.";
   const label = document.getElementById("practice-label");
   const body = document.getElementById("practice-body");
   const why = document.getElementById("practice-why");
@@ -547,7 +783,7 @@ function showPractice() {
   why.classList.add("hidden");
   why.textContent = "";
   next.classList.add("hidden");
-  const order = displayOrder(item, optionOrderKey("practice", practiceIndex));
+  const order = displayOrder(item, optionOrderKey(practiceMode, practiceIndex));
   const opts = order.map((originalIndex, displayIndex) => (
     `<button type="button" class="option" data-o="${displayIndex}" onclick="answerPractice(${displayIndex})"><span>${esc(item.options[originalIndex])}</span></button>`
   )).join("");
@@ -557,8 +793,8 @@ function showPractice() {
 function answerPractice(displayIndex) {
   if (practiceAnswered) return;
   practiceAnswered = true;
-  const item = currentLesson.practice[practiceIndex];
-  const order = displayOrder(item, optionOrderKey("practice", practiceIndex));
+  const item = practiceItems()[practiceIndex];
+  const order = displayOrder(item, optionOrderKey(practiceMode, practiceIndex));
   const right = correctOptionText(item);
   const chosen = String(item.options[order[displayIndex]] ?? "");
   const buttons = document.querySelectorAll("#practice-body .option");
@@ -569,19 +805,35 @@ function answerPractice(displayIndex) {
     else if (Number(button.getAttribute("data-o")) === displayIndex) button.classList.add("wrong");
   });
   const why = document.getElementById("practice-why");
-  why.textContent = (chosen === right ? "Верно. " : "Почти. ") + (item.why || ("Правильно: " + right));
+  const warm = practiceMode === "warm";
+  if (warm) {
+    why.textContent = chosen === right
+      ? "Верно. Ты это помнишь!"
+      : "Почти. Правильно: " + right + ". Это было в уроке «" + item.from + "».";
+  } else {
+    why.textContent = (chosen === right ? "Верно. " : "Почти. ") + (item.why || ("Правильно: " + right));
+  }
   why.classList.remove("hidden");
   const next = document.getElementById("practice-next");
-  const last = practiceIndex >= currentLesson.practice.length - 1;
-  next.textContent = last ? "К проверке" : "Дальше";
+  const last = practiceIndex >= practiceItems().length - 1;
+  next.textContent = !last ? "Дальше" : warm ? "К новой теме" : "К проверке";
   next.classList.remove("hidden");
 }
 
 function nextPractice() {
   if (!practiceAnswered) return;
-  if (practiceIndex < currentLesson.practice.length - 1) {
+  if (practiceIndex < practiceItems().length - 1) {
     practiceIndex += 1;
     showPractice();
+    return;
+  }
+  if (practiceMode === "warm") {
+    practiceMode = "practice";
+    document.getElementById("practice-block").classList.add("hidden");
+    document.getElementById("practice-why").classList.add("hidden");
+    document.getElementById("practice-next").classList.add("hidden");
+    document.getElementById("teach-block").classList.remove("hidden");
+    showTeachCard();
     return;
   }
   startQuiz();
@@ -597,6 +849,8 @@ function activeQuestions() {
 function startQuiz(form) {
   quizForm = form === "b" ? "b" : "a";
   stage = "quiz";
+  stopSpeak();
+  setStage("quiz");
   document.getElementById("practice-block").classList.add("hidden");
   document.getElementById("teach-block").classList.add("hidden");
   document.getElementById("stuck-block").classList.add("hidden");
@@ -607,7 +861,7 @@ function startQuiz(form) {
   if (hint) {
     hint.textContent = quizForm === "b"
       ? "Другие вопросы про то же самое."
-      : "Ответь на вопросы.";
+      : "Один вопрос за раз. Не спеши.";
   }
   currentAnswers = {};
   quizLocked = false;
@@ -616,8 +870,50 @@ function startQuiz(form) {
   result.classList.add("hidden");
   result.classList.remove("is-wait");
   result.textContent = "";
-  document.getElementById("check-btn").classList.remove("hidden");
+  quizIndex = 0;
+  quizPaged = true;
+  showQuizPage();
   document.getElementById("quiz-block").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+let quizIndex = 0;
+let quizPaged = false;
+
+/* Проверка идёт по одному вопросу; после «Проверить» видны все сразу. */
+function showQuizPage() {
+  const cards = document.querySelectorAll("#questions .question");
+  const total = cards.length;
+  const last = quizIndex >= total - 1;
+  cards.forEach((card, i) => card.classList.toggle("hidden", quizPaged && i !== quizIndex));
+  const dots = document.getElementById("quiz-dots");
+  const back = document.getElementById("quiz-back");
+  const next = document.getElementById("quiz-next");
+  const check = document.getElementById("check-btn");
+  const pick = document.getElementById("quiz-pick");
+  if (pick) pick.classList.add("hidden");
+  if (dots) {
+    dots.innerHTML = quizPaged ? stepDots(quizIndex, total) : "";
+    dots.classList.toggle("hidden", !quizPaged);
+  }
+  if (back) {
+    back.classList.toggle("hidden", !quizPaged);
+    back.classList.toggle("is-off", quizIndex === 0);
+  }
+  if (next) next.classList.toggle("hidden", !quizPaged || last);
+  if (check) check.classList.toggle("hidden", quizPaged && !last);
+}
+
+function quizStep(delta) {
+  const total = document.querySelectorAll("#questions .question").length;
+  if (delta > 0 && currentAnswers[quizIndex] === undefined) {
+    const pick = document.getElementById("quiz-pick");
+    if (pick) pick.classList.remove("hidden");
+    return;
+  }
+  const target = quizIndex + delta;
+  if (target < 0 || target >= total) return;
+  quizIndex = target;
+  showQuizPage();
 }
 
 function startCorrective() {
@@ -686,6 +982,8 @@ function renderQuestions(lesson) {
 function selectAnswer(qi, oi) {
   const same = currentAnswers[qi] === oi;
   currentAnswers[qi] = oi;
+  const pick = document.getElementById("quiz-pick");
+  if (pick) pick.classList.add("hidden");
   document.querySelectorAll(`#questions .option[data-q="${qi}"]`).forEach((label) => {
     label.classList.toggle("is-chosen", Number(label.getAttribute("data-o")) === oi);
   });
@@ -710,7 +1008,13 @@ function checkAnswers() {
   }
   if (quizLocked) return;
   quizLocked = true;
+  quizPaged = false;
+  showQuizPage();
   document.getElementById("check-btn").classList.add("hidden");
+  setTimeout(() => {
+    const box = document.getElementById("result");
+    if (box && !box.classList.contains("hidden")) box.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, 60);
   let correct = 0;
   const errors = [];
 
@@ -739,6 +1043,7 @@ function checkAnswers() {
   const percent = total ? Math.round((correct / total) * 100) : 0;
   const state = getLessonState(lesson.id);
   state.attempts = (state.attempts || 0) + 1;
+  state.lastQuizAt = todayISO();
   state.lastErrors = errors;
   state.lastPercent = percent;
 
@@ -842,6 +1147,10 @@ let scoutIndex = 0;
 function hideScoutView() {
   const view = document.getElementById("scout-view");
   if (view) view.classList.add("hidden");
+  const control = document.getElementById("control-view");
+  if (control) control.classList.add("hidden");
+  const extra = document.getElementById("extra-view");
+  if (extra) extra.classList.add("hidden");
 }
 
 function readScout() {
@@ -875,6 +1184,7 @@ function saveScout(items) {
 function scoutPool() {
   const items = [];
   (DATA.subjects || []).forEach((subject) => {
+    if (subject.grade === 3) return;
     (subject.lessons || []).slice(0, 4).forEach((lesson) => {
       const question = (lesson.questions || [])[0];
       if (!question || !question.options || !question.options.length) return;
@@ -990,6 +1300,252 @@ function renderTutorScout() {
   )).join("")}</tbody></table>`;
 }
 
+/* ================= КОНТРОЛЬНЫЕ ПО ЧЕТВЕРТЯМ ================= */
+/* Четверти идут по графику сайта. В контрольную входят только темы, которые ребёнок уже прошёл.
+   Контрольная за 4 четверть — годовая: в неё входят темы всего года. */
+const CONTROL_KEY = "study_control_v1";
+const QUARTERS = [
+  { id: "q2", name: "2 четверть", from: "2026-11-05", to: "2026-12-30" },
+  { id: "q3", name: "3 четверть", from: "2027-01-11", to: "2027-03-26" },
+  { id: "q4", name: "4 четверть, годовая", from: "2026-11-05", to: "2027-05-15", opens: "2027-05-05" },
+];
+const CONTROL_MIN_TOPICS = 3;
+const CONTROL_MAX_QUESTIONS = 12;
+let controlRun = null;
+
+function readControls() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(CONTROL_KEY) || "{}");
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function quarterById(id) {
+  return QUARTERS.find((quarter) => quarter.id === id) || null;
+}
+
+function quarterOpens(quarter) {
+  return quarter.opens || shiftISO(quarter.to, -7);
+}
+
+/* Темы четверти по предмету: все по графику и те из них, что уже пройдены. */
+function controlTopics(quarter, subjectId) {
+  const all = [];
+  planDays().forEach((day) => {
+    if ((day.kind !== "lesson" && day.kind !== "return") || day.subjectId !== subjectId) return;
+    if (day.date < quarter.from || day.date > quarter.to) return;
+    const found = findLesson(day.lessonId);
+    if (found && all.indexOf(found.lesson) < 0) all.push(found.lesson);
+  });
+  return { all, passed: all.filter((lesson) => getLessonState(lesson.id).passed === true) };
+}
+
+function controlSubjects() {
+  return DATA.subjects;
+}
+
+function controlQuestions(lessons) {
+  const picked = lessons.length > CONTROL_MAX_QUESTIONS ? fisherYates(lessons).slice(0, CONTROL_MAX_QUESTIONS) : lessons.slice();
+  const target = Math.min(CONTROL_MAX_QUESTIONS, Math.max(6, picked.length));
+  const pools = picked.map((lesson) => fisherYates((lesson.questions || []).concat(lesson.recheck || [])));
+  const items = [];
+  let round = 0;
+  while (items.length < target && round < 6) {
+    picked.forEach((lesson, i) => {
+      const question = pools[i][round];
+      if (question && items.length < target) {
+        items.push({ lessonId: lesson.id, title: lesson.title, question, order: fisherYates(question.options.map((_, index) => index)), chosen: null });
+      }
+    });
+    round += 1;
+  }
+  return items;
+}
+
+/* Одна ближайшая несданная контрольная для главной страницы. */
+function pendingControl() {
+  const today = todayISO();
+  const done = readControls();
+  for (const quarter of QUARTERS) {
+    if (today < quarterOpens(quarter)) continue;
+    for (const subject of controlSubjects()) {
+      if (done[quarter.id + ":" + subject.id]) continue;
+      if (controlTopics(quarter, subject.id).passed.length >= CONTROL_MIN_TOPICS) return { quarter, subject };
+    }
+  }
+  return null;
+}
+
+function controlOffer() {
+  const next = pendingControl();
+  if (!next) return "";
+  return `<button type="button" class="control-offer" onclick="openControl('${esc(next.quarter.id)}', '${esc(next.subject.id)}')"><span>Контрольная за ${esc(next.quarter.name)}</span>${esc(next.subject.name)}</button>`;
+}
+
+function openControl(quarterId, subjectId, force) {
+  const quarter = quarterById(quarterId);
+  const subject = DATA.subjects.find((item) => item.id === subjectId);
+  if (!quarter || !subject) return;
+  const topics = controlTopics(quarter, subjectId);
+  const lessons = topics.passed.length || !force ? topics.passed : [];
+  document.getElementById("subjects-view").classList.add("hidden");
+  document.getElementById("lessons-view").classList.add("hidden");
+  document.getElementById("lesson-view").classList.add("hidden");
+  hideScoutView();
+  stopSessionTimer();
+  document.getElementById("control-view").classList.remove("hidden");
+  document.getElementById("control-title").textContent = "Контрольная. " + subject.name;
+  document.getElementById("control-lead").textContent = quarter.name + ". Не спеши. Времени сколько нужно.";
+  controlRun = { quarter, subject, items: controlQuestions(lessons), index: 0, topicsAll: topics.all.length, topicsIn: lessons.length };
+  if (!controlRun.items.length) {
+    document.getElementById("control-body").innerHTML = '<p class="hint">Пока нет пройденных тем для этой контрольной.</p>';
+    return;
+  }
+  renderControlQuestion();
+  window.scrollTo(0, 0);
+}
+
+function renderControlQuestion() {
+  const run = controlRun;
+  const item = run.items[run.index];
+  const last = run.index >= run.items.length - 1;
+  const options = item.order.map((originalIndex, displayIndex) => (
+    `<button type="button" class="option${item.chosen === displayIndex ? " is-chosen" : ""}" onclick="chooseControl(${displayIndex})"><span>${esc(item.question.options[originalIndex])}</span></button>`
+  )).join("");
+  document.getElementById("control-body").innerHTML = `
+    <p class="hint">${stepDots(run.index, run.items.length)}</p>
+    <div class="question scout-question"><p>${esc(item.question.q)}</p><div class="options">${options}</div></div>
+    <p id="control-pick" class="hint hidden">Сначала выбери ответ.</p>
+    <div class="step-nav">
+      <button class="back-btn${run.index === 0 ? " is-off" : ""}" type="button" onclick="controlStep(-1)">← Назад</button>
+      <button class="action-btn" type="button" onclick="controlStep(1)">${last ? "Закончить" : "Дальше"}</button>
+    </div>`;
+}
+
+function chooseControl(displayIndex) {
+  if (!controlRun) return;
+  controlRun.items[controlRun.index].chosen = displayIndex;
+  renderControlQuestion();
+}
+
+function controlStep(delta) {
+  const run = controlRun;
+  if (!run) return;
+  if (delta > 0 && run.items[run.index].chosen === null) {
+    document.getElementById("control-pick").classList.remove("hidden");
+    return;
+  }
+  const target = run.index + delta;
+  if (target < 0) return;
+  if (target >= run.items.length) {
+    finishControl();
+    return;
+  }
+  run.index = target;
+  renderControlQuestion();
+}
+
+function finishControl() {
+  const run = controlRun;
+  let correct = 0;
+  const misses = [];
+  run.items.forEach((item) => {
+    const chosen = String(item.question.options[item.order[item.chosen]] ?? "");
+    if (chosen === correctOptionText(item.question)) {
+      correct += 1;
+    } else if (!misses.some((miss) => miss.lessonId === item.lessonId)) {
+      misses.push({ lessonId: item.lessonId, title: item.title });
+    }
+  });
+  const total = run.items.length;
+  const percent = Math.round((correct / total) * 100);
+  const all = readControls();
+  all[run.quarter.id + ":" + run.subject.id] = {
+    doneAt: todayISO(), correct, total, percent, misses, topicsIn: run.topicsIn, topicsAll: run.topicsAll,
+  };
+  try {
+    localStorage.setItem(CONTROL_KEY, JSON.stringify(all));
+  } catch (e) {
+    /* итог всё равно показан на экране */
+  }
+  /* Темы с ошибками помечаем: они первыми попадут во «Вспомним». */
+  misses.forEach((miss) => {
+    const state = getLessonState(miss.lessonId);
+    state.shaky = true;
+    setLessonState(miss.lessonId, state);
+  });
+  const stars = percent >= 80 ? "★★★" : percent >= 50 ? "★★" : "★";
+  const count = softModeActive() ? "" : `<p>Верно: ${correct} из ${total}.</p>`;
+  const again = misses.length
+    ? `<p>Эти темы мы спокойно повторим:</p><ul class="control-misses">${misses.map((miss) => `<li>${esc(miss.title)}</li>`).join("")}</ul>`
+    : "<p>Все темы ты помнишь.</p>";
+  document.getElementById("control-body").innerHTML = `
+    <div class="control-result">
+      <p class="control-done">Контрольная готова. Ты молодец!</p>
+      <p class="stars">${stars}</p>
+      ${count}${again}
+      <button class="action-btn" type="button" onclick="showSubjects()">На главную</button>
+    </div>`;
+  controlRun = null;
+  window.scrollTo(0, 0);
+}
+
+function controlMark(percent) {
+  if (percent >= 90) return "5";
+  if (percent >= 70) return "4";
+  if (percent >= 50) return "3";
+  return "2";
+}
+
+function resetControl(key) {
+  if (!window.confirm("Стереть итог этой контрольной? Ребёнок сможет написать её заново.")) return;
+  const all = readControls();
+  delete all[key];
+  localStorage.setItem(CONTROL_KEY, JSON.stringify(all));
+  renderTutorControls();
+}
+
+function renderTutorControls() {
+  const host = document.getElementById("tutor-controls");
+  if (!host) return;
+  const done = readControls();
+  const today = todayISO();
+  const rows = [];
+  QUARTERS.forEach((quarter) => {
+    controlSubjects().forEach((subject) => {
+      const topics = controlTopics(quarter, subject.id);
+      if (!topics.all.length) return;
+      const key = quarter.id + ":" + subject.id;
+      const result = done[key];
+      const link = `index.html?control=${encodeURIComponent(key)}`;
+      let status;
+      let cls = "status-wait";
+      let action = "";
+      if (result) {
+        cls = result.percent >= 70 ? "status-done" : result.percent >= 50 ? "status-work" : "status-stuck";
+        status = result.percent + "% (" + result.correct + " из " + result.total + "), примерно «" + controlMark(result.percent) + "» · " + formatPlanDate(result.doneAt);
+        action = `<button type="button" onclick="resetControl('${esc(key)}')">Переписать</button>`;
+      } else if (topics.passed.length < CONTROL_MIN_TOPICS) {
+        status = "мало пройденных тем";
+      } else if (today < quarterOpens(quarter)) {
+        status = "появится у ребёнка " + formatPlanDate(quarterOpens(quarter));
+        action = `<a href="${link}">Открыть сейчас</a>`;
+      } else {
+        cls = "status-work";
+        status = "ждёт на главной";
+        action = `<a href="${link}">Открыть</a>`;
+      }
+      const weak = result && result.misses && result.misses.length
+        ? result.misses.map((miss) => miss.title).join("; ")
+        : (result ? "ошибок нет" : "");
+      rows.push(`<tr><td>${esc(quarter.name)}</td><td>${esc(subject.name)}</td><td>${topics.passed.length} из ${topics.all.length}</td><td><span class="${cls}">${esc(status)}</span></td><td>${esc(weak)}</td><td>${action}</td></tr>`);
+    });
+  });
+  host.innerHTML = `<table class="desk-table"><thead><tr><th>Четверть</th><th>Предмет</th><th>Тем пройдено</th><th>Итог</th><th>Повторить темы</th><th></th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
+}
+
 /* ================= ПАНЕЛЬ ТЬЮТОРА ================= */
 function renderTutorPanel() {
   loadData().then(() => {
@@ -997,6 +1553,8 @@ function renderTutorPanel() {
     renderTutorCalendar();
     renderSoftMode();
     renderTutorScout();
+    renderTutorControls();
+    if (typeof renderTutorFacts === "function") renderTutorFacts();
     renderTutorProgress();
     renderTutorErrors();
   }).catch(showLoadError);
@@ -1451,6 +2009,37 @@ function cityMark(id, open) {
   return `<svg width="42" height="42" viewBox="0 0 28 28" aria-hidden="true" opacity="${open ? "1" : "0.4"}">${shapes[id] || ""}</svg>`;
 }
 
+let vietnamMapMarkup = "";
+
+function loadVietnamMap() {
+  if (vietnamMapMarkup) return Promise.resolve(vietnamMapMarkup);
+  const keep = (text) => {
+    vietnamMapMarkup = text;
+    return text;
+  };
+  return fetch("vietnam-map.svg?v=3").then((res) => {
+    if (!res.ok) throw new Error("map");
+    return res.text();
+  }).then(keep).catch(() => {
+    if (!window.VIETNAM_MAP_SVG) throw new Error("map");
+    return keep(window.VIETNAM_MAP_SVG);
+  });
+}
+
+function paintVietnamMap(root, openCount) {
+  const next = openCount < JOURNEY_CITIES.length ? openCount : -1;
+  JOURNEY_CITIES.forEach((city, index) => {
+    const node = root.querySelector("#city-" + city.id);
+    if (!node) return;
+    node.classList.toggle("done", index < openCount);
+    node.classList.toggle("current", index === next);
+  });
+  for (let step = 1; step < JOURNEY_CITIES.length; step += 1) {
+    const route = root.querySelector("#route-" + step);
+    if (route) route.classList.toggle("done", openCount > step);
+  }
+}
+
 function renderJourney() {
   const path = document.getElementById("journey-path");
   const passport = document.getElementById("journey-passport");
@@ -1465,23 +2054,39 @@ function renderJourney() {
       ? "В пути уже " + streak + " " + journeyDayWord(streak) + " подряд."
       : "";
   }
-  const step = 72;
-  const height = 28 + JOURNEY_CITIES.length * step;
-  const points = JOURNEY_CITIES.map((city, index) => ({
-    city,
-    index,
-    x: index % 2 === 0 ? 28 : 96,
-    y: 28 + index * step,
-  }));
-  const line = points.map((point, index) => (index === 0 ? "M" : "L") + point.x + " " + point.y).join(" ");
-  const marks = points.map((point) => {
-    const open = point.index < openCount;
-    const next = point.index === nextIndex;
-    const fill = open ? "#86efac" : (next ? "#dbeafe" : "#e5e7eb");
-    const stroke = next ? "#14635f" : (open ? "#1f6b4a" : "#d1d5db");
-    return `<g><circle cx="${point.x}" cy="${point.y}" r="${next ? 12 : 8}" fill="${fill}" stroke="${stroke}" stroke-width="${next ? 4 : 2}"></circle><g transform="translate(${point.x + 16}, ${point.y - 21})">${cityMark(point.city.id, open)}</g><text x="${point.x + 64}" y="${point.y}" dominant-baseline="middle" font-size="16" fill="#2c2416">${esc(point.city.name)}</text></g>`;
-  }).join("");
-  path.innerHTML = `<svg viewBox="0 0 320 ${height}" role="img" aria-label="Путь по Вьетнаму"><path d="${line}" fill="none" stroke="#9fd4d0" stroke-width="4" stroke-linecap="round"></path>${marks}</svg>${openCount >= JOURNEY_CITIES.length ? '<p class="hint">Ты добралась до конца пути!</p>' : ''}`;
+  const token = (path.dataset.journey || "0");
+  const nextToken = String(Number(token) + 1);
+  path.dataset.journey = nextToken;
+  loadVietnamMap().then((markup) => {
+    if (path.dataset.journey !== nextToken) return;
+    path.innerHTML = markup;
+    paintVietnamMap(path, openCount);
+    if (openCount >= JOURNEY_CITIES.length) {
+      const note = document.createElement("p");
+      note.className = "hint";
+      note.textContent = "Ты добралась до конца пути!";
+      path.appendChild(note);
+    }
+  }).catch(() => {
+    if (path.dataset.journey !== nextToken) return;
+    const step = 72;
+    const height = 28 + JOURNEY_CITIES.length * step;
+    const points = JOURNEY_CITIES.map((city, index) => ({
+      city,
+      index,
+      x: index % 2 === 0 ? 28 : 96,
+      y: 28 + index * step,
+    }));
+    const line = points.map((point, index) => (index === 0 ? "M" : "L") + point.x + " " + point.y).join(" ");
+    const marks = points.map((point) => {
+      const open = point.index < openCount;
+      const next = point.index === nextIndex;
+      const fill = open ? "#86efac" : (next ? "#dbeafe" : "#e5e7eb");
+      const stroke = next ? "#14635f" : (open ? "#1f6b4a" : "#d1d5db");
+      return `<g><circle cx="${point.x}" cy="${point.y}" r="${next ? 12 : 8}" fill="${fill}" stroke="${stroke}" stroke-width="${next ? 4 : 2}"></circle><g transform="translate(${point.x + 16}, ${point.y - 21})">${cityMark(point.city.id, open)}</g><text x="${point.x + 64}" y="${point.y}" dominant-baseline="middle" font-size="16" fill="#2c2416">${esc(point.city.name)}</text></g>`;
+    }).join("");
+    path.innerHTML = `<svg viewBox="0 0 320 ${height}" role="img" aria-label="Путь по Вьетнаму"><path d="${line}" fill="none" stroke="#9fd4d0" stroke-width="4" stroke-linecap="round"></path>${marks}</svg>${openCount >= JOURNEY_CITIES.length ? '<p class="hint">Ты добралась до конца пути!</p>' : ''}`;
+  });
   const stamps = JOURNEY_CITIES.filter((city, index) => index < openCount && saved.stamps[city.id]);
   passport.innerHTML = stamps.length
     ? stamps.map((city) => `<div class="stamp"><div class="stamp-city">${esc(city.name)}</div><div class="stamp-date">${esc(journeyDateLabel(saved.stamps[city.id]))}</div></div>`).join("")
@@ -1598,6 +2203,55 @@ function homeChoices() {
   return { primary, alternative };
 }
 
+const LESSONS_PER_DAY = 3;
+let studyOnRest = false;
+
+function planItemDone(day, state) {
+  if (day.kind === "lesson") return state.passed === true;
+  return state.passed === true && !!state.lastQuizAt && state.lastQuizAt >= day.date;
+}
+
+/* Уроки дня: что уже сделано сегодня и что дальше по графику. Не больше трёх в день;
+   несданное переходит на следующий день, старые повторы (больше недели) не копятся. */
+function dayList() {
+  const today = todayISO();
+  const weekday = parseISO(today).getDay();
+  const days = planDays();
+  const restDay = days.find((day) => day.date === today && day.kind === "rest");
+  const rest = !!restDay || weekday === 0 || weekday === 6;
+  const progress = loadProgress();
+  const done = [];
+  Object.keys(progress).forEach((id) => {
+    const state = progress[id];
+    if (!state || state.lastQuizAt !== today || state.passed !== true) return;
+    const found = findLesson(id);
+    if (found) done.push({ lessonId: id, subject: found.subject.name, title: found.lesson.title });
+  });
+  const pending = [];
+  const oldest = shiftISO(today, -7);
+  for (const day of days) {
+    if (day.date > today) break;
+    if (!day.lessonId || (day.kind !== "lesson" && day.kind !== "return")) continue;
+    const found = findLesson(day.lessonId);
+    if (!found) continue;
+    const state = getLessonState(day.lessonId);
+    if (planItemDone(day, state)) continue;
+    if (day.kind === "return" && state.passed === true && day.date < oldest) continue;
+    if (state.lastQuizAt === today && state.passed === true) continue;
+    if (!isLessonUnlocked(found.subject, found.index)) continue;
+    if (pending.some((item) => item.lessonId === day.lessonId)) continue;
+    pending.push(day);
+  }
+  const slots = Math.max(0, LESSONS_PER_DAY - done.length);
+  const mama = days.filter((day) => day.date === today && day.kind === "mama");
+  return { rest, restTitle: restDay ? restDay.title : "Выходной", done, next: pending.slice(0, slots), waiting: pending.length, mama };
+}
+
+function dayRow(number, state, subject, title, action) {
+  const mark = state === "done" ? "✓" : number;
+  return `<li class="day-row is-${state}"><span class="lesson-num" aria-hidden="true">${mark}</span><span class="subject-text"><span class="card-status">${esc(subject)}</span><span class="card-title">${esc(title)}</span></span>${action || ""}</li>`;
+}
+
 function renderToday() {
   const view = document.getElementById("today-view");
   if (!view) return;
@@ -1607,26 +2261,61 @@ function renderToday() {
     return;
   }
   view.classList.remove("hidden");
-  const heading = document.getElementById("today-heading");
   const card = document.getElementById("today-card");
-  const choice = homeChoices();
-  const pair = [choice.primary, choice.alternative].filter(Boolean);
-  heading.textContent = "Сегодня";
-  const primary = choice.primary;
-  const start = primary && primary.lessonId
-    ? `<button type="button" class="start-day" onclick="openScheduledLesson('${esc(primary.lessonId)}', ${primary.kind === "return"})">Начать сегодняшний урок</button><p class="hint">${esc(primary.subject || "")}${primary.subject ? ". " : ""}${esc(primary.title || "")}</p>`
-    : "";
-  const picks = pair.length > 1
-    ? `<button type="button" class="choice-link" onclick="toggleHomeChoices()">Выбрать другой предмет</button><div id="home-choices" class="choice-grid hidden">${pair.map((day) => {
-      const asReturn = day.kind === "return";
-      return `<button type="button" class="choice-pick" onclick="openScheduledLesson('${esc(day.lessonId)}', ${asReturn})">${esc(day.subject || "")}${day.subject ? ". " : ""}${esc(day.title || "")}</button>`;
-    }).join("")}</div>`
-    : "";
-  if (!pair.length) {
-    card.innerHTML = start + '<div class="today-card"><p>Новых уроков нет. Можно открыть все предметы.</p></div>';
-  } else {
-    card.innerHTML = start + picks;
+  const list = dayList();
+  const guide = document.getElementById("guide-line");
+  const passed = lessonPassShare().passed;
+  const resting = list.rest && !studyOnRest && !list.done.length;
+  const allDone = !list.next.length && list.done.length > 0;
+  if (guide) {
+    if (resting) guide.textContent = "Сегодня выходной. Отдыхай и набирайся сил!";
+    else if (allDone) guide.textContent = "На сегодня всё. Ты молодец!";
+    else if (list.done.length) guide.textContent = "Отлично! Сделай перемену 10 минут: попей воды, подвигайся.";
+    else if (passed > 0) guide.textContent = "Ты уже прошла " + lessonsWord(passed) + ". Сегодня " + lessonsWord(list.next.length) + ", с переменами.";
+    else guide.textContent = "Я фонарик. Сегодня " + lessonsWord(list.next.length || LESSONS_PER_DAY) + ". Идём по одному, с переменами.";
+    if (!resting && !allDone && !list.done.length && typeof factsDoneToday === "function" && factsDoneToday()) {
+      guide.textContent = "Голова проснулась! Теперь " + lessonsWord(list.next.length) + ", по одному.";
+    }
   }
+  let html = "";
+  if (resting) {
+    html = `<p class="today-what"><span>${esc(list.restTitle)}</span>Уроков сегодня нет</p>`
+      + (list.waiting ? '<button type="button" class="choice-link" onclick="studyAnyway()">Всё равно позаниматься</button>' : "");
+  } else {
+    let number = 0;
+    const hasFacts = typeof factsDoneToday === "function";
+    const factsDone = hasFacts && factsDoneToday();
+    const factsFirst = hasFacts && !factsDone && list.next.length > 0;
+    const factsRows = [];
+    if (factsDone) factsRows.push(dayRow("✓", "done", "Зарядка", "Счёт в уме", "").replace('aria-hidden="true">✓', 'aria-hidden="true">✓'));
+    if (factsFirst) factsRows.push(`<li class="day-row is-now"><span class="lesson-num" aria-hidden="true">★</span><span class="subject-text"><span class="card-status">Зарядка, 3 минуты</span><span class="card-title">Счёт в уме</span></span><button type="button" class="start-day" onclick="openFacts()">Начать</button></li>`);
+    const rows = factsRows.concat(list.done.map((item) => {
+      number += 1;
+      return dayRow(number, "done", item.subject, item.title, "");
+    }));
+    list.next.forEach((day, i) => {
+      number += 1;
+      const asReturn = day.kind === "return";
+      const subject = (day.subject || "") + (asReturn ? ". Повторение" : "");
+      const open = `openScheduledLesson('${esc(day.lessonId)}', ${asReturn})`;
+      rows.push(i === 0 && !factsFirst
+        ? dayRow(number, "now", subject, day.title, `<button type="button" class="start-day" onclick="${open}">Начать</button>`)
+        : dayRow(number, "later", subject, day.title, ""));
+    });
+    list.mama.forEach((day) => {
+      rows.push(`<li class="day-row is-mama"><span class="lesson-num" aria-hidden="true">♥</span><span class="subject-text"><span class="card-status">Вместе с мамой</span><span class="card-title">${esc(day.title)}</span></span></li>`);
+    });
+    html = rows.length
+      ? `<ol class="day-list">${rows.join("")}</ol>`
+      : '<div class="today-card"><p>Новых уроков нет. Можно открыть все предметы.</p></div>';
+  }
+  const step = nextGrade3();
+  const planned = step && planDays().some((day) => day.lessonId === step.lesson.id);
+  const stepUp = step && !planned
+    ? `<button type="button" class="grade3-offer" onclick="openScheduledLesson('${esc(step.lesson.id)}')"><span>Ты доросла до задания 3 класса</span>${esc(step.lesson.title)}</button>`
+    : "";
+  const bonus = (allDone || resting) && typeof puzzleOffer === "function" ? puzzleOffer() : "";
+  card.innerHTML = html + (resting ? "" : controlOffer() + stepUp) + bonus;
   const weekHeading = document.getElementById("week-heading");
   const weekList = document.getElementById("week-list");
   if (weekHeading) weekHeading.classList.add("hidden");
@@ -1634,6 +2323,11 @@ function renderToday() {
     weekList.classList.add("hidden");
     weekList.innerHTML = "";
   }
+}
+
+function studyAnyway() {
+  studyOnRest = true;
+  renderToday();
 }
 
 function toggleHomeChoices() {
@@ -1644,24 +2338,30 @@ function toggleHomeChoices() {
 function renderTutorToday() {
   const host = document.getElementById("tutor-today");
   if (!host) return;
-  const today = todayISO();
-  const due = dueWork();
-  const current = planDays().find((day) => day.date === today) || nearestPlanDay();
-  const shown = due || current;
-  if (!shown) {
-    host.innerHTML = '<p class="hint">График закончился.</p>';
-    return;
-  }
-  const behind = due && (!current || due.lessonId !== current.lessonId);
-  const when = behind ? "Сначала несданное" : shown.date === today ? "Сегодня" : "Ближайшее";
-  host.innerHTML = `<div class="today-card desk-today"><table class="desk-table"><tbody><tr><th>Когда</th><td class="card-status">${esc(when)} · ${esc(formatPlanDate(shown.date))}</td></tr><tr><th>Занятие</th><td class="card-title">${esc(planDayText(shown))}</td></tr></tbody></table><p class="hint"><a href="plan.html">Весь график</a></p></div>`;
+  const list = dayList();
+  const rows = [];
+  list.done.forEach((item) => rows.push(`<tr><td><span class="status-done">сделано сегодня</span></td><td>${esc(item.subject)}. ${esc(item.title)}</td></tr>`));
+  list.next.forEach((day) => {
+    const late = day.date < todayISO() ? " (с " + formatPlanDate(day.date) + ")" : "";
+    rows.push(`<tr><td><span class="status-work">${day.kind === "return" ? "повтор" : "новый урок"}${esc(late)}</span></td><td>${esc(planDayText(day))}</td></tr>`);
+  });
+  list.mama.forEach((day) => rows.push(`<tr><td>с мамой</td><td>${esc(planDayText(day))}</td></tr>`));
+  const behind = list.waiting - list.next.length;
+  const note = list.rest
+    ? `<p class="hint">Сегодня выходной: ${esc(list.restTitle)}.</p>`
+    : (behind > 0 ? `<p class="hint">В очереди ещё ${behind}: несданное переходит на следующие дни, больше ${LESSONS_PER_DAY} уроков в день сайт не даёт.</p>` : "");
+  host.innerHTML = (rows.length
+    ? `<table class="desk-table"><tbody>${rows.join("")}</tbody></table>`
+    : '<p class="hint">На сегодня уроков нет.</p>') + note + '<p class="hint"><a href="plan.html">Весь график</a></p>';
 }
 
 function renderPlanPage() {
   loadData().then(() => {
     const lead = document.getElementById("plan-lead");
     const plan = DATA.plan || {};
-    lead.textContent = plan.pace === "slow"
+    lead.textContent = plan.pace === "three"
+      ? "Сайт заменяет школьный день: " + plan.perDay + " урока в день с понедельника по пятницу, каждый 15–25 минут, между ними перемена. Первый круг до " + formatPlanDate(plan.lessonsUntil) + ": с понедельника по четверг три новые темы по разным предметам, в пятницу два повтора недели и занятие с мамой. Второй круг с января: короткая проверка каждой темы ещё раз и по два урока 3 класса в неделю. Третий круг с марта: повторение перед годовой контрольной. Несданный урок переходит на следующий день, больше трёх уроков в день сайт не даёт. Каникулы: 31 декабря – 8 января, 23 февраля, 8 марта, 29 марта – 2 апреля, 10 мая. График до " + formatPlanDate(plan.reviewUntil) + "."
+      : plan.pace === "slow"
       ? "Темп для медленного усвоения. С понедельника по четверг — один новый урок, около 30 минут. Пятница — диктант или чтение вслух с мамой. Суббота — около 20 минут повтора темы, которая уже была. Новую тему не начинаем, пока прошлый урок не пройден: график подождёт. Таблица умножения идёт по одному числу за урок. Жи-ши, ча-ща и чу-щу — тремя уроками. Новые уроки до " + formatPlanDate(plan.lessonsUntil) + ", повторы до " + formatPlanDate(plan.reviewUntil) + ". Каникулы: 31 декабря – 10 января, 23 февраля, 8 марта, 27 марта – 4 апреля."
       : "Домашние занятия к переводу в 3 класс.";
 
@@ -1725,5 +2425,7 @@ if (document.getElementById("subjects-list")) {
     const params = new URLSearchParams(location.search);
     const want = params.get("lesson");
     if (want) openScheduledLesson(want, params.get("return") === "1");
+    const control = params.get("control");
+    if (control) openControl(control.split(":")[0], control.split(":")[1], true);
   }).catch(showLoadError);
 }

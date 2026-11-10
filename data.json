@@ -15429,14 +15429,15 @@
     }
   ],
   "plan": {
-    "from": "2026-11-05",
-    "lessonsUntil": "2027-04-29",
-    "reviewUntil": "2027-05-15",
-    "minutes": 30,
-    "pace": "slow",
+    "from": "2026-11-10",
+    "lessonsUntil": "2026-12-30",
+    "reviewUntil": "2027-05-14",
+    "minutes": 75,
+    "pace": "three",
+    "perDay": 3,
     "days": [
       {
-        "date": "2026-11-05",
+        "date": "2026-11-10",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
@@ -15444,13 +15445,7 @@
         "title": "Десятки. Счёт до 100"
       },
       {
-        "date": "2026-11-06",
-        "kind": "mama",
-        "title": "Диктант с мамой",
-        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
-      },
-      {
-        "date": "2026-11-09",
+        "date": "2026-11-10",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
@@ -15460,6 +15455,22 @@
       {
         "date": "2026-11-10",
         "kind": "lesson",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-01",
+        "title": "Герой произведения"
+      },
+      {
+        "date": "2026-11-11",
+        "kind": "lesson",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-hello",
+        "title": "Hello и Goodbye"
+      },
+      {
+        "date": "2026-11-11",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
         "lessonId": "world-01",
@@ -15468,44 +15479,13 @@
       {
         "date": "2026-11-11",
         "kind": "lesson",
-        "subjectId": "reading",
-        "subject": "Литературное чтение",
-        "lessonId": "lit-01",
-        "title": "Герой произведения"
-      },
-      {
-        "date": "2026-11-12",
-        "kind": "lesson",
-        "subjectId": "english",
-        "subject": "Английский язык",
-        "lessonId": "en-hello",
-        "title": "Hello и Goodbye"
-      },
-      {
-        "date": "2026-11-13",
-        "kind": "mama",
-        "title": "Чтение вслух",
-        "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
-      },
-      {
-        "date": "2026-11-14",
-        "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-01",
-        "title": "Десятки. Счёт до 100",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2026-11-16",
-        "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
         "lessonId": "math-f-compare",
         "title": "Сравнение чисел"
       },
       {
-        "date": "2026-11-17",
+        "date": "2026-11-12",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
@@ -15513,7 +15493,7 @@
         "title": "Виды предложений"
       },
       {
-        "date": "2026-11-18",
+        "date": "2026-11-12",
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
@@ -15521,7 +15501,7 @@
         "title": "Осень"
       },
       {
-        "date": "2026-11-19",
+        "date": "2026-11-12",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
@@ -15529,22 +15509,31 @@
         "title": "Сложение и вычитание в пределах 100"
       },
       {
-        "date": "2026-11-20",
-        "kind": "mama",
-        "title": "Досдача",
-        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
+        "date": "2026-11-13",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-01",
+        "title": "Десятки. Счёт до 100",
+        "text": "Повтор темы этой недели: только короткая проверка."
       },
       {
-        "date": "2026-11-21",
+        "date": "2026-11-13",
         "kind": "return",
         "subjectId": "russian",
         "subject": "Русский язык",
         "lessonId": "rus-01",
         "title": "Предложение",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "text": "Повтор темы этой недели: только короткая проверка."
       },
       {
-        "date": "2026-11-23",
+        "date": "2026-11-13",
+        "kind": "mama",
+        "title": "Диктант с мамой",
+        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
+      },
+      {
+        "date": "2026-11-16",
         "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
@@ -15552,7 +15541,7 @@
         "title": "Порядок событий"
       },
       {
-        "date": "2026-11-24",
+        "date": "2026-11-16",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
@@ -15560,7 +15549,7 @@
         "title": "Слог"
       },
       {
-        "date": "2026-11-25",
+        "date": "2026-11-16",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
@@ -15568,30 +15557,7 @@
         "title": "Задачи в одно действие"
       },
       {
-        "date": "2026-11-26",
-        "kind": "lesson",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "lessonId": "world-03",
-        "title": "Город и страна"
-      },
-      {
-        "date": "2026-11-27",
-        "kind": "mama",
-        "title": "Диктант с мамой",
-        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
-      },
-      {
-        "date": "2026-11-28",
-        "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-02",
-        "title": "Сложение и вычитание в пределах 100",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2026-11-30",
+        "date": "2026-11-17",
         "kind": "lesson",
         "subjectId": "english",
         "subject": "Английский язык",
@@ -15599,7 +15565,15 @@
         "title": "Как тебя зовут"
       },
       {
-        "date": "2026-12-01",
+        "date": "2026-11-17",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-03",
+        "title": "Город и страна"
+      },
+      {
+        "date": "2026-11-17",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
@@ -15607,7 +15581,7 @@
         "title": "Переход через десяток"
       },
       {
-        "date": "2026-12-02",
+        "date": "2026-11-18",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
@@ -15615,7 +15589,7 @@
         "title": "Безударная гласная в корне"
       },
       {
-        "date": "2026-12-03",
+        "date": "2026-11-18",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
@@ -15623,22 +15597,7 @@
         "title": "Проверка сложения и вычитания"
       },
       {
-        "date": "2026-12-04",
-        "kind": "mama",
-        "title": "Чтение вслух",
-        "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
-      },
-      {
-        "date": "2026-12-05",
-        "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-03",
-        "title": "Задачи в одно действие",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2026-12-07",
+        "date": "2026-11-18",
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
@@ -15646,7 +15605,7 @@
         "title": "Вода и воздух"
       },
       {
-        "date": "2026-12-08",
+        "date": "2026-11-19",
         "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
@@ -15654,7 +15613,7 @@
         "title": "Заглавие текста"
       },
       {
-        "date": "2026-12-09",
+        "date": "2026-11-19",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
@@ -15662,7 +15621,7 @@
         "title": "Парные согласные"
       },
       {
-        "date": "2026-12-10",
+        "date": "2026-11-19",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
@@ -15670,30 +15629,31 @@
         "title": "Буквенные выражения"
       },
       {
-        "date": "2026-12-11",
-        "kind": "mama",
-        "title": "Досдача",
-        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
-      },
-      {
-        "date": "2026-12-12",
+        "date": "2026-11-20",
         "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-04",
-        "title": "Переход через десяток",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "lessonId": "math-03",
+        "title": "Задачи в одно действие",
+        "text": "Повтор темы этой недели: только короткая проверка."
       },
       {
-        "date": "2026-12-14",
-        "kind": "lesson",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "lessonId": "world-05",
-        "title": "Растения"
+        "date": "2026-11-20",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-syll",
+        "title": "Слог",
+        "text": "Повтор темы этой недели: только короткая проверка."
       },
       {
-        "date": "2026-12-15",
+        "date": "2026-11-20",
+        "kind": "mama",
+        "title": "Чтение вслух",
+        "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
+      },
+      {
+        "date": "2026-11-23",
         "kind": "lesson",
         "subjectId": "english",
         "subject": "Английский язык",
@@ -15701,7 +15661,15 @@
         "title": "Числа от 1 до 10"
       },
       {
-        "date": "2026-12-16",
+        "date": "2026-11-23",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-05",
+        "title": "Растения"
+      },
+      {
+        "date": "2026-11-23",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
@@ -15709,7 +15677,7 @@
         "title": "Уравнения"
       },
       {
-        "date": "2026-12-17",
+        "date": "2026-11-24",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
@@ -15717,22 +15685,7 @@
         "title": "Мягкий знак"
       },
       {
-        "date": "2026-12-18",
-        "kind": "mama",
-        "title": "Диктант с мамой",
-        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
-      },
-      {
-        "date": "2026-12-19",
-        "kind": "return",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "lessonId": "rus-02",
-        "title": "Безударная гласная в корне",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2026-12-21",
+        "date": "2026-11-24",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
@@ -15740,7 +15693,7 @@
         "title": "Сантиметр и дециметр"
       },
       {
-        "date": "2026-12-22",
+        "date": "2026-11-24",
         "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
@@ -15748,7 +15701,7 @@
         "title": "Вопрос к тексту"
       },
       {
-        "date": "2026-12-23",
+        "date": "2026-11-25",
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
@@ -15756,7 +15709,7 @@
         "title": "Дикорастущие и культурные растения"
       },
       {
-        "date": "2026-12-24",
+        "date": "2026-11-25",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
@@ -15764,22 +15717,7 @@
         "title": "Разделительный мягкий знак"
       },
       {
-        "date": "2026-12-25",
-        "kind": "mama",
-        "title": "Чтение вслух",
-        "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
-      },
-      {
-        "date": "2026-12-26",
-        "kind": "return",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "lessonId": "rus-03",
-        "title": "Парные согласные",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2026-12-28",
+        "date": "2026-11-25",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
@@ -15787,7 +15725,15 @@
         "title": "Метр и миллиметр"
       },
       {
-        "date": "2026-12-29",
+        "date": "2026-11-26",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-09",
+        "title": "Ломаная линия"
+      },
+      {
+        "date": "2026-11-26",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
@@ -15795,12 +15741,588 @@
         "title": "Буквы е, ё, ю, я"
       },
       {
+        "date": "2026-11-26",
+        "kind": "lesson",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-colors",
+        "title": "Цвета"
+      },
+      {
+        "date": "2026-11-27",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-07",
+        "title": "Уравнения",
+        "text": "Повтор темы этой недели: только короткая проверка."
+      },
+      {
+        "date": "2026-11-27",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-04",
+        "title": "Мягкий знак",
+        "text": "Повтор темы этой недели: только короткая проверка."
+      },
+      {
+        "date": "2026-11-27",
+        "kind": "mama",
+        "title": "Досдача",
+        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
+      },
+      {
+        "date": "2026-11-30",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-06",
+        "title": "Животные"
+      },
+      {
+        "date": "2026-11-30",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-10",
+        "title": "Сложение и вычитание в столбик"
+      },
+      {
+        "date": "2026-11-30",
+        "kind": "lesson",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-idea",
+        "title": "Тема и главная мысль"
+      },
+      {
+        "date": "2026-12-01",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-zhi",
+        "title": "Жи-ши"
+      },
+      {
+        "date": "2026-12-01",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-time",
+        "title": "Час и минута"
+      },
+      {
+        "date": "2026-12-01",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-animals2",
+        "title": "Земноводные и пресмыкающиеся"
+      },
+      {
+        "date": "2026-12-02",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-angle",
+        "title": "Прямой угол, прямоугольник и квадрат"
+      },
+      {
+        "date": "2026-12-02",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-cha",
+        "title": "Ча-ща"
+      },
+      {
+        "date": "2026-12-02",
+        "kind": "lesson",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-school",
+        "title": "Школьные вещи"
+      },
+      {
+        "date": "2026-12-03",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-07",
+        "title": "Зима"
+      },
+      {
+        "date": "2026-12-03",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-perim",
+        "title": "Периметр"
+      },
+      {
+        "date": "2026-12-03",
+        "kind": "lesson",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-plan",
+        "title": "План текста"
+      },
+      {
+        "date": "2026-12-04",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-10",
+        "title": "Сложение и вычитание в столбик",
+        "text": "Повтор темы этой недели: только короткая проверка."
+      },
+      {
+        "date": "2026-12-04",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-zhi",
+        "title": "Жи-ши",
+        "text": "Повтор темы этой недели: только короткая проверка."
+      },
+      {
+        "date": "2026-12-04",
+        "kind": "mama",
+        "title": "Диктант с мамой",
+        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
+      },
+      {
+        "date": "2026-12-07",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-chu",
+        "title": "Чу-щу"
+      },
+      {
+        "date": "2026-12-07",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-11",
+        "title": "Смысл умножения"
+      },
+      {
+        "date": "2026-12-07",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-08",
+        "title": "Режим дня"
+      },
+      {
+        "date": "2026-12-08",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-div",
+        "title": "Смысл деления"
+      },
+      {
+        "date": "2026-12-08",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-chk",
+        "title": "Сочетания чк, чн, щн"
+      },
+      {
+        "date": "2026-12-08",
+        "kind": "lesson",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-retell",
+        "title": "Пересказ"
+      },
+      {
+        "date": "2026-12-09",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-link",
+        "title": "Связь умножения и деления"
+      },
+      {
+        "date": "2026-12-09",
+        "kind": "lesson",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-this",
+        "title": "This is"
+      },
+      {
+        "date": "2026-12-09",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-safe",
+        "title": "Безопасность"
+      },
+      {
+        "date": "2026-12-10",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-06",
+        "title": "Имена собственные"
+      },
+      {
+        "date": "2026-12-10",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x2",
+        "title": "Умножение на 2"
+      },
+      {
+        "date": "2026-12-10",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-red",
+        "title": "Красная книга"
+      },
+      {
+        "date": "2026-12-11",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-11",
+        "title": "Смысл умножения",
+        "text": "Повтор темы этой недели: только короткая проверка."
+      },
+      {
+        "date": "2026-12-11",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-chu",
+        "title": "Чу-щу",
+        "text": "Повтор темы этой недели: только короткая проверка."
+      },
+      {
+        "date": "2026-12-11",
+        "kind": "mama",
+        "title": "Чтение вслух",
+        "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
+      },
+      {
+        "date": "2026-12-14",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x3",
+        "title": "Умножение на 3"
+      },
+      {
+        "date": "2026-12-14",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-prep",
+        "title": "Предлог"
+      },
+      {
+        "date": "2026-12-14",
+        "kind": "lesson",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-05",
+        "title": "Настроение произведения"
+      },
+      {
+        "date": "2026-12-15",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x4",
+        "title": "Умножение на 4"
+      },
+      {
+        "date": "2026-12-15",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-dict",
+        "title": "Словарные слова"
+      },
+      {
+        "date": "2026-12-15",
+        "kind": "lesson",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-family",
+        "title": "Семья"
+      },
+      {
+        "date": "2026-12-16",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-map",
+        "title": "Глобус, карта и стороны горизонта"
+      },
+      {
+        "date": "2026-12-16",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x5",
+        "title": "Умножение на 5"
+      },
+      {
+        "date": "2026-12-16",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-07",
+        "title": "Корень слова"
+      },
+      {
+        "date": "2026-12-17",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x6",
+        "title": "Умножение на 6"
+      },
+      {
+        "date": "2026-12-17",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-space",
+        "title": "Солнце, Земля и планеты"
+      },
+      {
+        "date": "2026-12-17",
+        "kind": "lesson",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-06",
+        "title": "Сказка и рассказ"
+      },
+      {
+        "date": "2026-12-18",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x3",
+        "title": "Умножение на 3",
+        "text": "Повтор темы этой недели: только короткая проверка."
+      },
+      {
+        "date": "2026-12-18",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-prep",
+        "title": "Предлог",
+        "text": "Повтор темы этой недели: только короткая проверка."
+      },
+      {
+        "date": "2026-12-18",
+        "kind": "mama",
+        "title": "Досдача",
+        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
+      },
+      {
+        "date": "2026-12-21",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x7",
+        "title": "Умножение на 7"
+      },
+      {
+        "date": "2026-12-21",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-08",
+        "title": "Имя существительное"
+      },
+      {
+        "date": "2026-12-21",
+        "kind": "lesson",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-have",
+        "title": "I've got"
+      },
+      {
+        "date": "2026-12-22",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x8",
+        "title": "Умножение на 8"
+      },
+      {
+        "date": "2026-12-22",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-rus",
+        "title": "Символы России"
+      },
+      {
+        "date": "2026-12-22",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-09",
+        "title": "Число существительных"
+      },
+      {
+        "date": "2026-12-23",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x9",
+        "title": "Умножение на 9"
+      },
+      {
+        "date": "2026-12-23",
+        "kind": "lesson",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-poem",
+        "title": "Стихотворение"
+      },
+      {
+        "date": "2026-12-23",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-sakha",
+        "title": "Республика Саха и Якутск"
+      },
+      {
+        "date": "2026-12-24",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-12",
+        "title": "Повторение: сложение и вычитание"
+      },
+      {
+        "date": "2026-12-24",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-10",
+        "title": "Глагол"
+      },
+      {
+        "date": "2026-12-24",
+        "kind": "lesson",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-animals",
+        "title": "Животные"
+      },
+      {
+        "date": "2026-12-25",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x7",
+        "title": "Умножение на 7",
+        "text": "Повтор темы этой недели: только короткая проверка."
+      },
+      {
+        "date": "2026-12-25",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-08",
+        "title": "Имя существительное",
+        "text": "Повтор темы этой недели: только короткая проверка."
+      },
+      {
+        "date": "2026-12-25",
+        "kind": "mama",
+        "title": "Диктант с мамой",
+        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
+      },
+      {
+        "date": "2026-12-28",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-13",
+        "title": "Повторение: задачи и умножение"
+      },
+      {
+        "date": "2026-12-28",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-spring",
+        "title": "Весна"
+      },
+      {
+        "date": "2026-12-28",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-11",
+        "title": "Имя прилагательное"
+      },
+      {
+        "date": "2026-12-29",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-two",
+        "title": "Задачи в два действия"
+      },
+      {
+        "date": "2026-12-29",
+        "kind": "lesson",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-fable",
+        "title": "Басня"
+      },
+      {
+        "date": "2026-12-29",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-summer",
+        "title": "Лето"
+      },
+      {
         "date": "2026-12-30",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-09",
-        "title": "Ломаная линия"
+        "lessonId": "math-f-order",
+        "title": "Порядок действий"
+      },
+      {
+        "date": "2026-12-30",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-text",
+        "title": "Тема текста и ошибка"
+      },
+      {
+        "date": "2026-12-30",
+        "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-exam",
+        "title": "Повтор математики"
       },
       {
         "date": "2026-12-31",
@@ -15847,292 +16369,808 @@
       {
         "date": "2027-01-11",
         "kind": "lesson",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "lessonId": "world-06",
-        "title": "Животные"
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-10",
+        "title": "Умножение и деление на 10"
+      },
+      {
+        "date": "2027-01-11",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-01",
+        "title": "Десятки. Счёт до 100",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-11",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-01",
+        "title": "Предложение",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
         "date": "2027-01-12",
-        "kind": "lesson",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-01",
+        "title": "Герой произведения",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-12",
+        "kind": "return",
         "subjectId": "english",
         "subject": "Английский язык",
-        "lessonId": "en-colors",
-        "title": "Цвета"
+        "lessonId": "en-hello",
+        "title": "Hello и Goodbye",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-12",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-01",
+        "title": "Живая и неживая природа",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
         "date": "2027-01-13",
         "kind": "lesson",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-parts",
+        "title": "Части слова"
+      },
+      {
+        "date": "2027-01-13",
+        "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-10",
-        "title": "Сложение и вычитание в столбик"
+        "lessonId": "math-f-compare",
+        "title": "Сравнение чисел",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-13",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-sent",
+        "title": "Виды предложений",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
         "date": "2027-01-14",
-        "kind": "lesson",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-02",
+        "title": "Осень",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-14",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-02",
+        "title": "Сложение и вычитание в пределах 100",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-14",
+        "kind": "return",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "lessonId": "lit-f-idea",
-        "title": "Тема и главная мысль"
+        "lessonId": "lit-02",
+        "title": "Порядок событий",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
         "date": "2027-01-15",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-syll",
+        "title": "Слог",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-15",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-03",
+        "title": "Задачи в одно действие",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-15",
+        "kind": "mama",
+        "title": "Чтение вслух",
+        "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
+      },
+      {
+        "date": "2027-01-18",
+        "kind": "lesson",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-hundreds",
+        "title": "Сотни. Числа до 1000"
+      },
+      {
+        "date": "2027-01-18",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-name",
+        "title": "Как тебя зовут",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-18",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-03",
+        "title": "Город и страна",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-19",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-04",
+        "title": "Переход через десяток",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-19",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-02",
+        "title": "Безударная гласная в корне",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-19",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-05",
+        "title": "Проверка сложения и вычитания",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-20",
+        "kind": "lesson",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-prefix",
+        "title": "Приставка и предлог"
+      },
+      {
+        "date": "2027-01-20",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-04",
+        "title": "Вода и воздух",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-20",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-03",
+        "title": "Заглавие текста",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-21",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-03",
+        "title": "Парные согласные",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-21",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-06",
+        "title": "Буквенные выражения",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-21",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-numbers",
+        "title": "Числа от 1 до 10",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-22",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-05",
+        "title": "Растения",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-22",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-07",
+        "title": "Уравнения",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-22",
         "kind": "mama",
         "title": "Досдача",
         "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
       },
       {
-        "date": "2027-01-16",
+        "date": "2027-01-25",
+        "kind": "lesson",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-round",
+        "title": "Сложение и вычитание сотен"
+      },
+      {
+        "date": "2027-01-25",
         "kind": "return",
         "subjectId": "russian",
         "subject": "Русский язык",
         "lessonId": "rus-04",
         "title": "Мягкий знак",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
-        "date": "2027-01-18",
-        "kind": "lesson",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "lessonId": "rus-f-zhi",
-        "title": "Жи-ши"
-      },
-      {
-        "date": "2027-01-19",
-        "kind": "lesson",
+        "date": "2027-01-25",
+        "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-f-time",
-        "title": "Час и минута"
+        "lessonId": "math-08",
+        "title": "Сантиметр и дециметр",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
-        "date": "2027-01-20",
-        "kind": "lesson",
+        "date": "2027-01-26",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-04",
+        "title": "Вопрос к тексту",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-26",
+        "kind": "return",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "lessonId": "world-f-animals2",
-        "title": "Земноводные и пресмыкающиеся"
+        "lessonId": "world-f-plants2",
+        "title": "Дикорастущие и культурные растения",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
-        "date": "2027-01-21",
+        "date": "2027-01-26",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-05",
+        "title": "Разделительный мягкий знак",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-27",
         "kind": "lesson",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-gender",
+        "title": "Род имён существительных"
+      },
+      {
+        "date": "2027-01-27",
+        "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-f-angle",
-        "title": "Прямой угол, прямоугольник и квадрат"
+        "lessonId": "math-f-length",
+        "title": "Метр и миллиметр",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
-        "date": "2027-01-22",
-        "kind": "mama",
-        "title": "Диктант с мамой",
-        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
+        "date": "2027-01-27",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-09",
+        "title": "Ломаная линия",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
-        "date": "2027-01-23",
+        "date": "2027-01-28",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-letters",
+        "title": "Буквы е, ё, ю, я",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-28",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-colors",
+        "title": "Цвета",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-28",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-06",
+        "title": "Животные",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-01-29",
         "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
         "lessonId": "math-10",
         "title": "Сложение и вычитание в столбик",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2027-01-25",
-        "kind": "lesson",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "lessonId": "rus-f-cha",
-        "title": "Ча-ща"
-      },
-      {
-        "date": "2027-01-26",
-        "kind": "lesson",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "lessonId": "world-07",
-        "title": "Зима"
-      },
-      {
-        "date": "2027-01-27",
-        "kind": "lesson",
-        "subjectId": "english",
-        "subject": "Английский язык",
-        "lessonId": "en-school",
-        "title": "Школьные вещи"
-      },
-      {
-        "date": "2027-01-28",
-        "kind": "lesson",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-perim",
-        "title": "Периметр"
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
         "date": "2027-01-29",
-        "kind": "mama",
-        "title": "Чтение вслух",
-        "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
-      },
-      {
-        "date": "2027-01-30",
         "kind": "return",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "lessonId": "rus-f-zhi",
-        "title": "Жи-ши",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2027-02-01",
-        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "lessonId": "lit-f-plan",
-        "title": "План текста"
+        "lessonId": "lit-f-idea",
+        "title": "Тема и главная мысль",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
-        "date": "2027-02-02",
-        "kind": "lesson",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "lessonId": "rus-f-chu",
-        "title": "Чу-щу"
-      },
-      {
-        "date": "2027-02-03",
-        "kind": "lesson",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-11",
-        "title": "Смысл умножения"
-      },
-      {
-        "date": "2027-02-04",
-        "kind": "lesson",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "lessonId": "world-08",
-        "title": "Режим дня"
-      },
-      {
-        "date": "2027-02-05",
-        "kind": "mama",
-        "title": "Досдача",
-        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
-      },
-      {
-        "date": "2027-02-06",
-        "kind": "return",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "lessonId": "rus-f-cha",
-        "title": "Ча-ща",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2027-02-08",
-        "kind": "lesson",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-div",
-        "title": "Смысл деления"
-      },
-      {
-        "date": "2027-02-09",
-        "kind": "lesson",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "lessonId": "rus-f-chk",
-        "title": "Сочетания чк, чн, щн"
-      },
-      {
-        "date": "2027-02-10",
-        "kind": "lesson",
-        "subjectId": "reading",
-        "subject": "Литературное чтение",
-        "lessonId": "lit-f-retell",
-        "title": "Пересказ"
-      },
-      {
-        "date": "2027-02-11",
-        "kind": "lesson",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-link",
-        "title": "Связь умножения и деления"
-      },
-      {
-        "date": "2027-02-12",
+        "date": "2027-01-29",
         "kind": "mama",
         "title": "Диктант с мамой",
         "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
       },
       {
-        "date": "2027-02-13",
+        "date": "2027-02-01",
+        "kind": "lesson",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-rem",
+        "title": "Деление с остатком"
+      },
+      {
+        "date": "2027-02-01",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-zhi",
+        "title": "Жи-ши",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-01",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-time",
+        "title": "Час и минута",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-02",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-animals2",
+        "title": "Земноводные и пресмыкающиеся",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-02",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-angle",
+        "title": "Прямой угол, прямоугольник и квадрат",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-02",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-cha",
+        "title": "Ча-ща",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-03",
+        "kind": "lesson",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-silent",
+        "title": "Непроизносимые согласные"
+      },
+      {
+        "date": "2027-02-03",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-school",
+        "title": "Школьные вещи",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-03",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-07",
+        "title": "Зима",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-04",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-perim",
+        "title": "Периметр",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-04",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-plan",
+        "title": "План текста",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-04",
         "kind": "return",
         "subjectId": "russian",
         "subject": "Русский язык",
         "lessonId": "rus-f-chu",
         "title": "Чу-щу",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
-        "date": "2027-02-15",
-        "kind": "lesson",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "lessonId": "world-f-safe",
-        "title": "Безопасность"
-      },
-      {
-        "date": "2027-02-16",
-        "kind": "lesson",
-        "subjectId": "english",
-        "subject": "Английский язык",
-        "lessonId": "en-this",
-        "title": "This is"
-      },
-      {
-        "date": "2027-02-17",
-        "kind": "lesson",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "lessonId": "rus-06",
-        "title": "Имена собственные"
-      },
-      {
-        "date": "2027-02-18",
-        "kind": "lesson",
+        "date": "2027-02-05",
+        "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-f-x2",
-        "title": "Умножение на 2"
+        "lessonId": "math-11",
+        "title": "Смысл умножения",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
-        "date": "2027-02-19",
+        "date": "2027-02-05",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-08",
+        "title": "Режим дня",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-05",
         "kind": "mama",
         "title": "Чтение вслух",
         "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
       },
       {
-        "date": "2027-02-20",
+        "date": "2027-02-08",
+        "kind": "lesson",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-area",
+        "title": "Площадь прямоугольника"
+      },
+      {
+        "date": "2027-02-08",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-div",
+        "title": "Смысл деления",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-08",
         "kind": "return",
         "subjectId": "russian",
         "subject": "Русский язык",
         "lessonId": "rus-f-chk",
         "title": "Сочетания чк, чн, щн",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-09",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-retell",
+        "title": "Пересказ",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-09",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-link",
+        "title": "Связь умножения и деления",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-09",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-this",
+        "title": "This is",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-10",
+        "kind": "lesson",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-tense",
+        "title": "Время глагола"
+      },
+      {
+        "date": "2027-02-10",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-safe",
+        "title": "Безопасность",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-10",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-06",
+        "title": "Имена собственные",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-11",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x2",
+        "title": "Умножение на 2",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-11",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-red",
+        "title": "Красная книга",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-11",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x3",
+        "title": "Умножение на 3",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-12",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-prep",
+        "title": "Предлог",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-12",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-05",
+        "title": "Настроение произведения",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-12",
+        "kind": "mama",
+        "title": "Досдача",
+        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
+      },
+      {
+        "date": "2027-02-15",
+        "kind": "lesson",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-big",
+        "title": "Умножение двузначного числа"
+      },
+      {
+        "date": "2027-02-15",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x4",
+        "title": "Умножение на 4",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-15",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-dict",
+        "title": "Словарные слова",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-16",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-family",
+        "title": "Семья",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-16",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-map",
+        "title": "Глобус, карта и стороны горизонта",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-16",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x5",
+        "title": "Умножение на 5",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-17",
+        "kind": "lesson",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-base",
+        "title": "Подлежащее и сказуемое"
+      },
+      {
+        "date": "2027-02-17",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-07",
+        "title": "Корень слова",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-17",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x6",
+        "title": "Умножение на 6",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-18",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-space",
+        "title": "Солнце, Земля и планеты",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-18",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-06",
+        "title": "Сказка и рассказ",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-18",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x7",
+        "title": "Умножение на 7",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-19",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-08",
+        "title": "Имя существительное",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-19",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-have",
+        "title": "I've got",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-19",
+        "kind": "mama",
+        "title": "Диктант с мамой",
+        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
       },
       {
         "date": "2027-02-22",
         "kind": "lesson",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-two",
+        "title": "Задачи в два действия с умножением"
+      },
+      {
+        "date": "2027-02-22",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x8",
+        "title": "Умножение на 8",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-22",
+        "kind": "return",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "lessonId": "world-f-red",
-        "title": "Красная книга"
+        "lessonId": "world-f-rus",
+        "title": "Символы России",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
         "date": "2027-02-23",
@@ -16142,81 +17180,213 @@
       },
       {
         "date": "2027-02-24",
-        "kind": "lesson",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-09",
+        "title": "Число существительных",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-24",
+        "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-f-x3",
-        "title": "Умножение на 3"
+        "lessonId": "math-f-x9",
+        "title": "Умножение на 9",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-24",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-poem",
+        "title": "Стихотворение",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
         "date": "2027-02-25",
-        "kind": "lesson",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-sakha",
+        "title": "Республика Саха и Якутск",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-25",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-12",
+        "title": "Повторение: сложение и вычитание",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-25",
+        "kind": "return",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "lessonId": "rus-f-prep",
-        "title": "Предлог"
+        "lessonId": "rus-10",
+        "title": "Глагол",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-26",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-animals",
+        "title": "Животные",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-02-26",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-13",
+        "title": "Повторение: задачи и умножение",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
         "date": "2027-02-26",
         "kind": "mama",
-        "title": "Досдача",
-        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
-      },
-      {
-        "date": "2027-02-27",
-        "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-x2",
-        "title": "Умножение на 2",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "title": "Чтение вслух",
+        "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
       },
       {
         "date": "2027-03-01",
-        "kind": "lesson",
-        "subjectId": "reading",
-        "subject": "Литературное чтение",
-        "lessonId": "lit-05",
-        "title": "Настроение произведения"
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-spring",
+        "title": "Весна",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-03-01",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-11",
+        "title": "Имя прилагательное",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-03-01",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-two",
+        "title": "Задачи в два действия",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
         "date": "2027-03-02",
-        "kind": "lesson",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-fable",
+        "title": "Басня",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-03-02",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-summer",
+        "title": "Лето",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-03-02",
+        "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-f-x4",
-        "title": "Умножение на 4"
+        "lessonId": "math-f-order",
+        "title": "Порядок действий",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
       },
       {
         "date": "2027-03-03",
-        "kind": "lesson",
+        "kind": "return",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "lessonId": "rus-f-dict",
-        "title": "Словарные слова"
+        "lessonId": "rus-f-text",
+        "title": "Тема текста и ошибка",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-03-03",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-exam",
+        "title": "Повтор математики",
+        "text": "Второй круг: короткая проверка темы. Если трудно — урок можно пройти заново."
+      },
+      {
+        "date": "2027-03-03",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-01",
+        "title": "Десятки. Счёт до 100",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-03-04",
-        "kind": "lesson",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "lessonId": "world-f-map",
-        "title": "Глобус, карта и стороны горизонта"
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-01",
+        "title": "Предложение",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-04",
+        "kind": "return",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-10",
+        "title": "Умножение и деление на 10",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-04",
+        "kind": "return",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-parts",
+        "title": "Части слова",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-05",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-01",
+        "title": "Герой произведения",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-05",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-hello",
+        "title": "Hello и Goodbye",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-03-05",
         "kind": "mama",
-        "title": "Диктант с мамой",
-        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
-      },
-      {
-        "date": "2027-03-06",
-        "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-x3",
-        "title": "Умножение на 3",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "title": "Досдача",
+        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
       },
       {
         "date": "2027-03-08",
@@ -16226,127 +17396,372 @@
       },
       {
         "date": "2027-03-09",
-        "kind": "lesson",
-        "subjectId": "english",
-        "subject": "Английский язык",
-        "lessonId": "en-family",
-        "title": "Семья"
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-01",
+        "title": "Живая и неживая природа",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-09",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-compare",
+        "title": "Сравнение чисел",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-09",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-sent",
+        "title": "Виды предложений",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-03-10",
-        "kind": "lesson",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-02",
+        "title": "Осень",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-10",
+        "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-f-x5",
-        "title": "Умножение на 5"
+        "lessonId": "math-02",
+        "title": "Сложение и вычитание в пределах 100",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-10",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-02",
+        "title": "Порядок событий",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-03-11",
-        "kind": "lesson",
+        "kind": "return",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "lessonId": "rus-07",
-        "title": "Корень слова"
+        "lessonId": "rus-f-syll",
+        "title": "Слог",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-11",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-03",
+        "title": "Задачи в одно действие",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-11",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-name",
+        "title": "Как тебя зовут",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-03-12",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-03",
+        "title": "Город и страна",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-12",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-04",
+        "title": "Переход через десяток",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-12",
+        "kind": "mama",
+        "title": "Диктант с мамой",
+        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
+      },
+      {
+        "date": "2027-03-15",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-02",
+        "title": "Безударная гласная в корне",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-15",
+        "kind": "return",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-hundreds",
+        "title": "Сотни. Числа до 1000",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-15",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-05",
+        "title": "Проверка сложения и вычитания",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-16",
+        "kind": "return",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-prefix",
+        "title": "Приставка и предлог",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-16",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-04",
+        "title": "Вода и воздух",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-16",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-03",
+        "title": "Заглавие текста",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-17",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-03",
+        "title": "Парные согласные",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-17",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-06",
+        "title": "Буквенные выражения",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-17",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-numbers",
+        "title": "Числа от 1 до 10",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-18",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-05",
+        "title": "Растения",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-18",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-07",
+        "title": "Уравнения",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-18",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-04",
+        "title": "Мягкий знак",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-19",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-04",
+        "title": "Вопрос к тексту",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-19",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-08",
+        "title": "Сантиметр и дециметр",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-19",
         "kind": "mama",
         "title": "Чтение вслух",
         "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
       },
       {
-        "date": "2027-03-13",
+        "date": "2027-03-22",
         "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-x4",
-        "title": "Умножение на 4",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2027-03-15",
-        "kind": "lesson",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-x6",
-        "title": "Умножение на 6"
-      },
-      {
-        "date": "2027-03-16",
-        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "lessonId": "world-f-space",
-        "title": "Солнце, Земля и планеты"
-      },
-      {
-        "date": "2027-03-17",
-        "kind": "lesson",
-        "subjectId": "reading",
-        "subject": "Литературное чтение",
-        "lessonId": "lit-06",
-        "title": "Сказка и рассказ"
-      },
-      {
-        "date": "2027-03-18",
-        "kind": "lesson",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-x7",
-        "title": "Умножение на 7"
-      },
-      {
-        "date": "2027-03-19",
-        "kind": "mama",
-        "title": "Досдача",
-        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
-      },
-      {
-        "date": "2027-03-20",
-        "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-x5",
-        "title": "Умножение на 5",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "lessonId": "world-f-plants2",
+        "title": "Дикорастущие и культурные растения",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-03-22",
-        "kind": "lesson",
+        "kind": "return",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "lessonId": "rus-08",
-        "title": "Имя существительное"
+        "lessonId": "rus-05",
+        "title": "Разделительный мягкий знак",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-22",
+        "kind": "return",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-round",
+        "title": "Сложение и вычитание сотен",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-03-23",
-        "kind": "lesson",
+        "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-f-x8",
-        "title": "Умножение на 8"
+        "lessonId": "math-f-length",
+        "title": "Метр и миллиметр",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-23",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-letters",
+        "title": "Буквы е, ё, ю, я",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-23",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-09",
+        "title": "Ломаная линия",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-03-24",
-        "kind": "lesson",
+        "kind": "return",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-gender",
+        "title": "Род имён существительных",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-24",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-colors",
+        "title": "Цвета",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-24",
+        "kind": "return",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "lessonId": "world-f-rus",
-        "title": "Символы России"
+        "lessonId": "world-06",
+        "title": "Животные",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-03-25",
-        "kind": "lesson",
-        "subjectId": "english",
-        "subject": "Английский язык",
-        "lessonId": "en-have",
-        "title": "I've got"
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-10",
+        "title": "Сложение и вычитание в столбик",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-25",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-idea",
+        "title": "Тема и главная мысль",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-25",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-zhi",
+        "title": "Жи-ши",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-26",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-time",
+        "title": "Час и минута",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-03-26",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-animals2",
+        "title": "Земноводные и пресмыкающиеся",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-03-26",
         "kind": "mama",
-        "title": "Диктант с мамой",
-        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
+        "title": "Досдача",
+        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
       },
       {
         "date": "2027-03-29",
@@ -16380,242 +17795,555 @@
       },
       {
         "date": "2027-04-05",
-        "kind": "lesson",
+        "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-f-x9",
-        "title": "Умножение на 9"
+        "lessonId": "math-f-angle",
+        "title": "Прямой угол, прямоугольник и квадрат",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-05",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-cha",
+        "title": "Ча-ща",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-05",
+        "kind": "return",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-rem",
+        "title": "Деление с остатком",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-04-06",
-        "kind": "lesson",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "lessonId": "rus-09",
-        "title": "Число существительных"
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-school",
+        "title": "Школьные вещи",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-06",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-07",
+        "title": "Зима",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-06",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-perim",
+        "title": "Периметр",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-04-07",
-        "kind": "lesson",
+        "kind": "return",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "lessonId": "lit-f-poem",
-        "title": "Стихотворение"
+        "lessonId": "lit-f-plan",
+        "title": "План текста",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-07",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-chu",
+        "title": "Чу-щу",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-07",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-11",
+        "title": "Смысл умножения",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-04-08",
-        "kind": "lesson",
+        "kind": "return",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-silent",
+        "title": "Непроизносимые согласные",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-08",
+        "kind": "return",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "lessonId": "world-f-sakha",
-        "title": "Республика Саха и Якутск"
+        "lessonId": "world-08",
+        "title": "Режим дня",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-08",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-div",
+        "title": "Смысл деления",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-04-09",
-        "kind": "mama",
-        "title": "Чтение вслух",
-        "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
-      },
-      {
-        "date": "2027-04-10",
         "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-x6",
-        "title": "Умножение на 6",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2027-04-12",
-        "kind": "lesson",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-12",
-        "title": "Повторение: сложение и вычитание"
-      },
-      {
-        "date": "2027-04-13",
-        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "lessonId": "rus-10",
-        "title": "Глагол"
+        "lessonId": "rus-f-chk",
+        "title": "Сочетания чк, чн, щн",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
-        "date": "2027-04-14",
-        "kind": "lesson",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-13",
-        "title": "Повторение: задачи и умножение"
-      },
-      {
-        "date": "2027-04-15",
-        "kind": "lesson",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "lessonId": "world-f-spring",
-        "title": "Весна"
-      },
-      {
-        "date": "2027-04-16",
-        "kind": "mama",
-        "title": "Досдача",
-        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
-      },
-      {
-        "date": "2027-04-17",
+        "date": "2027-04-09",
         "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-x7",
-        "title": "Умножение на 7",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2027-04-19",
-        "kind": "lesson",
-        "subjectId": "english",
-        "subject": "Английский язык",
-        "lessonId": "en-animals",
-        "title": "Животные"
-      },
-      {
-        "date": "2027-04-20",
-        "kind": "lesson",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-two",
-        "title": "Задачи в два действия"
-      },
-      {
-        "date": "2027-04-21",
-        "kind": "lesson",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "lessonId": "rus-11",
-        "title": "Имя прилагательное"
-      },
-      {
-        "date": "2027-04-22",
-        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "lessonId": "lit-f-fable",
-        "title": "Басня"
+        "lessonId": "lit-f-retell",
+        "title": "Пересказ",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
-        "date": "2027-04-23",
+        "date": "2027-04-09",
         "kind": "mama",
         "title": "Диктант с мамой",
         "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
       },
       {
-        "date": "2027-04-24",
+        "date": "2027-04-12",
         "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-f-x8",
-        "title": "Умножение на 8",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "lessonId": "math-f-link",
+        "title": "Связь умножения и деления",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
-        "date": "2027-04-26",
-        "kind": "lesson",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-order",
-        "title": "Порядок действий"
+        "date": "2027-04-12",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-this",
+        "title": "This is",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
-        "date": "2027-04-27",
-        "kind": "lesson",
+        "date": "2027-04-12",
+        "kind": "return",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "lessonId": "world-f-summer",
-        "title": "Лето"
+        "lessonId": "world-f-safe",
+        "title": "Безопасность",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
-        "date": "2027-04-28",
-        "kind": "lesson",
+        "date": "2027-04-13",
+        "kind": "return",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "lessonId": "rus-f-text",
-        "title": "Тема текста и ошибка"
+        "lessonId": "rus-06",
+        "title": "Имена собственные",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
-        "date": "2027-04-29",
-        "kind": "lesson",
+        "date": "2027-04-13",
+        "kind": "return",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-area",
+        "title": "Площадь прямоугольника",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-13",
+        "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-f-exam",
-        "title": "Повтор математики"
+        "lessonId": "math-f-x2",
+        "title": "Умножение на 2",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
-        "date": "2027-04-30",
+        "date": "2027-04-14",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-red",
+        "title": "Красная книга",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-14",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x3",
+        "title": "Умножение на 3",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-14",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-prep",
+        "title": "Предлог",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-15",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-05",
+        "title": "Настроение произведения",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-15",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x4",
+        "title": "Умножение на 4",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-15",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-f-dict",
+        "title": "Словарные слова",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-16",
+        "kind": "return",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-tense",
+        "title": "Время глагола",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-16",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-family",
+        "title": "Семья",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-16",
         "kind": "mama",
         "title": "Чтение вслух",
         "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
       },
       {
-        "date": "2027-05-01",
+        "date": "2027-04-19",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-map",
+        "title": "Глобус, карта и стороны горизонта",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-19",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x5",
+        "title": "Умножение на 5",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-19",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x6",
+        "title": "Умножение на 6",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-20",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-07",
+        "title": "Корень слова",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-20",
+        "kind": "return",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-big",
+        "title": "Умножение двузначного числа",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-20",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-space",
+        "title": "Солнце, Земля и планеты",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-21",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-06",
+        "title": "Сказка и рассказ",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-21",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x7",
+        "title": "Умножение на 7",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-21",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-08",
+        "title": "Имя существительное",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-22",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-x8",
+        "title": "Умножение на 8",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-22",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-have",
+        "title": "I've got",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-22",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-rus",
+        "title": "Символы России",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-23",
         "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
         "lessonId": "math-f-x9",
         "title": "Умножение на 9",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-23",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-09",
+        "title": "Число существительных",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-23",
+        "kind": "mama",
+        "title": "Досдача",
+        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
+      },
+      {
+        "date": "2027-04-26",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-poem",
+        "title": "Стихотворение",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-26",
+        "kind": "return",
+        "subjectId": "rus3",
+        "subject": "Русский язык. 3 класс",
+        "lessonId": "r3-base",
+        "title": "Подлежащее и сказуемое",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-26",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-sakha",
+        "title": "Республика Саха и Якутск",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-27",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-12",
+        "title": "Повторение: сложение и вычитание",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-27",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-10",
+        "title": "Глагол",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-27",
+        "kind": "return",
+        "subjectId": "math3",
+        "subject": "Математика. 3 класс",
+        "lessonId": "m3-two",
+        "title": "Задачи в два действия с умножением",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-28",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-13",
+        "title": "Повторение: задачи и умножение",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-28",
+        "kind": "return",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "lessonId": "en-animals",
+        "title": "Животные",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-28",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-spring",
+        "title": "Весна",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-29",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-two",
+        "title": "Задачи в два действия",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-29",
+        "kind": "return",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-11",
+        "title": "Имя прилагательное",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-29",
+        "kind": "return",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-f-fable",
+        "title": "Басня",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-30",
+        "kind": "return",
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-f-order",
+        "title": "Порядок действий",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-30",
+        "kind": "return",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-f-summer",
+        "title": "Лето",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
+      },
+      {
+        "date": "2027-04-30",
+        "kind": "mama",
+        "title": "Диктант с мамой",
+        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
       },
       {
         "date": "2027-05-03",
         "kind": "return",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "lessonId": "rus-f-dict",
-        "title": "Словарные слова",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "lessonId": "rus-f-text",
+        "title": "Тема текста и ошибка",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
-        "date": "2027-05-04",
+        "date": "2027-05-03",
         "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-f-div",
-        "title": "Смысл деления",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2027-05-05",
-        "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-link",
-        "title": "Связь умножения и деления",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2027-05-06",
-        "kind": "return",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "lessonId": "world-01",
-        "title": "Живая и неживая природа",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "lessonId": "math-f-exam",
+        "title": "Повтор математики",
+        "text": "Третий круг перед годовой контрольной: короткая проверка темы."
       },
       {
         "date": "2027-05-07",
         "kind": "mama",
-        "title": "Досдача",
-        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
-      },
-      {
-        "date": "2027-05-08",
-        "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-two",
-        "title": "Задачи в два действия",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "title": "Чтение вслух",
+        "text": "5 минут вслух. Мама не перебивает. В конце дочка говорит: кто герой и что случилось."
       },
       {
         "date": "2027-05-10",
@@ -16624,46 +18352,10 @@
         "text": "Занятий нет."
       },
       {
-        "date": "2027-05-11",
-        "kind": "return",
-        "subjectId": "reading",
-        "subject": "Литературное чтение",
-        "lessonId": "lit-01",
-        "title": "Герой произведения",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2027-05-12",
-        "kind": "return",
-        "subjectId": "english",
-        "subject": "Английский язык",
-        "lessonId": "en-hello",
-        "title": "Hello и Goodbye",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
-        "date": "2027-05-13",
-        "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-compare",
-        "title": "Сравнение чисел",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
-      },
-      {
         "date": "2027-05-14",
         "kind": "mama",
-        "title": "Диктант с мамой",
-        "text": "Мама диктует 4–5 коротких предложений. Дочка пишет сама. Потом вместе проверяют заглавную букву, точку и предлоги."
-      },
-      {
-        "date": "2027-05-15",
-        "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-f-order",
-        "title": "Порядок действий",
-        "text": "Короткий повтор, около 20 минут. Та же тема с начала. Если в прошлый раз было ниже 80%, новую тему не начинаем."
+        "title": "Досдача",
+        "text": "Если какой-то урок ещё ниже 80%, сегодня снова он. Новую тему не начинаем. Если все сданы — ещё 5 минут чтения вслух."
       }
     ]
   }

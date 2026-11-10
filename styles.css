@@ -44,7 +44,7 @@
   --space: 12px;
   --space-lg: 24px;
   --control: 48px;
-  --font: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --font: "Nunito", ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Segoe UI", system-ui, sans-serif;
   --text: 20px;
   --leading: 1.5;
   --focus: 3px solid var(--sea);
@@ -182,6 +182,7 @@ video, iframe { width: 100%; border-radius: var(--radius-sm); max-height: 420px;
 .option.correct { background: var(--rice-soft); border-color: var(--rice-line); }
 .option.wrong { background: var(--wrong-bg); border-color: var(--wrong-line); }
 #journey-path svg { width: 100%; max-width: 420px; height: auto; display: block; }
+#journey-path .city.current .flag-mark { display: block; }
 .stamps { display: flex; flex-wrap: wrap; gap: var(--space); }
 .stamp {
   width: 132px;
@@ -813,4 +814,296 @@ body.plan-page .plan-row.is-done .plan-mark { color: var(--desk-green); }
 @media (max-width: 640px) {
   body.plan-page .plan-date { min-width: 0; }
   #scout-body .scout-question { padding: 24px 16px; }
+}
+
+/* ===== Понятная подача: этапы урока, одна мысль на строку, один вопрос за раз ===== */
+.today-what { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+.today-what span { display: block; font-size: 0.9rem; font-weight: 400; color: var(--ink-soft); }
+#journey { margin-top: var(--space-lg); }
+
+.stage-strip {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.stage-strip li {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+.stage-num {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--paper-deep);
+  font-weight: 700;
+}
+.stage-strip li.is-done { background: var(--rice-soft); border-color: var(--rice-line); color: var(--rice); }
+.stage-strip li.is-done .stage-num { background: var(--rice); color: #fff; }
+.stage-strip li.is-now { background: var(--lotus-soft); border-color: var(--lotus); color: var(--lotus-deep); font-weight: 700; }
+.stage-strip li.is-now .stage-num { background: var(--lotus); color: #fff; }
+
+#teach-body .line { font-size: 1.45rem; line-height: 1.6; }
+#teach-body .line + .line { margin-top: 18px; }
+.key {
+  background: var(--lantern-soft);
+  color: var(--lotus-deep);
+  border-radius: 8px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+.step-nav { display: flex; flex-wrap: wrap; gap: var(--space); align-items: center; }
+.step-nav .back-btn,
+.step-nav .action-btn,
+.step-nav #check-btn { margin: 0; min-height: 56px; }
+.step-nav .action-btn,
+.step-nav #check-btn { margin-left: auto; min-width: 180px; font-size: 1.15rem; }
+.step-nav .is-off { visibility: hidden; }
+.listen-btn::before { content: "▶ "; }
+
+.question p { font-size: 1.25rem; }
+.option { min-height: 60px; font-size: 1.15rem; padding: 14px 18px; border-width: 2px; }
+#questions .question { padding: 28px 24px; }
+#practice-body .question { padding: 28px 24px; }
+
+@media (max-width: 640px) {
+  .stage-strip li { flex-direction: column; gap: 2px; padding: 6px 2px; font-size: 0.7rem; text-align: center; }
+  #teach-body .line { font-size: 1.25rem; }
+  .step-nav .action-btn,
+  .step-nav #check-btn { min-width: 0; flex: 1; }
+}
+
+/* ===== Главная, списки, картинки к урокам, ступенька в 3 класс ===== */
+.hero {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: var(--space-lg);
+}
+.hero .guide { margin-bottom: 16px; }
+.hero .guide p { font-size: 1.1rem; }
+.today-what { font-size: 1.5rem; line-height: 1.25; margin-bottom: 14px; }
+.today-what span { font-size: 0.95rem; margin-bottom: 2px; }
+.start-day { min-height: 72px; font-size: 1.4rem; }
+.today-len { margin: 6px 0 0; text-align: center; }
+.choice-link { margin-top: 4px; }
+
+.grade3-offer {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px 18px;
+  border: 2px dashed var(--lantern);
+  border-radius: var(--radius);
+  background: var(--lantern-soft);
+  color: var(--lantern-ink);
+  font: inherit;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+.grade3-offer span { display: block; font-size: 0.9rem; font-weight: 400; }
+.grade3-offer span::before { content: "★ "; }
+.grade3-offer:hover { background: var(--lantern); }
+
+.subject-card, .lesson-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 84px;
+}
+.subject-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.subject-mark, .lesson-num {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 1rem;
+  background: var(--sea-soft);
+  color: var(--sea);
+}
+.tone-lotus .subject-mark { background: var(--lotus-soft); color: var(--lotus-deep); }
+.tone-lantern .subject-mark { background: var(--lantern-soft); color: var(--lantern-ink); }
+.tone-rice .subject-mark { background: var(--rice-soft); color: var(--rice); }
+.bar { display: block; height: 8px; margin-top: 8px; border-radius: 999px; background: var(--paper-deep); overflow: hidden; }
+.bar span { display: block; height: 100%; border-radius: 999px; background: var(--rice); }
+.grid-head { grid-column: 1 / -1; margin: 12px 0 0; }
+
+#lessons-list { grid-template-columns: 1fr; max-width: 640px; }
+.lesson-num { width: 44px; height: 44px; border-radius: 50%; background: var(--paper-deep); color: var(--ink-soft); }
+.lesson-card.done .lesson-num { background: var(--rice); color: #fff; }
+.lesson-card.is-next { border: 2px solid var(--lotus); box-shadow: var(--shadow); }
+.lesson-card.is-next .lesson-num { background: var(--lotus); color: #fff; }
+.lesson-card.is-next .card-status { color: var(--lotus-deep); font-weight: 700; }
+
+.stage-strip li::before {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--paper-deep);
+}
+.stage-strip li.is-now::before { background: var(--lotus); }
+.stage-strip li.is-done::before { background: var(--rice); }
+
+.pic {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: top;
+  margin-right: 12px;
+}
+.pic svg { display: block; max-width: 100%; height: auto; }
+.pic figcaption { margin-top: 10px; font-size: 1rem; color: var(--ink-soft); }
+.pic-dot { fill: var(--lotus); }
+.pic-rest { fill: var(--lantern); stroke: var(--lantern-ink); stroke-width: 1.5; }
+rect.pic-dot { fill: var(--sea-soft); stroke: var(--sea); stroke-width: 2; }
+.place-blocks { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 6px; min-height: 64px; }
+.b100, .b10, .b1 { display: block; border: 1.5px solid var(--sea); border-radius: 3px; background-color: var(--sea-soft); }
+.b100 {
+  width: 64px;
+  height: 64px;
+  background-image: linear-gradient(var(--sea-line) 1px, transparent 1px), linear-gradient(90deg, var(--sea-line) 1px, transparent 1px);
+  background-size: 6.4px 6.4px;
+}
+.b10 {
+  width: 10px;
+  height: 64px;
+  background-image: linear-gradient(var(--sea-line) 1px, transparent 1px);
+  background-size: 100% 6.4px;
+}
+.b1 { width: 10px; height: 10px; border-color: var(--lotus); background: var(--lotus-soft); }
+
+@media (max-width: 640px) {
+  .hero { padding: 16px; }
+  .today-what { font-size: 1.25rem; }
+  .stage-strip li::before { display: none; }
+}
+
+/* ===== Контрольные по четвертям ===== */
+.control-offer {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px 18px;
+  border: 2px solid var(--sea);
+  border-radius: var(--radius);
+  background: var(--sea-soft);
+  color: var(--sea);
+  font: inherit;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+.control-offer span { display: block; font-size: 0.9rem; font-weight: 400; color: var(--ink); }
+.control-offer:hover { background: var(--sea-line); }
+.control-result {
+  background: var(--lantern-soft);
+  border: 1px solid var(--lantern);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.control-result p { margin-bottom: 10px; }
+.control-done { font-size: 1.4rem; font-weight: 700; }
+.control-misses { margin: 0 0 12px 1.4rem; }
+body.tutor-page #tutor-controls button {
+  font: inherit;
+  font-size: 14px;
+  padding: 4px 10px;
+  border: 1px solid var(--desk-line);
+  border-radius: var(--desk-radius);
+  background: var(--desk-card);
+  cursor: pointer;
+}
+
+/* ===== Список уроков дня ===== */
+.day-list { list-style: none; display: grid; gap: var(--space); }
+.day-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 76px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+.day-row .card-title { font-size: 1.15rem; margin: 0; }
+.day-row.is-done { background: var(--rice-soft); border-color: var(--rice-line); }
+.day-row.is-done .lesson-num { background: var(--rice); color: #fff; }
+.day-row.is-now { border: 2px solid var(--lotus); box-shadow: var(--shadow-soft); flex-wrap: wrap; }
+.day-row.is-now .lesson-num { background: var(--lotus); color: #fff; }
+.day-row.is-now .start-day { margin: 4px 0 0; min-height: 60px; flex-basis: 100%; }
+.day-row.is-later { opacity: 0.6; }
+.day-row.is-mama { background: var(--lantern-soft); border-color: var(--lantern); }
+.day-row.is-mama .lesson-num { background: var(--lantern); color: var(--lantern-ink); }
+
+/* ===== Счёт в уме и задача на смекалку ===== */
+.fact-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 28px 20px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.fact-line { font-size: 2.6rem; font-weight: 700; line-height: 1.2; }
+.fact-typed {
+  display: inline-block;
+  min-width: 2.2em;
+  padding: 0 10px;
+  border-bottom: 4px solid var(--lotus);
+  color: var(--lotus-deep);
+}
+.fact-typed.is-right { color: var(--rice); border-color: var(--rice); }
+.fact-typed.is-wrong { color: var(--wrong-ink); border-color: var(--wrong-line); }
+.fact-note { min-height: 1.6em; margin-top: 12px; font-size: 1.15rem; font-weight: 700; }
+.keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 420px; margin: 0 auto; }
+.key-btn {
+  min-height: 68px;
+  border: 2px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.key-btn:hover { background: var(--lantern-soft); }
+.key-btn.key-ok { background: var(--lotus); border-color: var(--lotus); color: #fff; font-size: 1.1rem; }
+.key-btn.key-ok:hover { background: var(--lotus-deep); }
+.puzzle-why {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 1.25rem;
 }

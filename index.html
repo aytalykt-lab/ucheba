@@ -17,6 +17,7 @@
 
   <main id="app">
     <section id="subjects-view">
+      <div class="hero">
       <div class="guide">
         <svg class="guide-lantern" viewBox="0 0 64 80" aria-hidden="true">
           <path d="M24 8 Q32 2 40 8" fill="none" stroke="#3d2a08" stroke-width="2" stroke-linecap="round"/>
@@ -27,7 +28,14 @@
           <path d="M28 46 Q32 50 36 46" fill="none" stroke="#2c2416" stroke-width="2" stroke-linecap="round"/>
           <path d="M18 62 H46 L42 70 H22 Z" fill="#c49212"/>
         </svg>
-        <p>Я фонарик. Сегодня хватит одного спокойного шага.</p>
+        <p id="guide-line">Я фонарик. Сегодня хватит одного спокойного шага.</p>
+      </div>
+      <div id="today-view">
+        <h2 id="today-heading" class="hidden">Сегодня</h2>
+        <div id="today-card"></div>
+        <h2 id="week-heading" class="hidden">Эта неделя</h2>
+        <div id="week-list" class="week hidden"></div>
+      </div>
       </div>
       <div id="journey">
         <h2>Путешествие по Вьетнаму</h2>
@@ -35,13 +43,6 @@
         <div id="journey-path"></div>
         <h3>Паспорт</h3>
         <div id="journey-passport" class="stamps"></div>
-      </div>
-      <div id="today-view">
-        <h2 id="today-heading">Сегодня</h2>
-        <div id="today-card"></div>
-        <h2 id="week-heading" class="hidden">Эта неделя</h2>
-        <div id="week-list" class="week hidden"></div>
-        <p class="hint"><a href="plan.html">Весь учебный план и график</a></p>
       </div>
       <button class="action-btn btn-quiet" type="button" onclick="openScout()">Разведка</button>
       <p class="hint">Без оценок. Посмотрим, что уже знакомо.</p>
@@ -56,6 +57,20 @@
       <div id="scout-body"></div>
     </section>
 
+    <section id="control-view" class="hidden">
+      <button class="back-btn" type="button" onclick="showSubjects()">← На главную</button>
+      <h2 id="control-title">Контрольная</h2>
+      <p id="control-lead" class="hint"></p>
+      <div id="control-body"></div>
+    </section>
+
+    <section id="extra-view" class="hidden">
+      <button class="back-btn" type="button" onclick="showSubjects()">← На главную</button>
+      <h2 id="extra-title"></h2>
+      <p id="extra-lead" class="hint"></p>
+      <div id="extra-body"></div>
+    </section>
+
     <section id="lessons-view" class="hidden">
       <button class="back-btn" onclick="showSubjects()">← Назад к предметам</button>
       <h2 id="subject-title"></h2>
@@ -65,13 +80,20 @@
     <section id="lesson-view" class="hidden">
       <button class="back-btn" onclick="backToLessons()">← Назад к урокам</button>
       <h2 id="lesson-title"></h2>
+      <ol id="stage-strip" class="stage-strip" aria-label="Этапы урока">
+        <li data-stage="warm">Вспомним</li>
+        <li data-stage="teach">Узнаём</li>
+        <li data-stage="walk">Пример</li>
+        <li data-stage="practice">Тренировка</li>
+        <li data-stage="quiz">Проверка</li>
+      </ol>
       <div id="session-timer" class="sun-session">
         <span class="sun-track" aria-hidden="true"><span class="session-sun"></span></span>
         <span id="session-time"></span>
       </div>
       <div id="session-note" class="hidden">
-        <p>На сегодня всё, ты молодец!</p>
-        <button class="action-btn" type="button" onclick="finishSession()">Закончить</button>
+        <p>Урок идёт уже 20 минут. Можно сделать перемену.</p>
+        <button class="action-btn" type="button" onclick="finishSession()">Перемена</button>
         <button class="action-btn" type="button" onclick="stayLonger()">Ещё немного</button>
       </div>
 
@@ -83,12 +105,16 @@
       <div id="teach-block">
         <p id="step-label" class="hint"></p>
         <div id="teach-body" class="video-block"></div>
-        <button id="teach-next" class="action-btn" type="button" onclick="nextTeachStep()">Дальше</button>
+        <div class="step-nav">
+          <button id="teach-back" class="back-btn" type="button" onclick="prevTeachStep()">← Назад</button>
+          <button id="teach-listen" class="back-btn listen-btn" type="button" onclick="speakCard()">Послушать</button>
+          <button id="teach-next" class="action-btn" type="button" onclick="nextTeachStep()">Дальше</button>
+        </div>
       </div>
 
       <div id="practice-block" class="hidden">
         <p id="practice-label" class="hint"></p>
-        <h3>Тренировка. Здесь можно пробовать спокойно.</h3>
+        <h3 id="practice-heading">Тренировка. Здесь можно пробовать спокойно.</h3>
         <div id="practice-body"></div>
         <p id="practice-why" class="hidden"></p>
         <button id="practice-next" class="action-btn hidden" type="button" onclick="nextPractice()">Дальше</button>
@@ -96,9 +122,15 @@
 
       <div id="quiz-block" class="hidden">
         <h3 id="quiz-title">Проверка</h3>
-        <p id="quiz-hint" class="hint">Ответь на вопросы.</p>
+        <p id="quiz-hint" class="hint">Один вопрос за раз. Не спеши.</p>
+        <p id="quiz-dots" class="hint"></p>
         <div id="questions"></div>
-        <button id="check-btn" onclick="checkAnswers()">Проверить</button>
+        <p id="quiz-pick" class="hint hidden">Сначала выбери ответ.</p>
+        <div class="step-nav">
+          <button id="quiz-back" class="back-btn" type="button" onclick="quizStep(-1)">← Назад</button>
+          <button id="quiz-next" class="action-btn" type="button" onclick="quizStep(1)">Дальше</button>
+          <button id="check-btn" onclick="checkAnswers()">Проверить</button>
+        </div>
         <div id="result" class="hidden"></div>
       </div>
 
@@ -110,6 +142,10 @@
     </section>
   </main>
 
+  <script src="data.js"></script>
+  <script src="grade3.js"></script>
+  <script src="map.js"></script>
   <script src="app.js"></script>
+  <script src="brain.js"></script>
 </body>
 </html>
