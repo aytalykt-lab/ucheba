@@ -72,8 +72,9 @@
 
     <section id="tutor-save">
       <h2>Сохранение прогресса</h2>
-      <p class="hint">Файл пригодится, если откроете сайт на другом компьютере.</p>
-      <button class="action-btn" type="button" onclick="downloadProgress()">Скачать прогресс</button>
+      <p class="hint">Прогресс записывается сразу после каждого задания и хранится в браузере этого ноутбука. Вайфай, интернет и переезд на него не влияют. Раз в неделю сайт сам сохраняет копию в папку «Загрузки» (файл ucheba-progress-дата.json): в ней уроки, контрольные, счёт в уме и настройки. Копия нужна, если сменится ноутбук или браузер либо очистятся данные браузера: тогда нажмите «Загрузить прогресс» и выберите самый свежий файл.</p>
+      <p id="backup-note" class="hint"></p>
+      <button class="action-btn" type="button" onclick="downloadProgress()">Сохранить копию сейчас</button>
       <label class="action-btn file-btn">Загрузить прогресс
         <input id="progress-file" type="file" accept="application/json,.json" onchange="uploadProgress(this)">
       </label>

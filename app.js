@@ -218,6 +218,7 @@ function showSubjects() {
   renderToday();
   renderJourney();
   renderSubjects();
+  maybeAutoBackup();
 }
 
 function toggleSubjects() {
@@ -1555,6 +1556,7 @@ function renderTutorPanel() {
     renderTutorScout();
     renderTutorControls();
     if (typeof renderTutorFacts === "function") renderTutorFacts();
+    renderBackupNote();
     renderTutorProgress();
     renderTutorErrors();
   }).catch(showLoadError);
@@ -1637,29 +1639,81 @@ function changeTutorCode() {
   }
 }
 
+/* ================= КОПИЯ ПРОГРЕССА ================= */
+/* Прогресс хранится в браузере этого ноутбука и не зависит от вайфая и интернета.
+   Копия — файл со всем сразу: уроки, контрольные, счёт в уме, путешествие, настройки. */
+const BACKUP_AT_KEY = "study_backup_at";
+const BACKUP_EVERY_DAYS = 7;
+
 function progressFileName() {
-  const day = new Date();
-  const month = String(day.getMonth() + 1).padStart(2, "0");
-  const date = String(day.getDate()).padStart(2, "0");
-  return "progress-" + day.getFullYear() + "-" + month + "-" + date + ".json";
+  return "ucheba-progress-" + todayISO() + ".json";
+}
+
+function collectBackup() {
+  const data = {};
+  for (let i = 0; i < localStorage.length; i += 1) {
+    const key = localStorage.key(i);
+    if (key && key.indexOf("study_") === 0 && key !== BACKUP_AT_KEY) data[key] = localStorage.getItem(key);
+  }
+  return { format: "ucheba-backup", version: 1, savedAt: new Date().toISOString(), data };
+}
+
+function saveBackupFile() {
+  const blob = new Blob([JSON.stringify(collectBackup())], { type: "application/json" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = progressFileName();
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+  localStorage.setItem(BACKUP_AT_KEY, todayISO());
 }
 
 function downloadProgress() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY) || "{}";
-    const parsed = JSON.parse(raw);
-    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("shape");
-    const blob = new Blob([JSON.stringify(parsed)], { type: "application/json" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = progressFileName();
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(link.href);
+    saveBackupFile();
+    renderBackupNote();
   } catch (e) {
     window.alert("Не получилось скачать прогресс.");
   }
+}
+
+/* Раз в неделю копия сама сохраняется в папку «Загрузки» — когда ребёнок возвращается на главную. */
+function maybeAutoBackup() {
+  try {
+    if (navigator.userActivation && !navigator.userActivation.isActive) return;
+    if (!anyLessonAttempted()) return;
+    const last = localStorage.getItem(BACKUP_AT_KEY) || "";
+    if (last && last > shiftISO(todayISO(), -BACKUP_EVERY_DAYS)) return;
+    saveBackupFile();
+  } catch (e) {
+    /* копия не получилась — учёбе это не мешает */
+  }
+}
+
+function renderBackupNote() {
+  const note = document.getElementById("backup-note");
+  if (!note) return;
+  const last = localStorage.getItem(BACKUP_AT_KEY) || "";
+  note.textContent = last
+    ? "Последняя копия: " + formatPlanDate(last) + ". Файл лежит в папке «Загрузки»."
+    : "Копий ещё не было. Первая сохранится сама после первых уроков.";
+}
+
+function restoreBackup(parsed) {
+  if (parsed && parsed.format === "ucheba-backup" && parsed.data && typeof parsed.data === "object") {
+    Object.keys(parsed.data).forEach((key) => {
+      if (key.indexOf("study_") === 0 && typeof parsed.data[key] === "string") localStorage.setItem(key, parsed.data[key]);
+    });
+    return true;
+  }
+  /* старый формат: в файле только уроки */
+  if (parsed && typeof parsed === "object" && !Array.isArray(parsed) && !parsed.format) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+    return true;
+  }
+  return false;
 }
 
 function uploadProgress(input) {
@@ -1676,8 +1730,13 @@ function uploadProgress(input) {
         return;
       }
       if (!window.confirm("Заменить прогресс на этом компьютере данными из файла?")) return;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+      if (!restoreBackup(parsed)) {
+        window.alert("В файле нет прогресса.");
+        return;
+      }
+      window.alert("Прогресс загружен.");
       renderTutorPanel();
+      renderBackupNote();
     } catch (e) {
       window.alert("Файл не прочитался.");
     }
