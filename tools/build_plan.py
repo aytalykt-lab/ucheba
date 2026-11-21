@@ -13,6 +13,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 START = dt.date(2026, 11, 23)
+# Дополнительные учебные дни вне пн–пт: дата -> по какому дню недели заниматься.
+EXTRA_DAYS = {}
+# Первые части учебников (2 четверть) проходим до Нового года, вторые — с января до конца мая.
+HALF_END = dt.date(2026, 12, 30)
 END = dt.date(2027, 5, 28)
 HOLIDAYS = {
     "Зимние каникулы": (dt.date(2026, 12, 31), dt.date(2027, 1, 8)),
@@ -520,7 +524,7 @@ def school_days():
     d = START
     while d <= END:
         holiday = next((name for name, (a, b) in HOLIDAYS.items() if a <= d <= b), None)
-        if d.weekday() < 5:
+        if d.weekday() < 5 or d in EXTRA_DAYS:
             (rest.append((d, holiday)) if holiday else days.append(d))
         d += dt.timedelta(days=1)
     return days, rest
@@ -602,13 +606,18 @@ def main():
     site_ids = {l["id"] for s in data["subjects"] for l in s["lessons"]}
 
     days, rest = school_days()
-    slots = [(d, subj) for d in days for subj in WEEK[d.weekday()]]
+    slots = [(d, subj) for d in days for subj in WEEK[EXTRA_DAYS.get(d, d.weekday())]]
     need = {s: sum(1 for _, x in slots if x == s) for s in NAMES}
+    need1 = {s: sum(1 for d, x in slots if x == s and d <= HALF_END) for s in NAMES}
     units = {}
     report = []
     studied = {s: studied_site(s) for s in TOC}
     for subject in TOC:
-        units[subject] = fit(entries_with_ends(subject), need[subject])
+        entries = entries_with_ends(subject)
+        half1 = fit([e for e in entries if e["book"].endswith("-1")], need1[subject])
+        half2 = fit([e for e in entries if not e["book"].endswith("-1")], need[subject] - need1[subject])
+        assert len(half1) == need1[subject] and len(half2) == need[subject] - need1[subject], (subject, len(half1), len(half2))
+        units[subject] = half1 + half2
         lost = [x for x in attach_site(subject, units[subject]) if x not in studied[subject]]
         bad = [u["lessonId"] for u in units[subject] if u.get("lessonId") and u["lessonId"] not in site_ids]
         report.append(f"{NAMES[subject]}: слотов {need[subject]}, уроков {len(units[subject])}, без места {lost}, неизвестные {bad}")

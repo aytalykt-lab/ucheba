@@ -24440,177 +24440,6 @@
           ]
         },
         {
-          "id": "lit-b-kitten",
-          "title": "Л. Н. Толстой. «Котёнок»",
-          "video": "",
-          "goal": "Оценивать поступки героев рассказа.",
-          "text": "Лев Николаевич Толстой писал рассказы для детей.",
-          "example": "Вася смелый и заботливый.",
-          "teach": [
-            "Лев Николаевич Толстой писал рассказы для детей.",
-            "Брат и сестра, Вася и Катя, взяли котёнка и пошли играть с ним в поле.",
-            "Появился охотник с собаками. Катя испугалась и убежала.",
-            "Вася бросился на котёнка и закрыл его собой. Охотник отогнал собак."
-          ],
-          "walk": [
-            "Какой Вася в этом рассказе?",
-            "Он не убежал, а спас котёнка, хотя было страшно.",
-            "Вася смелый и заботливый."
-          ],
-          "practice": [
-            {
-              "q": "Кто написал рассказ «Котёнок»?",
-              "options": [
-                "Л. Н. Толстой",
-                "А. С. Пушкин",
-                "И. А. Крылов"
-              ],
-              "correct": 0,
-              "type": "concept",
-              "why": "Это рассказ Толстого."
-            },
-            {
-              "q": "Что сделал Вася, когда побежали собаки?",
-              "options": [
-                "закрыл котёнка собой",
-                "убежал домой",
-                "залез на дерево"
-              ],
-              "correct": 0,
-              "type": "concept",
-              "why": "Вася защитил котёнка."
-            }
-          ],
-          "questions": [
-            {
-              "q": "Как звали детей?",
-              "options": [
-                "Вася и Катя",
-                "Петя и Маша",
-                "Ваня и Лена"
-              ],
-              "correct": 0,
-              "type": "concept"
-            },
-            {
-              "q": "Что сделала Катя, увидев собак?",
-              "options": [
-                "убежала",
-                "закрыла котёнка",
-                "позвала охотника"
-              ],
-              "correct": 0,
-              "type": "concept"
-            },
-            {
-              "q": "Какое слово подходит к Васе?",
-              "options": [
-                "смелый",
-                "трусливый",
-                "ленивый"
-              ],
-              "correct": 0,
-              "type": "concept"
-            },
-            {
-              "q": "Кто спас котёнка вместе с Васей?",
-              "options": [
-                "охотник",
-                "Катя",
-                "мама"
-              ],
-              "correct": 0,
-              "type": "concept"
-            },
-            {
-              "q": "Это рассказ или сказка?",
-              "options": [
-                "рассказ",
-                "сказка",
-                "басня"
-              ],
-              "correct": 0,
-              "type": "concept"
-            },
-            {
-              "q": "Чему учит рассказ?",
-              "options": [
-                "заботиться о слабых",
-                "бояться собак",
-                "не гулять в поле"
-              ],
-              "correct": 0,
-              "type": "concept"
-            }
-          ],
-          "corrective": [
-            "Чтобы понять героя, смотри на поступок: что он сделал в трудную минуту?",
-            "Вася испугался, но не бросил котёнка — значит, он смелый."
-          ],
-          "recheck": [
-            {
-              "q": "Где дети играли с котёнком?",
-              "options": [
-                "в поле",
-                "в школе",
-                "на море"
-              ],
-              "correct": 0,
-              "type": "concept"
-            },
-            {
-              "q": "Кто ехал с собаками?",
-              "options": [
-                "охотник",
-                "почтальон",
-                "пастух"
-              ],
-              "correct": 0,
-              "type": "concept"
-            },
-            {
-              "q": "Почему Вася — герой рассказа?",
-              "options": [
-                "он спас котёнка",
-                "он убежал первым",
-                "он кричал громче всех"
-              ],
-              "correct": 0,
-              "type": "concept"
-            },
-            {
-              "q": "Какое чувство было у детей, когда побежали собаки?",
-              "options": [
-                "страх",
-                "скука",
-                "радость"
-              ],
-              "correct": 0,
-              "type": "concept"
-            },
-            {
-              "q": "Толстой писал…",
-              "options": [
-                "рассказы для детей",
-                "только басни",
-                "только песни"
-              ],
-              "correct": 0,
-              "type": "concept"
-            },
-            {
-              "q": "Что могло случиться на самом деле — это признак…",
-              "options": [
-                "рассказа",
-                "сказки",
-                "небылицы"
-              ],
-              "correct": 0,
-              "type": "concept"
-            }
-          ]
-        },
-        {
           "id": "lit-f-idea",
           "title": "Тема и главная мысль",
           "video": "",
@@ -24946,6 +24775,177 @@
                 "обычно да",
                 "нет, он из одной буквы",
                 "они всегда равны числу страниц"
+              ],
+              "correct": 0,
+              "type": "concept"
+            }
+          ]
+        },
+        {
+          "id": "lit-b-kitten",
+          "title": "Л. Н. Толстой. «Котёнок»",
+          "video": "",
+          "goal": "Оценивать поступки героев рассказа.",
+          "text": "Лев Николаевич Толстой писал рассказы для детей.",
+          "example": "Вася смелый и заботливый.",
+          "teach": [
+            "Лев Николаевич Толстой писал рассказы для детей.",
+            "Брат и сестра, Вася и Катя, взяли котёнка и пошли играть с ним в поле.",
+            "Появился охотник с собаками. Катя испугалась и убежала.",
+            "Вася бросился на котёнка и закрыл его собой. Охотник отогнал собак."
+          ],
+          "walk": [
+            "Какой Вася в этом рассказе?",
+            "Он не убежал, а спас котёнка, хотя было страшно.",
+            "Вася смелый и заботливый."
+          ],
+          "practice": [
+            {
+              "q": "Кто написал рассказ «Котёнок»?",
+              "options": [
+                "Л. Н. Толстой",
+                "А. С. Пушкин",
+                "И. А. Крылов"
+              ],
+              "correct": 0,
+              "type": "concept",
+              "why": "Это рассказ Толстого."
+            },
+            {
+              "q": "Что сделал Вася, когда побежали собаки?",
+              "options": [
+                "закрыл котёнка собой",
+                "убежал домой",
+                "залез на дерево"
+              ],
+              "correct": 0,
+              "type": "concept",
+              "why": "Вася защитил котёнка."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Как звали детей?",
+              "options": [
+                "Вася и Катя",
+                "Петя и Маша",
+                "Ваня и Лена"
+              ],
+              "correct": 0,
+              "type": "concept"
+            },
+            {
+              "q": "Что сделала Катя, увидев собак?",
+              "options": [
+                "убежала",
+                "закрыла котёнка",
+                "позвала охотника"
+              ],
+              "correct": 0,
+              "type": "concept"
+            },
+            {
+              "q": "Какое слово подходит к Васе?",
+              "options": [
+                "смелый",
+                "трусливый",
+                "ленивый"
+              ],
+              "correct": 0,
+              "type": "concept"
+            },
+            {
+              "q": "Кто спас котёнка вместе с Васей?",
+              "options": [
+                "охотник",
+                "Катя",
+                "мама"
+              ],
+              "correct": 0,
+              "type": "concept"
+            },
+            {
+              "q": "Это рассказ или сказка?",
+              "options": [
+                "рассказ",
+                "сказка",
+                "басня"
+              ],
+              "correct": 0,
+              "type": "concept"
+            },
+            {
+              "q": "Чему учит рассказ?",
+              "options": [
+                "заботиться о слабых",
+                "бояться собак",
+                "не гулять в поле"
+              ],
+              "correct": 0,
+              "type": "concept"
+            }
+          ],
+          "corrective": [
+            "Чтобы понять героя, смотри на поступок: что он сделал в трудную минуту?",
+            "Вася испугался, но не бросил котёнка — значит, он смелый."
+          ],
+          "recheck": [
+            {
+              "q": "Где дети играли с котёнком?",
+              "options": [
+                "в поле",
+                "в школе",
+                "на море"
+              ],
+              "correct": 0,
+              "type": "concept"
+            },
+            {
+              "q": "Кто ехал с собаками?",
+              "options": [
+                "охотник",
+                "почтальон",
+                "пастух"
+              ],
+              "correct": 0,
+              "type": "concept"
+            },
+            {
+              "q": "Почему Вася — герой рассказа?",
+              "options": [
+                "он спас котёнка",
+                "он убежал первым",
+                "он кричал громче всех"
+              ],
+              "correct": 0,
+              "type": "concept"
+            },
+            {
+              "q": "Какое чувство было у детей, когда побежали собаки?",
+              "options": [
+                "страх",
+                "скука",
+                "радость"
+              ],
+              "correct": 0,
+              "type": "concept"
+            },
+            {
+              "q": "Толстой писал…",
+              "options": [
+                "рассказы для детей",
+                "только басни",
+                "только песни"
+              ],
+              "correct": 0,
+              "type": "concept"
+            },
+            {
+              "q": "Что могло случиться на самом деле — это признак…",
+              "options": [
+                "рассказа",
+                "сказки",
+                "небылицы"
               ],
               "correct": 0,
               "type": "concept"
@@ -41453,7 +41453,7 @@
           "id": "russian-1",
           "part": 1,
           "from": 65,
-          "to": 65
+          "to": 67
         },
         "lessonId": "rus-f-syll"
       },
@@ -41463,12 +41463,12 @@
         "subjectId": "reading",
         "subject": "Литературное чтение",
         "id": "reading-1-71",
-        "title": "Русские писатели. Как составить план",
+        "title": "Русские писатели. Как составить план. И. Токмакова, Ю. Могутин",
         "book": {
           "id": "reading-1",
           "part": 1,
           "from": 71,
-          "to": 73
+          "to": 75
         },
         "lessonId": "lit-f-plan"
       },
@@ -41483,7 +41483,7 @@
           "id": "english-1",
           "part": 1,
           "from": 44,
-          "to": 44
+          "to": 45
         },
         "lessonId": "en-numbers"
       },
@@ -41507,28 +41507,29 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-66",
+        "id": "russian-1-68",
         "title": "Слог. Ударение. Перенос слова",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 66,
-          "to": 67
+          "from": 68,
+          "to": 70
         }
       },
       {
         "date": "2026-11-24",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-74",
-        "title": "И. Токмакова, Ю. Могутин",
+        "id": "reading-1-76",
+        "title": "А. С. Пушкин «У лукоморья дуб зелёный…»",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 74,
-          "to": 75
-        }
+          "from": 76,
+          "to": 78
+        },
+        "lessonId": "lit-b-lukomorye"
       },
       {
         "date": "2026-11-24",
@@ -41562,17 +41563,18 @@
       },
       {
         "date": "2026-11-25",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-68",
+        "id": "russian-1-71",
         "title": "Слог. Ударение. Перенос слова",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 68,
-          "to": 68
-        }
+          "from": 71,
+          "to": 73
+        },
+        "lessonId": "rus-b-stress"
       },
       {
         "date": "2026-11-25",
@@ -41614,46 +41616,48 @@
       },
       {
         "date": "2026-11-26",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-69",
+        "id": "russian-1-74",
         "title": "Слог. Ударение. Перенос слова",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 69,
-          "to": 70
-        }
+          "from": 74,
+          "to": 75
+        },
+        "lessonId": "rus-b-hyph"
       },
       {
         "date": "2026-11-26",
         "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-76",
-        "title": "А. С. Пушкин «У лукоморья дуб зелёный…»",
+        "id": "reading-1-79",
+        "title": "А. С. Пушкин «Сказка о рыбаке и рыбке»",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 76,
-          "to": 78
+          "from": 79,
+          "to": 87
         },
-        "lessonId": "lit-b-lukomorye"
+        "lessonId": "lit-b-fisherman"
       },
       {
         "date": "2026-11-26",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-1-45",
-        "title": "My Birthday! (4a)",
+        "id": "english-1-46",
+        "title": "My Birthday! (4b)",
         "book": {
           "id": "english-1",
           "part": 1,
-          "from": 45,
-          "to": 45
-        }
+          "from": 46,
+          "to": 47
+        },
+        "lessonId": "en-b-age"
       },
       {
         "date": "2026-11-27",
@@ -41666,7 +41670,7 @@
           "id": "world-1",
           "part": 1,
           "from": 86,
-          "to": 87
+          "to": 89
         },
         "lessonId": "world-b-pets"
       },
@@ -41675,15 +41679,15 @@
         "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-79",
-        "title": "А. С. Пушкин «Сказка о рыбаке и рыбке»",
+        "id": "reading-1-88",
+        "title": "И. А. Крылов. И. Крылов «Лебедь, Щука и Рак»",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 79,
-          "to": 80
+          "from": 88,
+          "to": 91
         },
-        "lessonId": "lit-b-fisherman"
+        "lessonId": "lit-f-fable"
       },
       {
         "date": "2026-11-27",
@@ -41719,47 +41723,47 @@
       },
       {
         "date": "2026-11-30",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-71",
+        "id": "russian-1-76",
         "title": "Слог. Ударение. Перенос слова",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 71,
-          "to": 71
-        },
-        "lessonId": "rus-b-stress"
+          "from": 76,
+          "to": 77
+        }
       },
       {
         "date": "2026-11-30",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-81",
-        "title": "А. С. Пушкин «Сказка о рыбаке и рыбке»",
+        "id": "reading-1-92",
+        "title": "И. Крылов «Стрекоза и Муравей»",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 81,
-          "to": 82
-        }
+          "from": 92,
+          "to": 93
+        },
+        "lessonId": "lit-b-dragonfly"
       },
       {
         "date": "2026-11-30",
         "kind": "lesson",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-1-46",
-        "title": "My Birthday! (4b)",
+        "id": "english-1-48",
+        "title": "Yummy Chocolate! (5a)",
         "book": {
           "id": "english-1",
           "part": 1,
-          "from": 46,
-          "to": 46
+          "from": 48,
+          "to": 49
         },
-        "lessonId": "en-b-age"
+        "lessonId": "en-b-food1"
       },
       {
         "date": "2026-12-01",
@@ -41778,45 +41782,48 @@
       },
       {
         "date": "2026-12-01",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-72",
-        "title": "Слог. Ударение. Перенос слова",
+        "id": "russian-1-78",
+        "title": "Звуки и буквы",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 72,
-          "to": 73
-        }
+          "from": 78,
+          "to": 80
+        },
+        "lessonId": "rus-b-sounds"
       },
       {
         "date": "2026-12-01",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-83",
-        "title": "А. С. Пушкин «Сказка о рыбаке и рыбке»",
+        "id": "reading-1-94",
+        "title": "Л. Н. Толстой. «Котёнок» Л. Толстой «Правда всего дороже»",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 83,
-          "to": 84
-        }
+          "from": 94,
+          "to": 98
+        },
+        "lessonId": "lit-f-idea"
       },
       {
         "date": "2026-12-01",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-88",
-        "title": "Про кошек и собак",
+        "id": "world-1-90",
+        "title": "Красная книга",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 88,
-          "to": 89
-        }
+          "from": 90,
+          "to": 93
+        },
+        "lessonId": "world-f-red"
       },
       {
         "date": "2026-12-02",
@@ -41838,30 +41845,30 @@
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-74",
-        "title": "Слог. Ударение. Перенос слова",
+        "id": "russian-1-81",
+        "title": "Русский алфавит",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 74,
-          "to": 75
+          "from": 81,
+          "to": 84
         },
-        "lessonId": "rus-b-hyph"
+        "lessonId": "rus-b-abc"
       },
       {
         "date": "2026-12-02",
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-90",
-        "title": "Красная книга",
+        "id": "world-1-94",
+        "title": "Будь природе другом!",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 90,
-          "to": 91
+          "from": 94,
+          "to": 97
         },
-        "lessonId": "world-f-red"
+        "lessonId": "world-b-friend"
       },
       {
         "date": "2026-12-02",
@@ -41883,49 +41890,51 @@
           "id": "math-1",
           "part": 1,
           "from": 64,
-          "to": 64
+          "to": 65
         }
       },
       {
         "date": "2026-12-03",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-76",
-        "title": "Слог. Ударение. Перенос слова",
+        "id": "russian-1-85",
+        "title": "Русский алфавит",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 76,
-          "to": 77
-        }
+          "from": 85,
+          "to": 88
+        },
+        "lessonId": "rus-b-caps"
       },
       {
         "date": "2026-12-03",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-85",
-        "title": "А. С. Пушкин «Сказка о рыбаке и рыбке»",
+        "id": "reading-1-99",
+        "title": "Л. Толстой «Филипок»",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 85,
-          "to": 87
-        }
+          "from": 99,
+          "to": 102
+        },
+        "lessonId": "lit-f-retell"
       },
       {
         "date": "2026-12-03",
         "kind": "book",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-1-47",
-        "title": "My Birthday! (4b)",
+        "id": "english-1-50",
+        "title": "Yummy Chocolate! (5b)",
         "book": {
           "id": "english-1",
           "part": 1,
-          "from": 47,
-          "to": 47
+          "from": 50,
+          "to": 51
         }
       },
       {
@@ -41933,28 +41942,29 @@
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-92",
-        "title": "Красная книга",
+        "id": "world-1-98",
+        "title": "Проект «Красная книга». Легенды о растениях и животных",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 92,
-          "to": 93
+          "from": 98,
+          "to": 101
         }
       },
       {
         "date": "2026-12-04",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-88",
-        "title": "И. А. Крылов",
+        "id": "reading-1-103",
+        "title": "Проверим себя. О братьях наших меньших. Как составить отзыв",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 88,
-          "to": 89
-        }
+          "from": 103,
+          "to": 107
+        },
+        "lessonId": "lit-b-kitten"
       },
       {
         "date": "2026-12-04",
@@ -41975,65 +41985,6 @@
       },
       {
         "date": "2026-12-07",
-        "kind": "book",
-        "subjectId": "math",
-        "subject": "Математика",
-        "id": "math-1-65",
-        "title": "Запись решения задачи выражением",
-        "book": {
-          "id": "math-1",
-          "part": 1,
-          "from": 65,
-          "to": 65
-        }
-      },
-      {
-        "date": "2026-12-07",
-        "kind": "lesson",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "id": "russian-1-78",
-        "title": "Звуки и буквы",
-        "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 78,
-          "to": 78
-        },
-        "lessonId": "rus-b-sounds"
-      },
-      {
-        "date": "2026-12-07",
-        "kind": "lesson",
-        "subjectId": "reading",
-        "subject": "Литературное чтение",
-        "id": "reading-1-90",
-        "title": "И. Крылов «Лебедь, Щука и Рак»",
-        "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 90,
-          "to": 91
-        },
-        "lessonId": "lit-f-fable"
-      },
-      {
-        "date": "2026-12-07",
-        "kind": "lesson",
-        "subjectId": "english",
-        "subject": "Английский язык",
-        "id": "english-1-48",
-        "title": "Yummy Chocolate! (5a)",
-        "book": {
-          "id": "english-1",
-          "part": 1,
-          "from": 48,
-          "to": 48
-        },
-        "lessonId": "en-b-food1"
-      },
-      {
-        "date": "2026-12-08",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
@@ -42048,51 +41999,52 @@
         "lessonId": "math-04"
       },
       {
-        "date": "2026-12-08",
-        "kind": "book",
+        "date": "2026-12-07",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-79",
-        "title": "Звуки и буквы",
+        "id": "russian-1-89",
+        "title": "Гласные звуки",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 79,
-          "to": 80
-        }
+          "from": 89,
+          "to": 90
+        },
+        "lessonId": "rus-f-letters"
       },
       {
-        "date": "2026-12-08",
+        "date": "2026-12-07",
         "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-92",
-        "title": "И. Крылов «Стрекоза и Муравей»",
+        "id": "reading-1-108",
+        "title": "С. Брезкун, М. Бородицкая. И. Пивоварова, В. Берестов «Кошкин щенок» Как придумать рассказ",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 92,
-          "to": 93
+          "from": 108,
+          "to": 112
         },
-        "lessonId": "lit-b-dragonfly"
+        "lessonId": "lit-b-review"
+      },
+      {
+        "date": "2026-12-07",
+        "kind": "lesson",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "id": "english-1-52",
+        "title": "Favourite Food! (6a)",
+        "book": {
+          "id": "english-1",
+          "part": 1,
+          "from": 52,
+          "to": 53
+        },
+        "lessonId": "en-b-food2"
       },
       {
         "date": "2026-12-08",
-        "kind": "lesson",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "id": "world-1-94",
-        "title": "Будь природе другом!",
-        "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 94,
-          "to": 95
-        },
-        "lessonId": "world-b-friend"
-      },
-      {
-        "date": "2026-12-09",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
@@ -42102,37 +42054,94 @@
           "id": "math-1",
           "part": 1,
           "from": 67,
-          "to": 67
+          "to": 69
         },
         "lessonId": "math-b-35m7"
+      },
+      {
+        "date": "2026-12-08",
+        "kind": "book",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "id": "russian-1-91",
+        "title": "Гласные звуки",
+        "book": {
+          "id": "russian-1",
+          "part": 1,
+          "from": 91,
+          "to": 93
+        }
+      },
+      {
+        "date": "2026-12-08",
+        "kind": "lesson",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "id": "reading-1-113",
+        "title": "М. Пришвин «Ребята и утята»",
+        "book": {
+          "id": "reading-1",
+          "part": 1,
+          "from": 113,
+          "to": 116
+        },
+        "lessonId": "lit-b-ducks"
+      },
+      {
+        "date": "2026-12-08",
+        "kind": "book",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "id": "world-1-102",
+        "title": "Проверим себя",
+        "book": {
+          "id": "world-1",
+          "part": 1,
+          "from": 102,
+          "to": 104
+        }
+      },
+      {
+        "date": "2026-12-09",
+        "kind": "book",
+        "subjectId": "math",
+        "subject": "Математика",
+        "id": "math-1-70",
+        "title": "Странички для любознательных",
+        "book": {
+          "id": "math-1",
+          "part": 1,
+          "from": 70,
+          "to": 71
+        }
       },
       {
         "date": "2026-12-09",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-81",
-        "title": "Русский алфавит",
+        "id": "russian-1-94",
+        "title": "Гласные звуки",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 81,
-          "to": 82
+          "from": 94,
+          "to": 96
         },
-        "lessonId": "rus-b-abc"
+        "lessonId": "rus-02"
       },
       {
         "date": "2026-12-09",
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-96",
-        "title": "Будь природе другом!",
+        "id": "world-1-105",
+        "title": "Проверим себя",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 96,
-          "to": 97
+          "from": 105,
+          "to": 107
         }
       },
       {
@@ -42149,13 +42158,13 @@
         "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-68",
-        "title": "Вычисления вида 35 – 7",
+        "id": "math-1-72",
+        "title": "Что узнали. Чему научились",
         "book": {
           "id": "math-1",
           "part": 1,
-          "from": 68,
-          "to": 68
+          "from": 72,
+          "to": 73
         }
       },
       {
@@ -42163,70 +42172,70 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-83",
-        "title": "Русский алфавит",
+        "id": "russian-1-97",
+        "title": "Гласные звуки",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 83,
-          "to": 84
+          "from": 97,
+          "to": 99
         }
       },
       {
         "date": "2026-12-10",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-94",
-        "title": "Л. Н. Толстой. «Котёнок»",
+        "id": "reading-1-117",
+        "title": "Е. Чарушин «Страшный рассказ»",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 94,
-          "to": 95
-        },
-        "lessonId": "lit-b-kitten"
+          "from": 117,
+          "to": 119
+        }
       },
       {
         "date": "2026-12-10",
         "kind": "book",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-1-49",
-        "title": "Yummy Chocolate! (5a)",
+        "id": "english-1-54",
+        "title": "Favourite Food! (6b)",
         "book": {
           "id": "english-1",
           "part": 1,
-          "from": 49,
-          "to": 49
+          "from": 54,
+          "to": 55
         }
       },
       {
         "date": "2026-12-11",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-98",
-        "title": "Проект «Красная книга». Легенды о растениях и животных",
+        "id": "world-1-108",
+        "title": "Что такое экономика",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 98,
-          "to": 99
-        }
+          "from": 108,
+          "to": 111
+        },
+        "lessonId": "world-b-econ"
       },
       {
         "date": "2026-12-11",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-96",
-        "title": "Л. Н. Толстой. «Котёнок»",
+        "id": "reading-1-120",
+        "title": "Б. Житков «Храбрый утёнок»",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 96,
-          "to": 97
+          "from": 120,
+          "to": 121
         }
       },
       {
@@ -42251,158 +42260,159 @@
         "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-69",
-        "title": "Вычисления вида 35 – 7",
+        "id": "math-1-74",
+        "title": "Что узнали. Чему научились",
         "book": {
           "id": "math-1",
           "part": 1,
-          "from": 69,
-          "to": 69
+          "from": 74,
+          "to": 75
         }
       },
       {
         "date": "2026-12-14",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-85",
-        "title": "Русский алфавит",
+        "id": "russian-1-100",
+        "title": "Гласные звуки",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 85,
-          "to": 86
-        },
-        "lessonId": "rus-b-caps"
+          "from": 100,
+          "to": 102
+        }
       },
       {
         "date": "2026-12-14",
         "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-98",
-        "title": "Л. Толстой «Правда всего дороже»",
+        "id": "reading-1-122",
+        "title": "В. Бианки «Музыкант»",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 98,
-          "to": 98
+          "from": 122,
+          "to": 124
         },
-        "lessonId": "lit-f-idea"
+        "lessonId": "lit-b-bianki"
       },
       {
         "date": "2026-12-14",
         "kind": "book",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-1-50",
-        "title": "Yummy Chocolate! (5b)",
+        "id": "english-1-56",
+        "title": "Portfolio, Fun at School",
         "book": {
           "id": "english-1",
           "part": 1,
-          "from": 50,
-          "to": 51
-        }
-      },
-      {
-        "date": "2026-12-15",
-        "kind": "book",
-        "subjectId": "math",
-        "subject": "Математика",
-        "id": "math-1-70",
-        "title": "Странички для любознательных",
-        "book": {
-          "id": "math-1",
-          "part": 1,
-          "from": 70,
-          "to": 70
-        }
-      },
-      {
-        "date": "2026-12-15",
-        "kind": "book",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "id": "russian-1-87",
-        "title": "Русский алфавит",
-        "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 87,
-          "to": 88
+          "from": 56,
+          "to": 57
         }
       },
       {
         "date": "2026-12-15",
         "kind": "lesson",
-        "subjectId": "reading",
-        "subject": "Литературное чтение",
-        "id": "reading-1-99",
-        "title": "Л. Толстой «Филипок»",
+        "subjectId": "math",
+        "subject": "Математика",
+        "id": "math-1-76",
+        "title": "Буквенные выражения",
         "book": {
-          "id": "reading-1",
+          "id": "math-1",
           "part": 1,
-          "from": 99,
-          "to": 100
+          "from": 76,
+          "to": 77
         },
-        "lessonId": "lit-f-retell"
+        "lessonId": "math-06"
       },
       {
         "date": "2026-12-15",
-        "kind": "book",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "id": "world-1-100",
-        "title": "Проект «Красная книга». Легенды о растениях и животных",
-        "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 100,
-          "to": 101
-        }
-      },
-      {
-        "date": "2026-12-16",
-        "kind": "book",
-        "subjectId": "math",
-        "subject": "Математика",
-        "id": "math-1-71",
-        "title": "Странички для любознательных",
-        "book": {
-          "id": "math-1",
-          "part": 1,
-          "from": 71,
-          "to": 71
-        }
-      },
-      {
-        "date": "2026-12-16",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-89",
+        "id": "russian-1-103",
         "title": "Гласные звуки",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 89,
-          "to": 90
+          "from": 103,
+          "to": 105
         },
-        "lessonId": "rus-f-letters"
+        "lessonId": "rus-f-dict"
+      },
+      {
+        "date": "2026-12-15",
+        "kind": "book",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "id": "reading-1-125",
+        "title": "В. Бианки «Сова»",
+        "book": {
+          "id": "reading-1",
+          "part": 1,
+          "from": 125,
+          "to": 128
+        }
+      },
+      {
+        "date": "2026-12-15",
+        "kind": "lesson",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "id": "world-1-112",
+        "title": "Из чего что сделано",
+        "book": {
+          "id": "world-1",
+          "part": 1,
+          "from": 112,
+          "to": 115
+        },
+        "lessonId": "world-b-materials"
       },
       {
         "date": "2026-12-16",
         "kind": "book",
+        "subjectId": "math",
+        "subject": "Математика",
+        "id": "math-1-78",
+        "title": "Буквенные выражения",
+        "book": {
+          "id": "math-1",
+          "part": 1,
+          "from": 78,
+          "to": 79
+        }
+      },
+      {
+        "date": "2026-12-16",
+        "kind": "book",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "id": "russian-1-106",
+        "title": "Гласные звуки",
+        "book": {
+          "id": "russian-1",
+          "part": 1,
+          "from": 106,
+          "to": 108
+        }
+      },
+      {
+        "date": "2026-12-16",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-102",
-        "title": "Проверим себя",
+        "id": "world-1-116",
+        "title": "Как построить дом",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 102,
-          "to": 104
-        }
+          "from": 116,
+          "to": 119
+        },
+        "lessonId": "world-b-build"
       },
       {
         "date": "2026-12-16",
@@ -42415,30 +42425,31 @@
       },
       {
         "date": "2026-12-17",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-72",
-        "title": "Что узнали. Чему научились",
+        "id": "math-1-80",
+        "title": "Уравнение",
         "book": {
           "id": "math-1",
           "part": 1,
-          "from": 72,
-          "to": 72
-        }
+          "from": 80,
+          "to": 81
+        },
+        "lessonId": "math-07"
       },
       {
         "date": "2026-12-17",
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-91",
+        "id": "russian-1-109",
         "title": "Гласные звуки",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 91,
-          "to": 91
+          "from": 109,
+          "to": 111
         }
       },
       {
@@ -42446,57 +42457,58 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-101",
-        "title": "Л. Толстой «Филипок»",
+        "id": "reading-1-129",
+        "title": "Е. Благинина «Мороз». Проверим себя",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 101,
-          "to": 102
+          "from": 129,
+          "to": 132
         }
       },
       {
         "date": "2026-12-17",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-1-52",
-        "title": "Favourite Food! (6a)",
+        "id": "english-1-58",
+        "title": "Portfolio, Fun at School",
         "book": {
           "id": "english-1",
           "part": 1,
-          "from": 52,
-          "to": 53
-        },
-        "lessonId": "en-b-food2"
+          "from": 58,
+          "to": 59
+        }
       },
       {
         "date": "2026-12-18",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-105",
-        "title": "Проверим себя",
+        "id": "world-1-120",
+        "title": "Какой бывает транспорт",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 105,
-          "to": 107
-        }
+          "from": 120,
+          "to": 121
+        },
+        "lessonId": "world-b-transport"
       },
       {
         "date": "2026-12-18",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-103",
-        "title": "Проверим себя",
+        "id": "reading-1-133",
+        "title": "Зима. Как выучить стихотворение наизусть",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 103,
-          "to": 104
-        }
+          "from": 133,
+          "to": 135
+        },
+        "lessonId": "lit-b-memorize"
       },
       {
         "date": "2026-12-18",
@@ -42520,98 +42532,100 @@
         "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-73",
-        "title": "Что узнали. Чему научились",
+        "id": "math-1-82",
+        "title": "Уравнение",
         "book": {
           "id": "math-1",
           "part": 1,
-          "from": 73,
-          "to": 73
-        }
-      },
-      {
-        "date": "2026-12-21",
-        "kind": "book",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "id": "russian-1-92",
-        "title": "Гласные звуки",
-        "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 92,
-          "to": 93
+          "from": 82,
+          "to": 83
         }
       },
       {
         "date": "2026-12-21",
         "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "id": "russian-1-112",
+        "title": "Согласные звуки",
+        "book": {
+          "id": "russian-1",
+          "part": 1,
+          "from": 112,
+          "to": 114
+        },
+        "lessonId": "rus-b-cons"
+      },
+      {
+        "date": "2026-12-21",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-105",
-        "title": "О братьях наших меньших. Как составить отзыв",
+        "id": "reading-1-136",
+        "title": "С. Погореловский, А. Прокофьев",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 105,
-          "to": 107
-        },
-        "lessonId": "lit-b-review"
+          "from": 136,
+          "to": 137
+        }
       },
       {
         "date": "2026-12-21",
         "kind": "book",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-1-54",
-        "title": "Favourite Food! (6b)",
+        "id": "english-1-60",
+        "title": "Now I Know (Module 2)",
         "book": {
           "id": "english-1",
           "part": 1,
-          "from": 54,
-          "to": 55
+          "from": 60,
+          "to": 61
         }
       },
       {
         "date": "2026-12-22",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-74",
-        "title": "Что узнали. Чему научились",
+        "id": "math-1-84",
+        "title": "Проверка сложения",
         "book": {
           "id": "math-1",
           "part": 1,
-          "from": 74,
-          "to": 74
-        }
+          "from": 84,
+          "to": 85
+        },
+        "lessonId": "math-05"
       },
       {
         "date": "2026-12-22",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-94",
-        "title": "Гласные звуки",
+        "id": "russian-1-115",
+        "title": "Согласные звуки",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 94,
-          "to": 94
-        }
+          "from": 115,
+          "to": 118
+        },
+        "lessonId": "rus-b-yot"
       },
       {
         "date": "2026-12-22",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-108",
-        "title": "С. Брезкун, М. Бородицкая",
+        "id": "reading-1-138",
+        "title": "Первый снег: И. Бунин, К. Бальмонт, Я. Аким",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 108,
-          "to": 109
+          "from": 138,
+          "to": 140
         }
       },
       {
@@ -42619,58 +42633,60 @@
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-108",
-        "title": "Что такое экономика",
+        "id": "world-1-122",
+        "title": "Все профессии важны",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 108,
-          "to": 109
+          "from": 122,
+          "to": 125
         },
-        "lessonId": "world-b-econ"
+        "lessonId": "world-b-jobs"
       },
       {
         "date": "2026-12-23",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-75",
-        "title": "Что узнали. Чему научились",
+        "id": "math-1-86",
+        "title": "Проверка вычитания",
         "book": {
           "id": "math-1",
           "part": 1,
-          "from": 75,
-          "to": 75
-        }
+          "from": 86,
+          "to": 87
+        },
+        "lessonId": "math-b-checksub"
       },
       {
         "date": "2026-12-23",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-95",
-        "title": "Гласные звуки",
+        "id": "russian-1-119",
+        "title": "Проект «И в шутку и всерьёз»",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 95,
-          "to": 96
+          "from": 119,
+          "to": 120
         },
-        "lessonId": "rus-02"
+        "lessonId": "rus-b-double"
       },
       {
         "date": "2026-12-23",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-110",
-        "title": "Что такое экономика",
+        "id": "world-1-126",
+        "title": "В гости к зиме",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 110,
-          "to": 111
-        }
+          "from": 126,
+          "to": 129
+        },
+        "lessonId": "world-07"
       },
       {
         "date": "2026-12-23",
@@ -42686,28 +42702,28 @@
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-76",
-        "title": "Буквенные выражения",
+        "id": "math-1-88",
+        "title": "Решение задач",
         "book": {
           "id": "math-1",
           "part": 1,
-          "from": 76,
-          "to": 77
+          "from": 88,
+          "to": 89
         },
-        "lessonId": "math-06"
+        "lessonId": "math-b-tasks2"
       },
       {
         "date": "2026-12-24",
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-97",
-        "title": "Гласные звуки",
+        "id": "russian-1-121",
+        "title": "Проект «И в шутку и всерьёз»",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 97,
-          "to": 97
+          "from": 121,
+          "to": 123
         }
       },
       {
@@ -42715,13 +42731,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-110",
-        "title": "И. Пивоварова, В. Берестов «Кошкин щенок»",
+        "id": "reading-1-141",
+        "title": "Ф. Тютчев, С. Есенин «Поёт зима — аукает…» С. Есенин «Берёза»",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 110,
-          "to": 111
+          "from": 141,
+          "to": 143
         }
       },
       {
@@ -42729,13 +42745,13 @@
         "kind": "book",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-1-56",
-        "title": "Portfolio, Fun at School",
+        "id": "english-1-62",
+        "title": "Now I Know (Module 2)",
         "book": {
           "id": "english-1",
           "part": 1,
-          "from": 56,
-          "to": 57
+          "from": 62,
+          "to": 62
         }
       },
       {
@@ -42743,28 +42759,28 @@
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-112",
-        "title": "Из чего что сделано",
+        "id": "world-1-130",
+        "title": "Проект «Профессии». Какие бывают музеи",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 112,
-          "to": 113
+          "from": 130,
+          "to": 133
         },
-        "lessonId": "world-b-materials"
+        "lessonId": "world-b-museum"
       },
       {
         "date": "2026-12-25",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-112",
-        "title": "Как придумать рассказ",
+        "id": "reading-1-144",
+        "title": "А. С. Пушкин о зиме",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 112,
-          "to": 112
+          "from": 144,
+          "to": 145
         }
       },
       {
@@ -42786,88 +42802,89 @@
       },
       {
         "date": "2026-12-28",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-78",
-        "title": "Буквенные выражения",
+        "id": "math-1-90",
+        "title": "Что узнали. Чему научились",
         "book": {
           "id": "math-1",
           "part": 1,
-          "from": 78,
-          "to": 79
-        }
+          "from": 90,
+          "to": 91
+        },
+        "lessonId": "math-12"
       },
       {
         "date": "2026-12-28",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-98",
-        "title": "Гласные звуки",
+        "id": "russian-1-124",
+        "title": "Мягкий знак",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 98,
-          "to": 99
-        }
+          "from": 124,
+          "to": 125
+        },
+        "lessonId": "rus-04"
       },
       {
         "date": "2026-12-28",
         "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-113",
-        "title": "М. Пришвин «Ребята и утята»",
+        "id": "reading-1-146",
+        "title": "«Два мороза»",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 113,
-          "to": 114
+          "from": 146,
+          "to": 148
         },
-        "lessonId": "lit-b-ducks"
+        "lessonId": "lit-b-twofrosts"
       },
       {
         "date": "2026-12-28",
         "kind": "book",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-1-58",
-        "title": "Portfolio, Fun at School",
+        "id": "english-1-63",
+        "title": "Now I Know (Module 2)",
         "book": {
           "id": "english-1",
           "part": 1,
-          "from": 58,
-          "to": 59
+          "from": 63,
+          "to": 64
         }
       },
       {
         "date": "2026-12-29",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-80",
-        "title": "Уравнение",
+        "id": "math-1-92",
+        "title": "Что узнали. Чему научились",
         "book": {
           "id": "math-1",
           "part": 1,
-          "from": 80,
-          "to": 81
-        },
-        "lessonId": "math-07"
+          "from": 92,
+          "to": 93
+        }
       },
       {
         "date": "2026-12-29",
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-100",
-        "title": "Гласные звуки",
+        "id": "russian-1-126",
+        "title": "Мягкий знак",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 100,
-          "to": 100
+          "from": 126,
+          "to": 128
         }
       },
       {
@@ -42875,13 +42892,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-115",
-        "title": "М. Пришвин «Ребята и утята»",
+        "id": "reading-1-149",
+        "title": "С. Михалков «Новогодняя быль». Проверим себя",
         "book": {
           "id": "reading-1",
           "part": 1,
-          "from": 115,
-          "to": 116
+          "from": 149,
+          "to": 152
         }
       },
       {
@@ -42889,13 +42906,13 @@
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-114",
-        "title": "Из чего что сделано",
+        "id": "world-1-134",
+        "title": "Проверим себя",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 114,
-          "to": 115
+          "from": 134,
+          "to": 137
         }
       },
       {
@@ -42903,13 +42920,13 @@
         "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-82",
-        "title": "Уравнение",
+        "id": "math-1-94",
+        "title": "Проверим себя",
         "book": {
           "id": "math-1",
           "part": 1,
-          "from": 82,
-          "to": 83
+          "from": 94,
+          "to": 95
         }
       },
       {
@@ -42917,29 +42934,28 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-101",
-        "title": "Гласные звуки",
+        "id": "russian-1-129",
+        "title": "Проект «Пишем письмо»",
         "book": {
           "id": "russian-1",
           "part": 1,
-          "from": 101,
-          "to": 102
+          "from": 129,
+          "to": 129
         }
       },
       {
         "date": "2026-12-30",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-116",
-        "title": "Как построить дом",
+        "id": "world-1-138",
+        "title": "Проверим себя",
         "book": {
           "id": "world-1",
           "part": 1,
-          "from": 116,
-          "to": 117
-        },
-        "lessonId": "world-b-build"
+          "from": 138,
+          "to": 141
+        }
       },
       {
         "date": "2026-12-30",
@@ -42990,159 +43006,161 @@
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-84",
-        "title": "Проверка сложения",
+        "id": "math-2-4",
+        "title": "Письменное сложение вида 45 + 23",
         "book": {
-          "id": "math-1",
-          "part": 1,
-          "from": 84,
-          "to": 85
+          "id": "math-2",
+          "part": 2,
+          "from": 4,
+          "to": 4
         },
-        "lessonId": "math-05"
+        "lessonId": "math-10"
       },
       {
         "date": "2027-01-11",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-103",
-        "title": "Гласные звуки",
+        "id": "russian-2-4",
+        "title": "Буквосочетания с шипящими",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 103,
-          "to": 103
-        }
+          "id": "russian-2",
+          "part": 2,
+          "from": 4,
+          "to": 4
+        },
+        "lessonId": "rus-f-chk"
       },
       {
         "date": "2027-01-11",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-117",
-        "title": "Е. Чарушин «Страшный рассказ»",
+        "id": "reading-2-3",
+        "title": "Писатели — детям. Как рассказать о писателе",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 117,
-          "to": 119
+          "id": "reading-2",
+          "part": 2,
+          "from": 3,
+          "to": 4
         }
       },
       {
         "date": "2027-01-11",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-1-60",
-        "title": "Now I Know (Module 2)",
+        "id": "english-2-4",
+        "title": "My Animals! (7a)",
         "book": {
-          "id": "english-1",
-          "part": 1,
-          "from": 60,
-          "to": 61
-        }
+          "id": "english-2",
+          "part": 2,
+          "from": 4,
+          "to": 4
+        },
+        "lessonId": "en-animals"
       },
       {
         "date": "2027-01-12",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-86",
-        "title": "Проверка вычитания",
+        "id": "math-2-5",
+        "title": "Письменное вычитание вида 57 – 26",
         "book": {
-          "id": "math-1",
-          "part": 1,
-          "from": 86,
-          "to": 87
+          "id": "math-2",
+          "part": 2,
+          "from": 5,
+          "to": 5
         },
-        "lessonId": "math-b-checksub"
+        "lessonId": "math-b-57m26"
       },
       {
         "date": "2027-01-12",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-104",
-        "title": "Гласные звуки",
+        "id": "russian-2-5",
+        "title": "Буквосочетания с шипящими",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 104,
-          "to": 105
+          "id": "russian-2",
+          "part": 2,
+          "from": 5,
+          "to": 6
         },
-        "lessonId": "rus-f-dict"
+        "lessonId": "rus-f-zhi"
       },
       {
         "date": "2027-01-12",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-120",
-        "title": "Б. Житков «Храбрый утёнок»",
+        "id": "reading-2-5",
+        "title": "Писатели — детям. Как рассказать о писателе",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 120,
-          "to": 121
+          "id": "reading-2",
+          "part": 2,
+          "from": 5,
+          "to": 5
         }
       },
       {
         "date": "2027-01-12",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-118",
-        "title": "Как построить дом",
+        "id": "world-2-4",
+        "title": "Строение тела человека",
         "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 118,
-          "to": 119
-        }
+          "id": "world-2",
+          "part": 2,
+          "from": 4,
+          "to": 5
+        },
+        "lessonId": "world-b-body"
       },
       {
         "date": "2027-01-13",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-88",
-        "title": "Решение задач",
+        "id": "math-2-6",
+        "title": "Проверка сложения и вычитания",
         "book": {
-          "id": "math-1",
-          "part": 1,
-          "from": 88,
-          "to": 89
+          "id": "math-2",
+          "part": 2,
+          "from": 6,
+          "to": 6
         },
-        "lessonId": "math-b-tasks2"
+        "lessonId": "math-b-check2"
       },
       {
         "date": "2027-01-13",
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-106",
-        "title": "Гласные звуки",
+        "id": "russian-2-7",
+        "title": "Буквосочетания с шипящими",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 106,
-          "to": 106
+          "id": "russian-2",
+          "part": 2,
+          "from": 7,
+          "to": 7
         }
       },
       {
         "date": "2027-01-13",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-120",
-        "title": "Какой бывает транспорт",
+        "id": "world-2-6",
+        "title": "Строение тела человека",
         "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 120,
-          "to": 121
-        },
-        "lessonId": "world-b-transport"
+          "id": "world-2",
+          "part": 2,
+          "from": 6,
+          "to": 7
+        }
       },
       {
         "date": "2027-01-13",
@@ -43155,60 +43173,59 @@
       },
       {
         "date": "2027-01-14",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-1-90",
-        "title": "Что узнали. Чему научились",
+        "id": "math-2-7",
+        "title": "Проверка сложения и вычитания",
         "book": {
-          "id": "math-1",
-          "part": 1,
-          "from": 90,
-          "to": 91
-        },
-        "lessonId": "math-12"
-      },
-      {
-        "date": "2027-01-14",
-        "kind": "book",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "id": "russian-1-107",
-        "title": "Гласные звуки",
-        "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 107,
-          "to": 108
+          "id": "math-2",
+          "part": 2,
+          "from": 7,
+          "to": 7
         }
       },
       {
         "date": "2027-01-14",
         "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "id": "russian-2-8",
+        "title": "Буквосочетания с шипящими",
+        "book": {
+          "id": "russian-2",
+          "part": 2,
+          "from": 8,
+          "to": 9
+        },
+        "lessonId": "rus-f-cha"
+      },
+      {
+        "date": "2027-01-14",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-122",
-        "title": "В. Бианки «Музыкант»",
+        "id": "reading-2-6",
+        "title": "Писатели — детям. Как рассказать о писателе",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 122,
-          "to": 124
-        },
-        "lessonId": "lit-b-bianki"
+          "id": "reading-2",
+          "part": 2,
+          "from": 6,
+          "to": 7
+        }
       },
       {
         "date": "2027-01-14",
         "kind": "book",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-1-62",
-        "title": "Now I Know (Module 2)",
+        "id": "english-2-5",
+        "title": "My Animals! (7a)",
         "book": {
-          "id": "english-1",
-          "part": 1,
-          "from": 62,
-          "to": 62
+          "id": "english-2",
+          "part": 2,
+          "from": 5,
+          "to": 5
         }
       },
       {
@@ -43216,29 +43233,30 @@
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-122",
-        "title": "Все профессии важны",
+        "id": "world-2-8",
+        "title": "Если хочешь быть здоров",
         "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 122,
-          "to": 123
+          "id": "world-2",
+          "part": 2,
+          "from": 8,
+          "to": 9
         },
-        "lessonId": "world-b-jobs"
+        "lessonId": "world-08"
       },
       {
         "date": "2027-01-15",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-125",
-        "title": "В. Бианки «Сова»",
+        "id": "reading-2-8",
+        "title": "К. Чуковский «Путаница»",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 125,
-          "to": 126
-        }
+          "id": "reading-2",
+          "part": 2,
+          "from": 8,
+          "to": 9
+        },
+        "lessonId": "lit-b-confusion"
       },
       {
         "date": "2027-01-15",
@@ -43259,160 +43277,162 @@
       },
       {
         "date": "2027-01-18",
-        "kind": "book",
-        "subjectId": "math",
-        "subject": "Математика",
-        "id": "math-1-92",
-        "title": "Что узнали. Чему научились",
-        "book": {
-          "id": "math-1",
-          "part": 1,
-          "from": 92,
-          "to": 93
-        }
-      },
-      {
-        "date": "2027-01-18",
-        "kind": "book",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "id": "russian-1-109",
-        "title": "Гласные звуки",
-        "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 109,
-          "to": 109
-        }
-      },
-      {
-        "date": "2027-01-18",
-        "kind": "book",
-        "subjectId": "reading",
-        "subject": "Литературное чтение",
-        "id": "reading-1-127",
-        "title": "В. Бианки «Сова»",
-        "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 127,
-          "to": 128
-        }
-      },
-      {
-        "date": "2027-01-18",
-        "kind": "book",
-        "subjectId": "english",
-        "subject": "Английский язык",
-        "id": "english-1-63",
-        "title": "Now I Know (Module 2)",
-        "book": {
-          "id": "english-1",
-          "part": 1,
-          "from": 63,
-          "to": 64
-        }
-      },
-      {
-        "date": "2027-01-19",
-        "kind": "book",
-        "subjectId": "math",
-        "subject": "Математика",
-        "id": "math-1-94",
-        "title": "Проверим себя",
-        "book": {
-          "id": "math-1",
-          "part": 1,
-          "from": 94,
-          "to": 95
-        }
-      },
-      {
-        "date": "2027-01-19",
-        "kind": "book",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "id": "russian-1-110",
-        "title": "Гласные звуки",
-        "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 110,
-          "to": 111
-        }
-      },
-      {
-        "date": "2027-01-19",
-        "kind": "book",
-        "subjectId": "reading",
-        "subject": "Литературное чтение",
-        "id": "reading-1-129",
-        "title": "Е. Благинина «Мороз». Проверим себя",
-        "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 129,
-          "to": 132
-        }
-      },
-      {
-        "date": "2027-01-19",
-        "kind": "book",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "id": "world-1-124",
-        "title": "Все профессии важны",
-        "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 124,
-          "to": 125
-        }
-      },
-      {
-        "date": "2027-01-20",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-4",
-        "title": "Письменное сложение вида 45 + 23",
+        "id": "math-2-8",
+        "title": "Угол. Виды углов",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 4,
-          "to": 4
+          "from": 8,
+          "to": 8
         },
-        "lessonId": "math-10"
+        "lessonId": "math-f-angle"
+      },
+      {
+        "date": "2027-01-18",
+        "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "id": "russian-2-10",
+        "title": "Буквосочетания с шипящими",
+        "book": {
+          "id": "russian-2",
+          "part": 2,
+          "from": 10,
+          "to": 10
+        },
+        "lessonId": "rus-f-chu"
+      },
+      {
+        "date": "2027-01-18",
+        "kind": "book",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "id": "reading-2-10",
+        "title": "К. Чуковский «Путаница»",
+        "book": {
+          "id": "reading-2",
+          "part": 2,
+          "from": 10,
+          "to": 10
+        }
+      },
+      {
+        "date": "2027-01-18",
+        "kind": "lesson",
+        "subjectId": "english",
+        "subject": "Английский язык",
+        "id": "english-2-6",
+        "title": "My Animals! (7b)",
+        "book": {
+          "id": "english-2",
+          "part": 2,
+          "from": 6,
+          "to": 6
+        },
+        "lessonId": "en-b-ican"
+      },
+      {
+        "date": "2027-01-19",
+        "kind": "book",
+        "subjectId": "math",
+        "subject": "Математика",
+        "id": "math-2-9",
+        "title": "Угол. Виды углов",
+        "book": {
+          "id": "math-2",
+          "part": 2,
+          "from": 9,
+          "to": 9
+        }
+      },
+      {
+        "date": "2027-01-19",
+        "kind": "book",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "id": "russian-2-11",
+        "title": "Буквосочетания с шипящими",
+        "book": {
+          "id": "russian-2",
+          "part": 2,
+          "from": 11,
+          "to": 12
+        }
+      },
+      {
+        "date": "2027-01-19",
+        "kind": "book",
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "id": "reading-2-11",
+        "title": "К. Чуковский «Путаница»",
+        "book": {
+          "id": "reading-2",
+          "part": 2,
+          "from": 11,
+          "to": 12
+        }
+      },
+      {
+        "date": "2027-01-19",
+        "kind": "book",
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "id": "world-2-10",
+        "title": "Если хочешь быть здоров",
+        "book": {
+          "id": "world-2",
+          "part": 2,
+          "from": 10,
+          "to": 11
+        }
       },
       {
         "date": "2027-01-20",
         "kind": "lesson",
+        "subjectId": "math",
+        "subject": "Математика",
+        "id": "math-2-10",
+        "title": "Решение задач",
+        "book": {
+          "id": "math-2",
+          "part": 2,
+          "from": 10,
+          "to": 10
+        },
+        "lessonId": "math-b-tasks3"
+      },
+      {
+        "date": "2027-01-20",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-112",
-        "title": "Согласные звуки",
+        "id": "russian-2-13",
+        "title": "Буквосочетания с шипящими",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 112,
-          "to": 112
-        },
-        "lessonId": "rus-b-cons"
+          "id": "russian-2",
+          "part": 2,
+          "from": 13,
+          "to": 13
+        }
       },
       {
         "date": "2027-01-20",
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-126",
-        "title": "В гости к зиме",
+        "id": "world-2-12",
+        "title": "Берегись автомобиля!",
         "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 126,
-          "to": 127
+          "id": "world-2",
+          "part": 2,
+          "from": 12,
+          "to": 13
         },
-        "lessonId": "world-07"
+        "lessonId": "world-b-road"
       },
       {
         "date": "2027-01-20",
@@ -43425,90 +43445,88 @@
       },
       {
         "date": "2027-01-21",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-5",
-        "title": "Письменное вычитание вида 57 – 26",
+        "id": "math-2-11",
+        "title": "Решение задач",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 5,
-          "to": 5
-        },
-        "lessonId": "math-b-57m26"
+          "from": 11,
+          "to": 11
+        }
       },
       {
         "date": "2027-01-21",
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-113",
-        "title": "Согласные звуки",
+        "id": "russian-2-14",
+        "title": "Буквосочетания с шипящими",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 113,
-          "to": 114
+          "id": "russian-2",
+          "part": 2,
+          "from": 14,
+          "to": 15
         }
       },
       {
         "date": "2027-01-21",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-133",
-        "title": "Зима. Как выучить стихотворение наизусть",
+        "id": "reading-2-13",
+        "title": "К. Чуковский «Радость»",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 133,
-          "to": 135
-        },
-        "lessonId": "lit-b-memorize"
+          "id": "reading-2",
+          "part": 2,
+          "from": 13,
+          "to": 14
+        }
       },
       {
         "date": "2027-01-21",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-2-4",
-        "title": "My Animals! (7a)",
+        "id": "english-2-7",
+        "title": "My Animals! (7b)",
         "book": {
           "id": "english-2",
           "part": 2,
-          "from": 4,
-          "to": 5
-        },
-        "lessonId": "en-animals"
+          "from": 7,
+          "to": 7
+        }
       },
       {
         "date": "2027-01-22",
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-128",
-        "title": "В гости к зиме",
+        "id": "world-2-14",
+        "title": "Берегись автомобиля!",
         "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 128,
-          "to": 129
+          "id": "world-2",
+          "part": 2,
+          "from": 14,
+          "to": 15
         }
       },
       {
         "date": "2027-01-22",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-136",
-        "title": "С. Погореловский, А. Прокофьев",
+        "id": "reading-2-15",
+        "title": "К. Чуковский «Федорино горе»",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 136,
-          "to": 137
-        }
+          "id": "reading-2",
+          "part": 2,
+          "from": 15,
+          "to": 15
+        },
+        "lessonId": "lit-b-fedora"
       },
       {
         "date": "2027-01-22",
@@ -43532,43 +43550,43 @@
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-6",
-        "title": "Проверка сложения и вычитания",
+        "id": "math-2-12",
+        "title": "Письменное сложение вида 37 + 48",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 6,
-          "to": 7
+          "from": 12,
+          "to": 12
         },
-        "lessonId": "math-b-check2"
+        "lessonId": "math-b-37p48"
       },
       {
         "date": "2027-01-25",
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-115",
-        "title": "Согласные звуки",
+        "id": "russian-2-16",
+        "title": "Звонкие и глухие согласные",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 115,
-          "to": 116
+          "id": "russian-2",
+          "part": 2,
+          "from": 16,
+          "to": 16
         },
-        "lessonId": "rus-b-yot"
+        "lessonId": "rus-03"
       },
       {
         "date": "2027-01-25",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-138",
-        "title": "Первый снег: И. Бунин, К. Бальмонт, Я. Аким",
+        "id": "reading-2-16",
+        "title": "К. Чуковский «Федорино горе»",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 138,
-          "to": 140
+          "id": "reading-2",
+          "part": 2,
+          "from": 16,
+          "to": 17
         }
       },
       {
@@ -43576,58 +43594,57 @@
         "kind": "lesson",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-2-6",
-        "title": "My Animals! (7b)",
+        "id": "english-2-8",
+        "title": "I Can Jump! (8a)",
         "book": {
           "id": "english-2",
           "part": 2,
-          "from": 6,
-          "to": 7
+          "from": 8,
+          "to": 8
         },
-        "lessonId": "en-b-ican"
+        "lessonId": "en-b-cancant"
       },
       {
         "date": "2027-01-26",
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-8",
-        "title": "Угол. Виды углов",
+        "id": "math-2-13",
+        "title": "Письменное сложение вида 37 + 53",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 8,
-          "to": 9
+          "from": 13,
+          "to": 13
         },
-        "lessonId": "math-f-angle"
+        "lessonId": "math-b-37p53"
       },
       {
         "date": "2027-01-26",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-117",
-        "title": "Согласные звуки",
+        "id": "russian-2-17",
+        "title": "Звонкие и глухие согласные",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 117,
-          "to": 118
-        },
-        "lessonId": "rus-b-double"
+          "id": "russian-2",
+          "part": 2,
+          "from": 17,
+          "to": 18
+        }
       },
       {
         "date": "2027-01-26",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-141",
-        "title": "Ф. Тютчев, С. Есенин «Поёт зима — аукает…»",
+        "id": "reading-2-18",
+        "title": "К. Чуковский «Федорино горе»",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 141,
-          "to": 142
+          "id": "reading-2",
+          "part": 2,
+          "from": 18,
+          "to": 18
         }
       },
       {
@@ -43635,43 +43652,42 @@
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-130",
-        "title": "Проект «Профессии». Какие бывают музеи",
+        "id": "world-2-16",
+        "title": "Домашние опасности",
         "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 130,
-          "to": 131
+          "id": "world-2",
+          "part": 2,
+          "from": 16,
+          "to": 17
         },
-        "lessonId": "world-b-museum"
+        "lessonId": "world-f-safe"
       },
       {
         "date": "2027-01-27",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-10",
-        "title": "Решение задач",
+        "id": "math-2-14",
+        "title": "Письменное сложение вида 37 + 53",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 10,
-          "to": 11
-        },
-        "lessonId": "math-b-tasks3"
+          "from": 14,
+          "to": 14
+        }
       },
       {
         "date": "2027-01-27",
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-119",
-        "title": "Проект «И в шутку и всерьёз»",
+        "id": "russian-2-19",
+        "title": "Звонкие и глухие согласные",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 119,
-          "to": 120
+          "id": "russian-2",
+          "part": 2,
+          "from": 19,
+          "to": 20
         }
       },
       {
@@ -43679,13 +43695,13 @@
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-132",
-        "title": "Проект «Профессии». Какие бывают музеи",
+        "id": "world-2-18",
+        "title": "Домашние опасности",
         "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 132,
-          "to": 133
+          "id": "world-2",
+          "part": 2,
+          "from": 18,
+          "to": 19
         }
       },
       {
@@ -43699,31 +43715,30 @@
       },
       {
         "date": "2027-01-28",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-12",
-        "title": "Письменное сложение вида 37 + 48",
+        "id": "math-2-15",
+        "title": "Письменное сложение вида 37 + 53",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 12,
-          "to": 12
-        },
-        "lessonId": "math-b-37p48"
+          "from": 15,
+          "to": 15
+        }
       },
       {
         "date": "2027-01-28",
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-121",
-        "title": "Проект «И в шутку и всерьёз»",
+        "id": "russian-2-21",
+        "title": "Звонкие и глухие согласные",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 121,
-          "to": 121
+          "id": "russian-2",
+          "part": 2,
+          "from": 21,
+          "to": 22
         }
       },
       {
@@ -43731,57 +43746,58 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-143",
-        "title": "С. Есенин «Берёза»",
+        "id": "reading-2-19",
+        "title": "К. Чуковский «Федорино горе»",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 143,
-          "to": 143
+          "id": "reading-2",
+          "part": 2,
+          "from": 19,
+          "to": 20
         }
       },
       {
         "date": "2027-01-28",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "english",
         "subject": "Английский язык",
-        "id": "english-2-8",
+        "id": "english-2-9",
         "title": "I Can Jump! (8a)",
         "book": {
           "id": "english-2",
           "part": 2,
-          "from": 8,
+          "from": 9,
           "to": 9
-        },
-        "lessonId": "en-b-cancant"
+        }
       },
       {
         "date": "2027-01-29",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-134",
-        "title": "Проверим себя",
+        "id": "world-2-20",
+        "title": "Пожар!",
         "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 134,
-          "to": 135
-        }
+          "id": "world-2",
+          "part": 2,
+          "from": 20,
+          "to": 21
+        },
+        "lessonId": "world-b-fire"
       },
       {
         "date": "2027-01-29",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-144",
-        "title": "А. С. Пушкин о зиме",
+        "id": "reading-2-21",
+        "title": "Как читать по ролям",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 144,
-          "to": 145
-        }
+          "id": "reading-2",
+          "part": 2,
+          "from": 21,
+          "to": 22
+        },
+        "lessonId": "lit-b-roles"
       },
       {
         "date": "2027-01-29",
@@ -43805,44 +43821,43 @@
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-13",
-        "title": "Письменное сложение вида 37 + 53",
+        "id": "math-2-16",
+        "title": "Письменное сложение вида 87 + 13",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 13,
-          "to": 13
+          "from": 16,
+          "to": 16
         },
-        "lessonId": "math-b-37p53"
+        "lessonId": "math-b-87p13"
       },
       {
         "date": "2027-02-01",
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-122",
-        "title": "Проект «И в шутку и всерьёз»",
+        "id": "russian-2-23",
+        "title": "Звонкие и глухие согласные",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 122,
-          "to": 123
+          "id": "russian-2",
+          "part": 2,
+          "from": 23,
+          "to": 24
         }
       },
       {
         "date": "2027-02-01",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-146",
-        "title": "«Два мороза»",
+        "id": "reading-2-23",
+        "title": "С. Михалков «Сила воли», «Мой щенок»",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 146,
-          "to": 148
-        },
-        "lessonId": "lit-b-twofrosts"
+          "id": "reading-2",
+          "part": 2,
+          "from": 23,
+          "to": 24
+        }
       },
       {
         "date": "2027-02-01",
@@ -43860,45 +43875,45 @@
       },
       {
         "date": "2027-02-02",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-14",
-        "title": "Письменное сложение вида 37 + 53",
+        "id": "math-2-17",
+        "title": "Решение задач",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 14,
-          "to": 15
-        }
+          "from": 17,
+          "to": 17
+        },
+        "lessonId": "math-b-tasks4"
       },
       {
         "date": "2027-02-02",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-124",
-        "title": "Мягкий знак",
+        "id": "russian-2-25",
+        "title": "Звонкие и глухие согласные",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 124,
-          "to": 125
-        },
-        "lessonId": "rus-04"
+          "id": "russian-2",
+          "part": 2,
+          "from": 25,
+          "to": 26
+        }
       },
       {
         "date": "2027-02-02",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-1-149",
-        "title": "С. Михалков «Новогодняя быль». Проверим себя",
+        "id": "reading-2-25",
+        "title": "С. Михалков «Сила воли», «Мой щенок»",
         "book": {
-          "id": "reading-1",
-          "part": 1,
-          "from": 149,
-          "to": 152
+          "id": "reading-2",
+          "part": 2,
+          "from": 25,
+          "to": 25
         }
       },
       {
@@ -43906,13 +43921,13 @@
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-136",
-        "title": "Проверим себя",
+        "id": "world-2-22",
+        "title": "Пожар!",
         "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 136,
-          "to": 137
+          "id": "world-2",
+          "part": 2,
+          "from": 22,
+          "to": 23
         }
       },
       {
@@ -43920,43 +43935,44 @@
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-16",
-        "title": "Письменное сложение вида 87 + 13",
+        "id": "math-2-18",
+        "title": "Сложение вида 32 + 8, вычитание вида 40 – 8",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 16,
-          "to": 16
+          "from": 18,
+          "to": 18
         },
-        "lessonId": "math-b-87p13"
+        "lessonId": "math-b-32p8"
       },
       {
         "date": "2027-02-03",
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-126",
-        "title": "Мягкий знак",
+        "id": "russian-2-27",
+        "title": "Звонкие и глухие согласные",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 126,
-          "to": 126
+          "id": "russian-2",
+          "part": 2,
+          "from": 27,
+          "to": 28
         }
       },
       {
         "date": "2027-02-03",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-138",
-        "title": "Проверим себя",
+        "id": "world-2-24",
+        "title": "На воде и в лесу",
         "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 138,
-          "to": 139
-        }
+          "id": "world-2",
+          "part": 2,
+          "from": 24,
+          "to": 25
+        },
+        "lessonId": "world-b-waterforest"
       },
       {
         "date": "2027-02-03",
@@ -43972,28 +43988,28 @@
         "kind": "lesson",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-17",
-        "title": "Решение задач",
+        "id": "math-2-19",
+        "title": "Письменное вычитание вида 50 – 24",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 17,
-          "to": 17
+          "from": 19,
+          "to": 19
         },
-        "lessonId": "math-b-tasks4"
+        "lessonId": "math-b-50m24"
       },
       {
         "date": "2027-02-04",
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-1-127",
-        "title": "Мягкий знак",
+        "id": "russian-2-29",
+        "title": "Звонкие и глухие согласные",
         "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 127,
-          "to": 128
+          "id": "russian-2",
+          "part": 2,
+          "from": 29,
+          "to": 30
         }
       },
       {
@@ -44001,13 +44017,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-3",
-        "title": "Писатели — детям. Как рассказать о писателе",
+        "id": "reading-2-26",
+        "title": "С. Михалков «Сила воли», «Мой щенок»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 3,
-          "to": 4
+          "from": 26,
+          "to": 27
         }
       },
       {
@@ -44030,13 +44046,13 @@
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-1-140",
-        "title": "Проверим себя",
+        "id": "world-2-26",
+        "title": "На воде и в лесу",
         "book": {
-          "id": "world-1",
-          "part": 1,
-          "from": 140,
-          "to": 141
+          "id": "world-2",
+          "part": 2,
+          "from": 26,
+          "to": 27
         }
       },
       {
@@ -44044,13 +44060,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-5",
-        "title": "Писатели — детям. Как рассказать о писателе",
+        "id": "reading-2-28",
+        "title": "А. Барто «Верёвочка»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 5,
-          "to": 7
+          "from": 28,
+          "to": 29
         }
       },
       {
@@ -44072,47 +44088,46 @@
       },
       {
         "date": "2027-02-08",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-18",
-        "title": "Сложение вида 32 + 8, вычитание вида 40 – 8",
+        "id": "math-2-20",
+        "title": "Странички для любознательных",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 18,
-          "to": 18
-        },
-        "lessonId": "math-b-32p8"
-      },
-      {
-        "date": "2027-02-08",
-        "kind": "book",
-        "subjectId": "russian",
-        "subject": "Русский язык",
-        "id": "russian-1-129",
-        "title": "Проект «Пишем письмо»",
-        "book": {
-          "id": "russian-1",
-          "part": 1,
-          "from": 129,
-          "to": 129
+          "from": 20,
+          "to": 20
         }
       },
       {
         "date": "2027-02-08",
         "kind": "lesson",
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "id": "russian-2-31",
+        "title": "Разделительный мягкий знак",
+        "book": {
+          "id": "russian-2",
+          "part": 2,
+          "from": 31,
+          "to": 32
+        },
+        "lessonId": "rus-05"
+      },
+      {
+        "date": "2027-02-08",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-8",
-        "title": "К. Чуковский «Путаница»",
+        "id": "reading-2-30",
+        "title": "А. Барто «Верёвочка»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 8,
-          "to": 9
-        },
-        "lessonId": "lit-b-confusion"
+          "from": 30,
+          "to": 31
+        }
       },
       {
         "date": "2027-02-08",
@@ -44130,46 +44145,44 @@
       },
       {
         "date": "2027-02-09",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-19",
-        "title": "Письменное вычитание вида 50 – 24",
+        "id": "math-2-21",
+        "title": "Странички для любознательных",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 19,
-          "to": 19
-        },
-        "lessonId": "math-b-50m24"
+          "from": 21,
+          "to": 21
+        }
       },
       {
         "date": "2027-02-09",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-4",
-        "title": "Буквосочетания с шипящими",
+        "id": "russian-2-33",
+        "title": "Разделительный мягкий знак",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 4,
-          "to": 4
-        },
-        "lessonId": "rus-f-chk"
+          "from": 33,
+          "to": 34
+        }
       },
       {
         "date": "2027-02-09",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-10",
-        "title": "К. Чуковский «Путаница»",
+        "id": "reading-2-32",
+        "title": "А. Барто «Мы не заметили жука», «Вовка — добрая душа»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 10,
-          "to": 12
+          "from": 32,
+          "to": 33
         }
       },
       {
@@ -44177,57 +44190,56 @@
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-4",
-        "title": "Строение тела человека",
+        "id": "world-2-28",
+        "title": "Опасные незнакомцы",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 4,
-          "to": 5
+          "from": 28,
+          "to": 29
         },
-        "lessonId": "world-b-body"
+        "lessonId": "world-b-strangers"
       },
       {
         "date": "2027-02-10",
         "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-20",
-        "title": "Странички для любознательных",
+        "id": "math-2-22",
+        "title": "Что узнали. Чему научились",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 20,
-          "to": 21
+          "from": 22,
+          "to": 22
         }
       },
       {
         "date": "2027-02-10",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-5",
-        "title": "Буквосочетания с шипящими",
+        "id": "russian-2-35",
+        "title": "Разделительный мягкий знак",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 5,
-          "to": 6
-        },
-        "lessonId": "rus-f-zhi"
+          "from": 35,
+          "to": 36
+        }
       },
       {
         "date": "2027-02-10",
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-6",
-        "title": "Строение тела человека",
+        "id": "world-2-30",
+        "title": "Опасные незнакомцы",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 6,
-          "to": 7
+          "from": 30,
+          "to": 31
         }
       },
       {
@@ -44244,13 +44256,13 @@
         "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-22",
+        "id": "math-2-23",
         "title": "Что узнали. Чему научились",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 22,
-          "to": 22
+          "from": 23,
+          "to": 23
         }
       },
       {
@@ -44258,13 +44270,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-7",
-        "title": "Буквосочетания с шипящими",
+        "id": "russian-2-37",
+        "title": "Разделительный мягкий знак",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 7,
-          "to": 7
+          "from": 37,
+          "to": 37
         }
       },
       {
@@ -44272,13 +44284,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-13",
-        "title": "К. Чуковский «Радость»",
+        "id": "reading-2-34",
+        "title": "Н. Носов «Затейники»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 13,
-          "to": 14
+          "from": 34,
+          "to": 35
         }
       },
       {
@@ -44297,33 +44309,31 @@
       },
       {
         "date": "2027-02-12",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-8",
-        "title": "Если хочешь быть здоров",
+        "id": "world-2-32",
+        "title": "Проект о лесных опасностях. Олимпийские игры",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 8,
-          "to": 9
-        },
-        "lessonId": "world-08"
+          "from": 32,
+          "to": 33
+        }
       },
       {
         "date": "2027-02-12",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-15",
-        "title": "К. Чуковский «Федорино горе»",
+        "id": "reading-2-36",
+        "title": "Н. Носов «Затейники»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 15,
-          "to": 17
-        },
-        "lessonId": "lit-b-fedora"
+          "from": 36,
+          "to": 37
+        }
       },
       {
         "date": "2027-02-12",
@@ -44347,43 +44357,43 @@
         "kind": "book",
         "subjectId": "math",
         "subject": "Математика",
-        "id": "math-2-23",
+        "id": "math-2-24",
         "title": "Что узнали. Чему научились",
         "book": {
           "id": "math-2",
           "part": 2,
-          "from": 23,
+          "from": 24,
           "to": 24
         }
       },
       {
         "date": "2027-02-15",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-8",
-        "title": "Буквосочетания с шипящими",
+        "id": "russian-2-38",
+        "title": "Разделительный мягкий знак",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 8,
-          "to": 9
-        },
-        "lessonId": "rus-f-cha"
+          "from": 38,
+          "to": 39
+        }
       },
       {
         "date": "2027-02-15",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-18",
-        "title": "К. Чуковский «Федорино горе»",
+        "id": "reading-2-38",
+        "title": "Н. Носов «Живая шляпа»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 18,
-          "to": 20
-        }
+          "from": 38,
+          "to": 39
+        },
+        "lessonId": "lit-b-livehat"
       },
       {
         "date": "2027-02-15",
@@ -44418,43 +44428,42 @@
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-10",
-        "title": "Буквосочетания с шипящими",
+        "id": "russian-2-40",
+        "title": "Части речи",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 10,
-          "to": 10
+          "from": 40,
+          "to": 41
         },
-        "lessonId": "rus-f-chu"
+        "lessonId": "rus-b-partsp"
       },
       {
         "date": "2027-02-16",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-21",
-        "title": "Как читать по ролям",
+        "id": "reading-2-40",
+        "title": "Н. Носов «Живая шляпа»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 21,
-          "to": 22
-        },
-        "lessonId": "lit-b-roles"
+          "from": 40,
+          "to": 41
+        }
       },
       {
         "date": "2027-02-16",
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-10",
-        "title": "Если хочешь быть здоров",
+        "id": "world-2-34",
+        "title": "Проект о лесных опасностях. Олимпийские игры",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 10,
-          "to": 11
+          "from": 34,
+          "to": 35
         }
       },
       {
@@ -44476,29 +44485,28 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-11",
-        "title": "Буквосочетания с шипящими",
+        "id": "russian-2-42",
+        "title": "Части речи",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 11,
-          "to": 12
+          "from": 42,
+          "to": 43
         }
       },
       {
         "date": "2027-02-17",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-12",
-        "title": "Берегись автомобиля!",
+        "id": "world-2-36",
+        "title": "Проверим себя",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 12,
-          "to": 13
-        },
-        "lessonId": "world-b-road"
+          "from": 36,
+          "to": 38
+        }
       },
       {
         "date": "2027-02-17",
@@ -44525,30 +44533,31 @@
       },
       {
         "date": "2027-02-18",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-13",
-        "title": "Буквосочетания с шипящими",
+        "id": "russian-2-44",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 13,
-          "to": 15
-        }
+          "from": 44,
+          "to": 44
+        },
+        "lessonId": "rus-08"
       },
       {
         "date": "2027-02-18",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-23",
-        "title": "С. Михалков «Сила воли», «Мой щенок»",
+        "id": "reading-2-42",
+        "title": "В. Осеева «Синие листья»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 23,
-          "to": 24
+          "from": 42,
+          "to": 42
         }
       },
       {
@@ -44570,13 +44579,13 @@
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-14",
-        "title": "Берегись автомобиля!",
+        "id": "world-2-39",
+        "title": "Проверим себя",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 14,
-          "to": 15
+          "from": 39,
+          "to": 41
         }
       },
       {
@@ -44584,13 +44593,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-25",
-        "title": "С. Михалков «Сила воли», «Мой щенок»",
+        "id": "reading-2-43",
+        "title": "Н. Носов «На горке»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 25,
-          "to": 27
+          "from": 43,
+          "to": 44
         }
       },
       {
@@ -44627,31 +44636,30 @@
       },
       {
         "date": "2027-02-22",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-16",
-        "title": "Звонкие и глухие согласные",
+        "id": "russian-2-45",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 16,
-          "to": 18
-        },
-        "lessonId": "rus-03"
+          "from": 45,
+          "to": 46
+        }
       },
       {
         "date": "2027-02-22",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-28",
-        "title": "А. Барто «Верёвочка»",
+        "id": "reading-2-45",
+        "title": "Н. Носов «На горке»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 28,
-          "to": 31
+          "from": 45,
+          "to": 46
         }
       },
       {
@@ -44694,13 +44702,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-19",
-        "title": "Звонкие и глухие согласные",
+        "id": "russian-2-47",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 19,
-          "to": 20
+          "from": 47,
+          "to": 47
         }
       },
       {
@@ -44708,15 +44716,15 @@
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-16",
-        "title": "Домашние опасности",
+        "id": "world-2-42",
+        "title": "Наша дружная семья",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 16,
-          "to": 17
+          "from": 42,
+          "to": 43
         },
-        "lessonId": "world-f-safe"
+        "lessonId": "world-b-family"
       },
       {
         "date": "2027-02-24",
@@ -44744,30 +44752,31 @@
       },
       {
         "date": "2027-02-25",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-21",
-        "title": "Звонкие и глухие согласные",
+        "id": "russian-2-48",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 21,
-          "to": 22
-        }
+          "from": 48,
+          "to": 49
+        },
+        "lessonId": "rus-06"
       },
       {
         "date": "2027-02-25",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-32",
-        "title": "А. Барто «Мы не заметили жука», «Вовка — добрая душа»",
+        "id": "reading-2-47",
+        "title": "Проверим себя",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 32,
-          "to": 33
+          "from": 47,
+          "to": 48
         }
       },
       {
@@ -44790,13 +44799,13 @@
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-18",
-        "title": "Домашние опасности",
+        "id": "world-2-44",
+        "title": "Наша дружная семья",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 18,
-          "to": 19
+          "from": 44,
+          "to": 45
         }
       },
       {
@@ -44804,13 +44813,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-34",
-        "title": "Н. Носов «Затейники»",
+        "id": "reading-2-49",
+        "title": "Я и мои друзья. Е. Благинина, В. Орлов",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 34,
-          "to": 37
+          "from": 49,
+          "to": 50
         }
       },
       {
@@ -44825,10 +44834,10 @@
       {
         "date": "2027-02-26",
         "kind": "return",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "lessonId": "world-b-houseplants",
-        "title": "Комнатные растения"
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-b-lukomorye",
+        "title": "А. С. Пушкин. «У лукоморья дуб зелёный…»"
       },
       {
         "date": "2027-03-01",
@@ -44846,32 +44855,32 @@
       },
       {
         "date": "2027-03-01",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-23",
-        "title": "Звонкие и глухие согласные",
+        "id": "russian-2-50",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 23,
-          "to": 24
-        }
+          "from": 50,
+          "to": 50
+        },
+        "lessonId": "rus-b-animate"
       },
       {
         "date": "2027-03-01",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-38",
-        "title": "Н. Носов «Живая шляпа»",
+        "id": "reading-2-51",
+        "title": "Я и мои друзья. Е. Благинина, В. Орлов",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 38,
-          "to": 41
-        },
-        "lessonId": "lit-b-livehat"
+          "from": 51,
+          "to": 53
+        }
       },
       {
         "date": "2027-03-01",
@@ -44907,13 +44916,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-25",
-        "title": "Звонкие и глухие согласные",
+        "id": "russian-2-51",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 25,
-          "to": 26
+          "from": 51,
+          "to": 52
         }
       },
       {
@@ -44921,13 +44930,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-42",
-        "title": "В. Осеева «Синие листья»",
+        "id": "reading-2-54",
+        "title": "Ю. Ермолаев «Два пирожных»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 42,
-          "to": 42
+          "from": 54,
+          "to": 54
         }
       },
       {
@@ -44935,15 +44944,15 @@
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-20",
-        "title": "Пожар!",
+        "id": "world-2-46",
+        "title": "В школе",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 20,
-          "to": 21
+          "from": 46,
+          "to": 47
         },
-        "lessonId": "world-b-fire"
+        "lessonId": "world-b-school"
       },
       {
         "date": "2027-03-03",
@@ -44964,28 +44973,29 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-27",
-        "title": "Звонкие и глухие согласные",
+        "id": "russian-2-53",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 27,
-          "to": 28
+          "from": 53,
+          "to": 53
         }
       },
       {
         "date": "2027-03-03",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-22",
-        "title": "Пожар!",
+        "id": "world-2-48",
+        "title": "Правила вежливости",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 22,
-          "to": 23
-        }
+          "from": 48,
+          "to": 49
+        },
+        "lessonId": "world-b-polite"
       },
       {
         "date": "2027-03-03",
@@ -45015,28 +45025,29 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-29",
-        "title": "Звонкие и глухие согласные",
+        "id": "russian-2-54",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 29,
-          "to": 30
+          "from": 54,
+          "to": 55
         }
       },
       {
         "date": "2027-03-04",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-43",
-        "title": "Н. Носов «На горке»",
+        "id": "reading-2-55",
+        "title": "В. Осеева «Волшебное слово»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 43,
-          "to": 46
-        }
+          "from": 55,
+          "to": 56
+        },
+        "lessonId": "lit-b-magicword"
       },
       {
         "date": "2027-03-04",
@@ -45055,31 +45066,30 @@
       },
       {
         "date": "2027-03-05",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-24",
-        "title": "На воде и в лесу",
+        "id": "world-2-50",
+        "title": "Правила вежливости",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 24,
-          "to": 25
-        },
-        "lessonId": "world-b-waterforest"
+          "from": 50,
+          "to": 51
+        }
       },
       {
         "date": "2027-03-05",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-47",
-        "title": "Проверим себя",
+        "id": "reading-2-57",
+        "title": "В. Осеева «Волшебное слово»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 47,
-          "to": 48
+          "from": 57,
+          "to": 59
         }
       },
       {
@@ -45123,43 +45133,44 @@
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-31",
-        "title": "Разделительный мягкий знак",
+        "id": "russian-2-56",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 31,
-          "to": 32
+          "from": 56,
+          "to": 56
         },
-        "lessonId": "rus-05"
+        "lessonId": "rus-09"
       },
       {
         "date": "2027-03-09",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-49",
-        "title": "Я и мои друзья. Е. Благинина, В. Орлов",
+        "id": "reading-2-60",
+        "title": "В. Осеева «Хорошее»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 49,
-          "to": 50
+          "from": 60,
+          "to": 62
         }
       },
       {
         "date": "2027-03-09",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-26",
-        "title": "На воде и в лесу",
+        "id": "world-2-52",
+        "title": "Ты и твои друзья",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 26,
-          "to": 27
-        }
+          "from": 52,
+          "to": 53
+        },
+        "lessonId": "world-b-friends"
       },
       {
         "date": "2027-03-10",
@@ -45180,29 +45191,28 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-33",
-        "title": "Разделительный мягкий знак",
+        "id": "russian-2-57",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 33,
-          "to": 34
+          "from": 57,
+          "to": 58
         }
       },
       {
         "date": "2027-03-10",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-28",
-        "title": "Опасные незнакомцы",
+        "id": "world-2-54",
+        "title": "Ты и твои друзья",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 28,
-          "to": 31
-        },
-        "lessonId": "world-b-strangers"
+          "from": 54,
+          "to": 55
+        }
       },
       {
         "date": "2027-03-10",
@@ -45232,13 +45242,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-35",
-        "title": "Разделительный мягкий знак",
+        "id": "russian-2-59",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 35,
-          "to": 36
+          "from": 59,
+          "to": 59
         }
       },
       {
@@ -45246,13 +45256,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-51",
-        "title": "Я и мои друзья. Е. Благинина, В. Орлов",
+        "id": "reading-2-63",
+        "title": "В. Лунин, Э. Мошковская, В. Берестов",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 51,
-          "to": 53
+          "from": 63,
+          "to": 65
         }
       },
       {
@@ -45272,30 +45282,31 @@
       },
       {
         "date": "2027-03-12",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-32",
-        "title": "Проект о лесных опасностях. Олимпийские игры",
+        "id": "world-2-56",
+        "title": "Мы — зрители и пассажиры",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 32,
-          "to": 35
-        }
+          "from": 56,
+          "to": 57
+        },
+        "lessonId": "world-b-passenger"
       },
       {
         "date": "2027-03-12",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-54",
-        "title": "Ю. Ермолаев «Два пирожных»",
+        "id": "reading-2-66",
+        "title": "В. Осеева «Почему?»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 54,
-          "to": 54
+          "from": 66,
+          "to": 68
         }
       },
       {
@@ -45310,10 +45321,10 @@
       {
         "date": "2027-03-12",
         "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-b-36m2",
-        "title": "Вычисления вида 36 − 2, 36 − 20"
+        "subjectId": "world",
+        "subject": "Окружающий мир",
+        "lessonId": "world-b-houseplants",
+        "title": "Комнатные растения"
       },
       {
         "date": "2027-03-15",
@@ -45334,29 +45345,28 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-37",
-        "title": "Разделительный мягкий знак",
+        "id": "russian-2-60",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 37,
-          "to": 39
+          "from": 60,
+          "to": 61
         }
       },
       {
         "date": "2027-03-15",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-55",
-        "title": "В. Осеева «Волшебное слово»",
+        "id": "reading-2-69",
+        "title": "В. Осеева «Почему?»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 55,
-          "to": 56
-        },
-        "lessonId": "lit-b-magicword"
+          "from": 69,
+          "to": 71
+        }
       },
       {
         "date": "2027-03-15",
@@ -45389,31 +45399,30 @@
       },
       {
         "date": "2027-03-16",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-40",
-        "title": "Части речи",
+        "id": "russian-2-62",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 40,
-          "to": 41
-        },
-        "lessonId": "rus-b-partsp"
+          "from": 62,
+          "to": 62
+        }
       },
       {
         "date": "2027-03-16",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-57",
-        "title": "В. Осеева «Волшебное слово»",
+        "id": "reading-2-72",
+        "title": "Проверим себя",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 57,
-          "to": 59
+          "from": 72,
+          "to": 72
         }
       },
       {
@@ -45421,13 +45430,13 @@
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-36",
-        "title": "Проверим себя",
+        "id": "world-2-58",
+        "title": "Мы — зрители и пассажиры",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 36,
-          "to": 38
+          "from": 58,
+          "to": 59
         }
       },
       {
@@ -45449,13 +45458,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-42",
-        "title": "Части речи",
+        "id": "russian-2-63",
+        "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 42,
-          "to": 43
+          "from": 63,
+          "to": 64
         }
       },
       {
@@ -45463,13 +45472,13 @@
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-39",
-        "title": "Проверим себя",
+        "id": "world-2-60",
+        "title": "Проект «Родословная». Что такое этикет",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 39,
-          "to": 41
+          "from": 60,
+          "to": 61
         }
       },
       {
@@ -45498,32 +45507,32 @@
       },
       {
         "date": "2027-03-18",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-44",
+        "id": "russian-2-65",
         "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 44,
-          "to": 46
-        },
-        "lessonId": "rus-08"
+          "from": 65,
+          "to": 65
+        }
       },
       {
         "date": "2027-03-18",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-60",
-        "title": "В. Осеева «Хорошее»",
+        "id": "reading-2-73",
+        "title": "Весна. И. Пивоварова",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 60,
-          "to": 62
-        }
+          "from": 73,
+          "to": 74
+        },
+        "lessonId": "lit-b-spring"
       },
       {
         "date": "2027-03-18",
@@ -45541,31 +45550,30 @@
       },
       {
         "date": "2027-03-19",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-42",
-        "title": "Наша дружная семья",
+        "id": "world-2-62",
+        "title": "Проект «Родословная». Что такое этикет",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 42,
-          "to": 45
-        },
-        "lessonId": "world-b-family"
+          "from": 62,
+          "to": 63
+        }
       },
       {
         "date": "2027-03-19",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-63",
-        "title": "В. Лунин, Э. Мошковская, В. Берестов",
+        "id": "reading-2-75",
+        "title": "Весна. И. Пивоварова",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 63,
-          "to": 65
+          "from": 75,
+          "to": 77
         }
       },
       {
@@ -45602,31 +45610,30 @@
       },
       {
         "date": "2027-03-22",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-47",
+        "id": "russian-2-66",
         "title": "Имя существительное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 47,
-          "to": 49
-        },
-        "lessonId": "rus-06"
+          "from": 66,
+          "to": 67
+        }
       },
       {
         "date": "2027-03-22",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-66",
-        "title": "В. Осеева «Почему?»",
+        "id": "reading-2-78",
+        "title": "Ф. Тютчев о весне",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 66,
-          "to": 68
+          "from": 78,
+          "to": 79
         }
       },
       {
@@ -45663,44 +45670,43 @@
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-50",
-        "title": "Имя существительное",
+        "id": "russian-2-68",
+        "title": "Глагол",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 50,
-          "to": 52
+          "from": 68,
+          "to": 69
         },
-        "lessonId": "rus-b-animate"
+        "lessonId": "rus-10"
       },
       {
         "date": "2027-03-23",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-69",
-        "title": "В. Осеева «Почему?»",
+        "id": "reading-2-80",
+        "title": "А. Плещеев, С. Дрожжин, А. Блок",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 69,
-          "to": 71
+          "from": 80,
+          "to": 81
         }
       },
       {
         "date": "2027-03-23",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-46",
-        "title": "В школе",
+        "id": "world-2-64",
+        "title": "Проверим себя",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 46,
-          "to": 47
-        },
-        "lessonId": "world-b-school"
+          "from": 64,
+          "to": 66
+        }
       },
       {
         "date": "2027-03-24",
@@ -45722,29 +45728,28 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-53",
-        "title": "Имя существительное",
+        "id": "russian-2-70",
+        "title": "Глагол",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 53,
-          "to": 55
+          "from": 70,
+          "to": 71
         }
       },
       {
         "date": "2027-03-24",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-48",
-        "title": "Правила вежливости",
+        "id": "world-2-67",
+        "title": "Проверим себя",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 48,
-          "to": 51
-        },
-        "lessonId": "world-b-polite"
+          "from": 67,
+          "to": 69
+        }
       },
       {
         "date": "2027-03-24",
@@ -45775,28 +45780,28 @@
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-56",
-        "title": "Имя существительное",
+        "id": "russian-2-72",
+        "title": "Глагол",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 56,
-          "to": 58
+          "from": 72,
+          "to": 73
         },
-        "lessonId": "rus-09"
+        "lessonId": "rus-b-verbnum"
       },
       {
         "date": "2027-03-25",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-72",
-        "title": "Проверим себя",
+        "id": "reading-2-82",
+        "title": "Женский день: А. Плещеев «В бурю»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 72,
-          "to": 72
+          "from": 82,
+          "to": 83
         }
       },
       {
@@ -45818,30 +45823,29 @@
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-52",
-        "title": "Ты и твои друзья",
+        "id": "world-2-70",
+        "title": "Посмотри вокруг",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 52,
-          "to": 55
+          "from": 70,
+          "to": 71
         },
-        "lessonId": "world-b-friends"
+        "lessonId": "world-b-horizon"
       },
       {
         "date": "2027-03-26",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-73",
-        "title": "Весна. И. Пивоварова",
+        "id": "reading-2-84",
+        "title": "И. Бунин «Матери», Е. Благинина",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 73,
-          "to": 74
-        },
-        "lessonId": "lit-b-spring"
+          "from": 84,
+          "to": 85
+        }
       },
       {
         "date": "2027-03-26",
@@ -45857,8 +45861,8 @@
         "kind": "return",
         "subjectId": "math",
         "subject": "Математика",
-        "lessonId": "math-b-26p4",
-        "title": "Вычисления вида 26 + 4"
+        "lessonId": "math-b-36m2",
+        "title": "Вычисления вида 36 − 2, 36 − 20"
       },
       {
         "date": "2027-03-29",
@@ -45901,30 +45905,31 @@
       },
       {
         "date": "2027-04-05",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-59",
-        "title": "Имя существительное",
+        "id": "russian-2-74",
+        "title": "Глагол",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 59,
-          "to": 61
-        }
+          "from": 74,
+          "to": 74
+        },
+        "lessonId": "rus-b-ne"
       },
       {
         "date": "2027-04-05",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-75",
-        "title": "Весна. И. Пивоварова",
+        "id": "reading-2-86",
+        "title": "Э. Мошковская «Я маму мою обидел…»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 75,
-          "to": 77
+          "from": 86,
+          "to": 87
         }
       },
       {
@@ -45962,13 +45967,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-62",
-        "title": "Имя существительное",
+        "id": "russian-2-75",
+        "title": "Глагол",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 62,
-          "to": 64
+          "from": 75,
+          "to": 76
         }
       },
       {
@@ -45976,29 +45981,28 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-78",
-        "title": "Ф. Тютчев о весне",
+        "id": "reading-2-88",
+        "title": "С. Васильев «Белая берёза». Проект. Проверим себя",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 78,
-          "to": 79
+          "from": 88,
+          "to": 90
         }
       },
       {
         "date": "2027-04-06",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-56",
-        "title": "Мы — зрители и пассажиры",
+        "id": "world-2-72",
+        "title": "Посмотри вокруг",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 56,
-          "to": 59
-        },
-        "lessonId": "world-b-passenger"
+          "from": 72,
+          "to": 73
+        }
       },
       {
         "date": "2027-04-07",
@@ -46019,28 +46023,29 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-65",
-        "title": "Имя существительное",
+        "id": "russian-2-77",
+        "title": "Глагол",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 65,
-          "to": 67
+          "from": 77,
+          "to": 78
         }
       },
       {
         "date": "2027-04-07",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-60",
-        "title": "Проект «Родословная». Что такое этикет",
+        "id": "world-2-74",
+        "title": "Ориентирование на местности",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 60,
-          "to": 63
-        }
+          "from": 74,
+          "to": 75
+        },
+        "lessonId": "world-f-map"
       },
       {
         "date": "2027-04-07",
@@ -46067,32 +46072,32 @@
       },
       {
         "date": "2027-04-08",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-68",
+        "id": "russian-2-79",
         "title": "Глагол",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 68,
-          "to": 69
-        },
-        "lessonId": "rus-10"
+          "from": 79,
+          "to": 80
+        }
       },
       {
         "date": "2027-04-08",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-80",
-        "title": "А. Плещеев, С. Дрожжин, А. Блок",
+        "id": "reading-2-91",
+        "title": "И в шутку и всерьёз. В мире книг",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 80,
-          "to": 81
-        }
+          "from": 91,
+          "to": 93
+        },
+        "lessonId": "lit-b-humor"
       },
       {
         "date": "2027-04-08",
@@ -46113,13 +46118,13 @@
         "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-64",
-        "title": "Проверим себя",
+        "id": "world-2-76",
+        "title": "Ориентирование на местности",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 64,
-          "to": 66
+          "from": 76,
+          "to": 77
         }
       },
       {
@@ -46127,13 +46132,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-82",
-        "title": "Женский день: А. Плещеев «В бурю»",
+        "id": "reading-2-94",
+        "title": "Ю. Тувим «Про пана Трулялинского»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 82,
-          "to": 83
+          "from": 94,
+          "to": 96
         }
       },
       {
@@ -46169,30 +46174,31 @@
       },
       {
         "date": "2027-04-12",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-70",
+        "id": "russian-2-81",
         "title": "Глагол",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 70,
-          "to": 71
-        }
+          "from": 81,
+          "to": 82
+        },
+        "lessonId": "rus-b-narr"
       },
       {
         "date": "2027-04-12",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-84",
-        "title": "И. Бунин «Матери», Е. Благинина",
+        "id": "reading-2-97",
+        "title": "А. Введенский «Учёный Петя»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 84,
-          "to": 85
+          "from": 97,
+          "to": 99
         }
       },
       {
@@ -46226,46 +46232,46 @@
       },
       {
         "date": "2027-04-13",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-72",
+        "id": "russian-2-83",
         "title": "Глагол",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 72,
-          "to": 73
-        },
-        "lessonId": "rus-b-verbnum"
+          "from": 83,
+          "to": 83
+        }
       },
       {
         "date": "2027-04-13",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-86",
-        "title": "Э. Мошковская «Я маму мою обидел…»",
+        "id": "reading-2-100",
+        "title": "Д. Хармс «Вы знаете?..»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 86,
-          "to": 87
+          "from": 100,
+          "to": 101
         }
       },
       {
         "date": "2027-04-13",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-67",
-        "title": "Проверим себя",
+        "id": "world-2-78",
+        "title": "Формы земной поверхности",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 67,
-          "to": 69
-        }
+          "from": 78,
+          "to": 79
+        },
+        "lessonId": "world-b-relief"
       },
       {
         "date": "2027-04-14",
@@ -46283,33 +46289,31 @@
       },
       {
         "date": "2027-04-14",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-74",
+        "id": "russian-2-84",
         "title": "Глагол",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 74,
-          "to": 76
-        },
-        "lessonId": "rus-b-ne"
+          "from": 84,
+          "to": 85
+        }
       },
       {
         "date": "2027-04-14",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-70",
-        "title": "Посмотри вокруг",
+        "id": "world-2-80",
+        "title": "Формы земной поверхности",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 70,
-          "to": 73
-        },
-        "lessonId": "world-b-horizon"
+          "from": 80,
+          "to": 81
+        }
       },
       {
         "date": "2027-04-14",
@@ -46336,30 +46340,31 @@
       },
       {
         "date": "2027-04-15",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-77",
-        "title": "Глагол",
+        "id": "russian-2-86",
+        "title": "Имя прилагательное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 77,
-          "to": 78
-        }
+          "from": 86,
+          "to": 86
+        },
+        "lessonId": "rus-11"
       },
       {
         "date": "2027-04-15",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-88",
-        "title": "С. Васильев «Белая берёза». Проект. Проверим себя",
+        "id": "reading-2-102",
+        "title": "Д. Хармс «Вы знаете?..»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 88,
-          "to": 90
+          "from": 102,
+          "to": 103
         }
       },
       {
@@ -46381,30 +46386,29 @@
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-74",
-        "title": "Ориентирование на местности",
+        "id": "world-2-82",
+        "title": "Водные богатства",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 74,
-          "to": 77
+          "from": 82,
+          "to": 83
         },
-        "lessonId": "world-f-map"
+        "lessonId": "world-b-waters"
       },
       {
         "date": "2027-04-16",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-91",
-        "title": "И в шутку и всерьёз. В мире книг",
+        "id": "reading-2-104",
+        "title": "И. Токмакова «Плим», «В чудной стране»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 91,
-          "to": 93
-        },
-        "lessonId": "lit-b-humor"
+          "from": 104,
+          "to": 106
+        }
       },
       {
         "date": "2027-04-16",
@@ -46418,10 +46422,10 @@
       {
         "date": "2027-04-16",
         "kind": "return",
-        "subjectId": "reading",
-        "subject": "Литературное чтение",
-        "lessonId": "lit-b-lukomorye",
-        "title": "А. С. Пушкин. «У лукоморья дуб зелёный…»"
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-b-stress",
+        "title": "Ударение"
       },
       {
         "date": "2027-04-19",
@@ -46443,13 +46447,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-79",
-        "title": "Глагол",
+        "id": "russian-2-87",
+        "title": "Имя прилагательное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 79,
-          "to": 80
+          "from": 87,
+          "to": 88
         }
       },
       {
@@ -46457,13 +46461,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-94",
-        "title": "Ю. Тувим «Про пана Трулялинского»",
+        "id": "reading-2-107",
+        "title": "Б. Заходер «Песенки Винни-Пуха»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 94,
-          "to": 96
+          "from": 107,
+          "to": 108
         }
       },
       {
@@ -46501,44 +46505,43 @@
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-81",
-        "title": "Глагол",
+        "id": "russian-2-89",
+        "title": "Имя прилагательное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 81,
-          "to": 82
+          "from": 89,
+          "to": 90
         },
-        "lessonId": "rus-b-narr"
+        "lessonId": "rus-b-adjnum"
       },
       {
         "date": "2027-04-20",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-97",
-        "title": "А. Введенский «Учёный Петя»",
+        "id": "reading-2-109",
+        "title": "Э. Успенский: стихи",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 97,
-          "to": 99
+          "from": 109,
+          "to": 110
         }
       },
       {
         "date": "2027-04-20",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-78",
-        "title": "Формы земной поверхности",
+        "id": "world-2-84",
+        "title": "Водные богатства",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 78,
-          "to": 81
-        },
-        "lessonId": "world-b-relief"
+          "from": 84,
+          "to": 85
+        }
       },
       {
         "date": "2027-04-21",
@@ -46560,13 +46563,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-83",
-        "title": "Глагол",
+        "id": "russian-2-91",
+        "title": "Имя прилагательное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 83,
-          "to": 85
+          "from": 91,
+          "to": 92
         }
       },
       {
@@ -46574,15 +46577,15 @@
         "kind": "lesson",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-82",
-        "title": "Водные богатства",
+        "id": "world-2-86",
+        "title": "В гости к весне",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 82,
-          "to": 85
+          "from": 86,
+          "to": 87
         },
-        "lessonId": "world-b-waters"
+        "lessonId": "world-f-spring"
       },
       {
         "date": "2027-04-21",
@@ -46609,31 +46612,30 @@
       },
       {
         "date": "2027-04-22",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-86",
+        "id": "russian-2-93",
         "title": "Имя прилагательное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 86,
-          "to": 88
-        },
-        "lessonId": "rus-11"
+          "from": 93,
+          "to": 93
+        }
       },
       {
         "date": "2027-04-22",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-100",
-        "title": "Д. Хармс «Вы знаете?..»",
+        "id": "reading-2-111",
+        "title": "Э. Успенский: стихи",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 100,
-          "to": 103
+          "from": 111,
+          "to": 112
         }
       },
       {
@@ -46652,32 +46654,32 @@
       },
       {
         "date": "2027-04-23",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "world",
         "subject": "Окружающий мир",
-        "id": "world-2-86",
+        "id": "world-2-88",
         "title": "В гости к весне",
         "book": {
           "id": "world-2",
           "part": 2,
-          "from": 86,
+          "from": 88,
           "to": 89
-        },
-        "lessonId": "world-f-spring"
+        }
       },
       {
         "date": "2027-04-23",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-104",
-        "title": "И. Токмакова «Плим», «В чудной стране»",
+        "id": "reading-2-113",
+        "title": "Э. Успенский «Чебурашка»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 104,
-          "to": 106
-        }
+          "from": 113,
+          "to": 114
+        },
+        "lessonId": "lit-b-cheburashka"
       },
       {
         "date": "2027-04-23",
@@ -46713,31 +46715,30 @@
       },
       {
         "date": "2027-04-26",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-89",
+        "id": "russian-2-94",
         "title": "Имя прилагательное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 89,
-          "to": 90
-        },
-        "lessonId": "rus-b-adjnum"
+          "from": 94,
+          "to": 95
+        }
       },
       {
         "date": "2027-04-26",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-107",
-        "title": "Б. Заходер «Песенки Винни-Пуха»",
+        "id": "reading-2-115",
+        "title": "Э. Успенский «Чебурашка»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 107,
-          "to": 108
+          "from": 115,
+          "to": 116
         }
       },
       {
@@ -46770,30 +46771,31 @@
       },
       {
         "date": "2027-04-27",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-91",
+        "id": "russian-2-96",
         "title": "Имя прилагательное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 91,
-          "to": 92
-        }
+          "from": 96,
+          "to": 97
+        },
+        "lessonId": "rus-b-descr"
       },
       {
         "date": "2027-04-27",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-109",
-        "title": "Э. Успенский: стихи",
+        "id": "reading-2-117",
+        "title": "В. Драгунский «Тайное становится явным»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 109,
-          "to": 112
+          "from": 117,
+          "to": 118
         }
       },
       {
@@ -46831,13 +46833,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-93",
+        "id": "russian-2-98",
         "title": "Имя прилагательное",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 93,
-          "to": 95
+          "from": 98,
+          "to": 99
         }
       },
       {
@@ -46882,30 +46884,29 @@
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-96",
-        "title": "Имя прилагательное",
+        "id": "russian-2-100",
+        "title": "Местоимение",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 96,
-          "to": 97
+          "from": 100,
+          "to": 101
         },
-        "lessonId": "rus-b-descr"
+        "lessonId": "rus-b-pron"
       },
       {
         "date": "2027-04-29",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-113",
-        "title": "Э. Успенский «Чебурашка»",
+        "id": "reading-2-119",
+        "title": "В. Драгунский «Тайное становится явным»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 113,
-          "to": 116
-        },
-        "lessonId": "lit-b-cheburashka"
+          "from": 119,
+          "to": 121
+        }
       },
       {
         "date": "2027-04-29",
@@ -46941,13 +46942,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-117",
-        "title": "В. Драгунский «Тайное становится явным»",
+        "id": "reading-2-122",
+        "title": "Г. Остер «Будем знакомы»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 117,
-          "to": 118
+          "from": 122,
+          "to": 123
         }
       },
       {
@@ -46962,10 +46963,10 @@
       {
         "date": "2027-04-30",
         "kind": "return",
-        "subjectId": "world",
-        "subject": "Окружающий мир",
-        "lessonId": "world-b-pets",
-        "title": "Про кошек и собак"
+        "subjectId": "math",
+        "subject": "Математика",
+        "lessonId": "math-b-26p4",
+        "title": "Вычисления вида 26 + 4"
       },
       {
         "date": "2027-05-03",
@@ -46991,13 +46992,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-98",
-        "title": "Имя прилагательное",
+        "id": "russian-2-102",
+        "title": "Местоимение",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 98,
-          "to": 99
+          "from": 102,
+          "to": 103
         }
       },
       {
@@ -47005,13 +47006,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-119",
-        "title": "В. Драгунский «Тайное становится явным»",
+        "id": "reading-2-124",
+        "title": "Г. Остер «Будем знакомы»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 119,
-          "to": 121
+          "from": 124,
+          "to": 125
         }
       },
       {
@@ -47048,15 +47049,15 @@
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-100",
+        "id": "russian-2-104",
         "title": "Местоимение",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 100,
-          "to": 101
+          "from": 104,
+          "to": 105
         },
-        "lessonId": "rus-b-pron"
+        "lessonId": "rus-b-reason"
       },
       {
         "date": "2027-05-05",
@@ -47101,13 +47102,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-102",
+        "id": "russian-2-106",
         "title": "Местоимение",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 102,
-          "to": 103
+          "from": 106,
+          "to": 107
         }
       },
       {
@@ -47115,13 +47116,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-122",
-        "title": "Г. Остер «Будем знакомы»",
+        "id": "reading-2-126",
+        "title": "Проверим себя",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 122,
-          "to": 125
+          "from": 126,
+          "to": 126
         }
       },
       {
@@ -47155,17 +47156,18 @@
       },
       {
         "date": "2027-05-07",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-126",
-        "title": "Проверим себя",
+        "id": "reading-2-127",
+        "title": "Литература зарубежных стран. Песенки",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 126,
-          "to": 126
-        }
+          "from": 127,
+          "to": 128
+        },
+        "lessonId": "lit-b-foreign"
       },
       {
         "date": "2027-05-07",
@@ -47209,30 +47211,29 @@
         "kind": "lesson",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-104",
-        "title": "Местоимение",
+        "id": "russian-2-108",
+        "title": "Предлоги",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 104,
-          "to": 105
+          "from": 108,
+          "to": 108
         },
-        "lessonId": "rus-b-reason"
+        "lessonId": "rus-f-prep"
       },
       {
         "date": "2027-05-11",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-127",
+        "id": "reading-2-129",
         "title": "Литература зарубежных стран. Песенки",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 127,
-          "to": 128
-        },
-        "lessonId": "lit-b-foreign"
+          "from": 129,
+          "to": 131
+        }
       },
       {
         "date": "2027-05-11",
@@ -47268,13 +47269,13 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-106",
-        "title": "Местоимение",
+        "id": "russian-2-109",
+        "title": "Предлоги",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 106,
-          "to": 107
+          "from": 109,
+          "to": 110
         }
       },
       {
@@ -47317,31 +47318,30 @@
       },
       {
         "date": "2027-05-13",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-108",
+        "id": "russian-2-111",
         "title": "Предлоги",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 108,
-          "to": 110
-        },
-        "lessonId": "rus-f-prep"
+          "from": 111,
+          "to": 111
+        }
       },
       {
         "date": "2027-05-13",
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-129",
-        "title": "Литература зарубежных стран. Песенки",
+        "id": "reading-2-132",
+        "title": "«Перчатки», «Храбрецы»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 129,
-          "to": 131
+          "from": 132,
+          "to": 133
         }
       },
       {
@@ -47374,17 +47374,18 @@
       },
       {
         "date": "2027-05-14",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-132",
-        "title": "«Перчатки», «Храбрецы»",
+        "id": "reading-2-134",
+        "title": "Ш. Перро «Кот в сапогах»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 132,
-          "to": 133
-        }
+          "from": 134,
+          "to": 135
+        },
+        "lessonId": "lit-b-puss"
       },
       {
         "date": "2027-05-14",
@@ -47398,10 +47399,10 @@
       {
         "date": "2027-05-14",
         "kind": "return",
-        "subjectId": "reading",
-        "subject": "Литературное чтение",
-        "lessonId": "lit-b-fisherman",
-        "title": "А. С. Пушкин. «Сказка о рыбаке и рыбке»"
+        "subjectId": "russian",
+        "subject": "Русский язык",
+        "lessonId": "rus-b-hyph",
+        "title": "Перенос слова"
       },
       {
         "date": "2027-05-17",
@@ -47422,29 +47423,28 @@
         "kind": "book",
         "subjectId": "russian",
         "subject": "Русский язык",
-        "id": "russian-2-111",
+        "id": "russian-2-112",
         "title": "Предлоги",
         "book": {
           "id": "russian-2",
           "part": 2,
-          "from": 111,
+          "from": 112,
           "to": 113
         }
       },
       {
         "date": "2027-05-17",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-134",
+        "id": "reading-2-136",
         "title": "Ш. Перро «Кот в сапогах»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 134,
-          "to": 135
-        },
-        "lessonId": "lit-b-puss"
+          "from": 136,
+          "to": 138
+        }
       },
       {
         "date": "2027-05-17",
@@ -47493,13 +47493,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-136",
+        "id": "reading-2-139",
         "title": "Ш. Перро «Кот в сапогах»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 136,
-          "to": 138
+          "from": 139,
+          "to": 140
         }
       },
       {
@@ -47603,13 +47603,13 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-139",
+        "id": "reading-2-141",
         "title": "Ш. Перро «Кот в сапогах»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 139,
-          "to": 140
+          "from": 141,
+          "to": 143
         }
       },
       {
@@ -47642,17 +47642,18 @@
       },
       {
         "date": "2027-05-21",
-        "kind": "book",
+        "kind": "lesson",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-141",
-        "title": "Ш. Перро «Кот в сапогах»",
+        "id": "reading-2-144",
+        "title": "Е. Шварц «Красная Шапочка»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 141,
-          "to": 143
-        }
+          "from": 144,
+          "to": 145
+        },
+        "lessonId": "lit-b-folkauthor"
       },
       {
         "date": "2027-05-21",
@@ -47701,18 +47702,17 @@
       },
       {
         "date": "2027-05-24",
-        "kind": "lesson",
+        "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-144",
-        "title": "Е. Шварц «Красная Шапочка»",
+        "id": "reading-2-146",
+        "title": "Г. Х. Андерсен «Огниво»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 144,
-          "to": 145
-        },
-        "lessonId": "lit-b-folkauthor"
+          "from": 146,
+          "to": 147
+        }
       },
       {
         "date": "2027-05-24",
@@ -47761,12 +47761,12 @@
         "kind": "book",
         "subjectId": "reading",
         "subject": "Литературное чтение",
-        "id": "reading-2-146",
+        "id": "reading-2-148",
         "title": "Г. Х. Андерсен «Огниво»",
         "book": {
           "id": "reading-2",
           "part": 2,
-          "from": 146,
+          "from": 148,
           "to": 149
         }
       },
@@ -47932,10 +47932,10 @@
       {
         "date": "2027-05-28",
         "kind": "return",
-        "subjectId": "math",
-        "subject": "Математика",
-        "lessonId": "math-b-30m7",
-        "title": "Вычисления вида 30 − 7"
+        "subjectId": "reading",
+        "subject": "Литературное чтение",
+        "lessonId": "lit-b-fisherman",
+        "title": "А. С. Пушкин. «Сказка о рыбаке и рыбке»"
       }
     ],
     "studied": [
