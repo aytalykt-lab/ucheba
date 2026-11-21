@@ -685,6 +685,8 @@ def main():
     for subject in data["subjects"]:
         subject["lessons"].sort(key=lambda l: first.get(l["id"], len(first)))
 
+    # Связь предметов и практические задания из жизни — по неделям (понедельник недели).
+    data["practice"] = json.loads((ROOT / "tools" / "practice.json").read_text(encoding="utf-8"))
     data["books"] = {k: {"title": v[0], "part": v[1], "url": VIEWER.format(v[2])} for k, v in BOOKS.items()}
     data["plan"] = {"from": START.isoformat(), "lessonsUntil": END.isoformat(), "reviewUntil": END.isoformat(),
                     "pace": "books", "perDay": 4, "days": plan,

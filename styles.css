@@ -1213,3 +1213,12 @@ body.mama-page .mama-label { font-weight: 650; margin-top: 8px !important; }
 
 /* Домашнее задание в шпаргалке для мамы. */
 body.mama-page .mama-homework { padding: 6px 10px; border-left: 4px solid var(--sea); background: rgba(0, 0, 0, 0.03); border-radius: 6px; }
+
+/* Практика недели: связь предметов и задания из жизни. */
+.practice-box { margin: 8px 0 16px; padding: 12px 14px; border: 2px solid var(--sea); border-radius: 12px; }
+.practice-link { margin: 0 0 6px; }
+.practice-list { margin: 4px 0 0; padding-left: 22px; }
+.practice-list li { margin-bottom: 10px; }
+.practice-list p { margin: 2px 0; }
+.practice-subjects { font-size: 0.9em; opacity: 0.75; }
+.practice-result { font-size: 0.95em; opacity: 0.85; }

@@ -1554,6 +1554,7 @@ function renderTutorControls() {
 function renderTutorPanel() {
   loadData().then(() => {
     renderTutorToday();
+    renderTutorPractice();
     renderTutorCalendar();
     renderSoftMode();
     renderTutorScout();
@@ -2662,13 +2663,36 @@ function mamaItem(day) {
   </div>`;
 }
 
+/* Практика недели: связь предметов и задания из жизни (data.practice, по понедельникам). */
+function practiceFor(monday) {
+  return ((DATA && DATA.practice) || []).find((w) => w.week === monday) || null;
+}
+
+function practiceHtml(week) {
+  if (!week) return "";
+  const tasks = week.tasks.map((t) => `<li><p class="practice-title"><b>${esc(t.title)}</b> <span class="practice-subjects">${esc(t.subjects)}</span></p>`
+    + `<p>${esc(t.do)}</p><p class="practice-result">Итог: ${esc(t.result)}</p></li>`).join("");
+  return `<div class="practice-box"><p class="practice-link"><b>Связь предметов.</b> ${esc(week.link)}</p>`
+    + `<p class="mama-label">Практика из жизни</p><ol class="practice-list">${tasks}</ol></div>`;
+}
+
+function renderTutorPractice() {
+  const host = document.getElementById("tutor-practice");
+  if (!host) return;
+  const monday = mamaStartWeek();
+  const week = practiceFor(monday);
+  host.innerHTML = week
+    ? `<p class="hint">Неделя с ${esc(formatPlanDate(monday))}</p>` + practiceHtml(week)
+    : '<p class="hint">На эту неделю практики нет: каникулы или выходные.</p>';
+}
+
 function renderMamaWeek() {
   const title = document.getElementById("mama-title");
   const host = document.getElementById("mama-week");
   const friday = addDaysISO(mamaMonday, 4);
   title.textContent = "Неделя " + formatPlanDate(mamaMonday) + " — " + formatPlanDate(friday);
   const days = planDays();
-  let html = "";
+  let html = practiceHtml(practiceFor(mamaMonday));
   for (let i = 0; i < 5; i++) {
     const date = addDaysISO(mamaMonday, i);
     const items = days.filter((d) => d.date === date);
