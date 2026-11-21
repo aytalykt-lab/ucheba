@@ -30,6 +30,15 @@ WEEK = {
     3: ["math", "russian", "reading", "english"],
     4: ["world", "reading", "sakha", "return"],
 }
+# 1 четверть дочка прошла в школе до переезда. Темы до этих страниц в график
+# не входят, а их уроки на сайте открыты для повторения и попадают в пятничные повторы.
+FIRST_PAGE = {
+    "math": ("math-1", 57),        # с «Устных вычислений»
+    "russian": ("russian-1", 65),  # со «Слог. Ударение. Перенос слова»
+    "reading": ("reading-1", 71),  # с раздела «Русские писатели»
+    "world": ("world-1", 82),      # с «Комнатных растений»
+    "english": ("english-1", 44),  # с модуля 2 «My Birthday!»
+}
 NAMES = {
     "math": "Математика", "russian": "Русский язык", "reading": "Литературное чтение",
     "world": "Окружающий мир", "english": "Английский язык", "sakha": "Саха тыла",
@@ -524,7 +533,19 @@ def entries_with_ends(subject):
         nxt = rows[i + 1] if i + 1 < len(rows) else None
         end = nxt[1] - 1 if nxt and nxt[0] == book else BOOKS[book][3]
         out.append({"book": book, "from": page, "to": max(page, end), "title": title})
+    start = FIRST_PAGE.get(subject)
+    if start:
+        out = [e for e in out if not (e["book"] == start[0] and e["to"] < start[1])]
     return out
+
+
+def studied_site(subject):
+    """Уроки сайта к темам, пройденным в школе, в порядке учебника."""
+    start = FIRST_PAGE.get(subject)
+    if not start:
+        return []
+    keys = sorted(k for k in SITE.get(subject, {}) if k[0] == start[0] and k[1] < start[1])
+    return [SITE[subject][k] for k in keys]
 
 
 def span(e):
@@ -585,9 +606,10 @@ def main():
     need = {s: sum(1 for _, x in slots if x == s) for s in NAMES}
     units = {}
     report = []
+    studied = {s: studied_site(s) for s in TOC}
     for subject in TOC:
         units[subject] = fit(entries_with_ends(subject), need[subject])
-        lost = attach_site(subject, units[subject])
+        lost = [x for x in attach_site(subject, units[subject]) if x not in studied[subject]]
         bad = [u["lessonId"] for u in units[subject] if u.get("lessonId") and u["lessonId"] not in site_ids]
         report.append(f"{NAMES[subject]}: слотов {need[subject]}, уроков {len(units[subject])}, без места {lost}, неизвестные {bad}")
 
@@ -595,10 +617,23 @@ def main():
     cursor = {s: 0 for s in NAMES}
     seen_site = []
     returned = set()
+    # Повторы 1 четверти по кругу предметов, чтобы не шли подряд по одному предмету.
+    queues = [[(x, s) for x in studied[s]] for s in TOC]
+    school_review = []
+    while any(queues):
+        for q in queues:
+            if q:
+                school_review.append(q.pop(0))
+    fridays = 0
     for d, subj in slots:
         iso = d.isoformat()
         if subj == "return":
-            old = [x for x in seen_site if x[0] <= (d - dt.timedelta(days=7)).isoformat() and x[1] not in returned]
+            fridays += 1
+            old = [(None, x, s) for x, s in school_review if x not in returned]
+            fresh = [x for x in seen_site if x[0] <= (d - dt.timedelta(days=7)).isoformat() and x[1] not in returned]
+            # Через пятницу: повтор свежей темы, иначе тема 1 четверти.
+            if fresh and (fridays % 2 == 0 or not old):
+                old = fresh
             if old:
                 _, lesson_id, sid = old[0]
                 returned.add(lesson_id)
@@ -628,8 +663,9 @@ def main():
         plan.append({"date": d.isoformat(), "kind": "rest", "title": name})
     plan.sort(key=lambda x: x["date"])
 
-    # Уроки предмета идут в порядке учебника; уроки вне графика — в конце, как были.
-    first = {}
+    # Уроки предмета идут в порядке учебника: сначала пройденные в школе, потом по графику;
+    # уроки вне графика — в конце, как были.
+    first = {x: i for i, x in enumerate(x for s in TOC for x in studied[s])}
     for item in plan:
         if item.get("lessonId") and item["kind"] == "lesson":
             first.setdefault(item["lessonId"], len(first))
@@ -638,12 +674,14 @@ def main():
 
     data["books"] = {k: {"title": v[0], "part": v[1], "url": VIEWER.format(v[2])} for k, v in BOOKS.items()}
     data["plan"] = {"from": START.isoformat(), "lessonsUntil": END.isoformat(), "reviewUntil": END.isoformat(),
-                    "pace": "books", "perDay": 4, "days": plan}
+                    "pace": "books", "perDay": 4, "days": plan,
+                    "studied": [x for s in TOC for x in studied[s]]}
     data_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     text = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
     (ROOT / "data.js").write_text("/* Копия data.json: уроки открываются двойным щелчком, без Python. */\nwindow.STUDY_DATA = " + text + ";\n", encoding="utf-8")
     print(f"Учебных дней {len(days)}, выходных {len(rest)}, записей {len(plan)}")
     print("\n".join(report))
+    print("Пройдено в школе (уроки сайта для повторения):", {s: len(v) for s, v in studied.items()})
 
 
 if __name__ == "__main__":
