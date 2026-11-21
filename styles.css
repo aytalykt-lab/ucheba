@@ -1116,3 +1116,22 @@ body.tutor-page #tutor-controls button {
 .start-day.is-second { background: var(--rice); }
 .start-day.is-second:hover { background: var(--rice); filter: brightness(0.92); }
 @media (max-width: 480px) { .book-step { grid-template-columns: 1fr; } }
+
+/* Шпаргалка для мамы */
+body.mama-page .mama-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 16px; }
+body.mama-page .mama-bar button { font-family: inherit; font-size: 14px; border-radius: var(--desk-radius); box-shadow: none; padding: 8px 12px; }
+body.mama-page .mama-bar .back-btn { background: var(--desk-card); color: var(--desk-ink); border: 1px solid var(--desk-line); }
+body.mama-page .mama-bar .action-btn { background: var(--desk-ink); color: #fff; }
+body.mama-page .mama-day h3 { text-transform: none; letter-spacing: 0; font-size: 16px; color: var(--desk-ink); margin: 24px 0 8px; }
+body.mama-page .mama-item { background: var(--desk-card); border: 1px solid var(--desk-line); padding: 10px 14px; margin-bottom: 8px; font-size: 14px; }
+body.mama-page .mama-item p { margin: 4px 0; }
+body.mama-page .mama-item ul { margin: 2px 0 4px 1.2rem; padding: 0; }
+body.mama-page .mama-head { font-size: 15px; }
+body.mama-page .mama-pages, body.mama-page .mama-sub { color: var(--desk-muted); }
+body.mama-page .mama-label { font-weight: 650; margin-top: 8px !important; }
+@media print {
+  body.mama-page header nav, body.mama-page .mama-bar, body.mama-page .hint:first-child { display: none; }
+  body.mama-page { background: #fff; font-size: 12px; }
+  body.mama-page .mama-item { break-inside: avoid; border-color: #bbb; }
+  body.mama-page .mama-day { break-inside: auto; }
+}

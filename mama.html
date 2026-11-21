@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шпаргалка для мамы</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="plan-page mama-page">
+  <header>
+    <h1>Шпаргалка для мамы</h1>
+    <nav>
+      <a href="plan.html" class="tutor-link">График</a>
+      <a href="tutor.html" class="tutor-link">Панель тьютора</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <p class="hint">Неделя уроков на одной странице. По каждому уроку сказано, где он в учебнике, что объясняет сайт, как помочь, если дочка ошибается, и два вопроса для проверки с ответами. Удобно прочитать в воскресенье вечером и открыть эти страницы на LECTA заранее.</p>
+      <div class="mama-bar">
+        <button class="back-btn" type="button" onclick="mamaShift(-1)">← Прошлая неделя</button>
+        <button class="back-btn" type="button" onclick="mamaShift(0)">Эта неделя</button>
+        <button class="back-btn" type="button" onclick="mamaShift(1)">Следующая →</button>
+        <button class="action-btn" type="button" onclick="window.print()">Распечатать</button>
+      </div>
+      <h2 id="mama-title"></h2>
+      <div id="mama-week"></div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="grade3.js"></script>
+  <script src="app.js"></script>
+  <script>
+    renderMamaPage();
+  </script>
+</body>
+</html>

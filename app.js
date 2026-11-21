@@ -58,7 +58,7 @@ const SOFT_MODE_KEY = "study_soft_mode_v1";
 const SOFT_MODE_MS = 7 * 24 * 60 * 60 * 1000;
 
 function showLoadError() {
-  const host = document.getElementById("subjects-list") || document.getElementById("tutor-progress") || document.getElementById("plan-calendar");
+  const host = document.getElementById("subjects-list") || document.getElementById("tutor-progress") || document.getElementById("plan-calendar") || document.getElementById("mama-week");
   if (!host) return;
   host.innerHTML = '<p class="hint">Уроки не открылись. Откройте index.html из папки сайта.</p>';
 }
@@ -2592,5 +2592,93 @@ if (document.getElementById("subjects-list")) {
     if (want) openScheduledLesson(want, params.get("return") === "1");
     const control = params.get("control");
     if (control) openControl(control.split(":")[0], control.split(":")[1], true);
+  }).catch(showLoadError);
+}
+
+/* ================= ШПАРГАЛКА ДЛЯ МАМЫ ================= */
+let mamaMonday = null;
+
+function mondayOf(iso) {
+  const d = parseISO(iso);
+  d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+
+function addDaysISO(iso, n) {
+  const d = parseISO(iso);
+  d.setDate(d.getDate() + n);
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+
+function mamaStartWeek() {
+  const days = planDays();
+  if (!days.length) return mondayOf(todayISO());
+  const today = todayISO();
+  const first = days[0].date;
+  const last = days[days.length - 1].date;
+  if (today < first) return mondayOf(first);
+  if (today > last) return mondayOf(last);
+  // В субботу и воскресенье мама готовится к следующей неделе.
+  const wd = parseISO(today).getDay();
+  return wd === 0 || wd === 6 ? addDaysISO(mondayOf(today), 7) : mondayOf(today);
+}
+
+function mamaShift(step) {
+  mamaMonday = step === 0 ? mamaStartWeek() : addDaysISO(mamaMonday, 7 * step);
+  renderMamaWeek();
+}
+
+function mamaItem(day) {
+  const pages = bookPages(day);
+  const head = (subject, title) =>
+    `<p class="mama-head"><b>${esc(subject)}</b> — ${esc(title)}</p>` + (pages ? `<p class="mama-pages">${esc(pages)}</p>` : "");
+  if (day.kind === "mama") {
+    return `<div class="mama-item">${head(day.subject || "С мамой", day.title)}<p>${esc(day.text || "")}</p></div>`;
+  }
+  if (day.kind === "return") {
+    return `<div class="mama-item">${head(day.subject, "повтор: " + day.title)}<p>Сайт сам даст короткую проверку темы. Если ошибок много, перечитайте вместе «Главное» этого урока.</p></div>`;
+  }
+  if (day.kind === "book") {
+    return `<div class="mama-item">${head(day.subject, day.title)}<p>Урока на сайте нет: только учебник. Задания — устно или в тетради. Проверьте и только потом нажмите «Готово».</p></div>`;
+  }
+  const found = day.lessonId ? findLesson(day.lessonId) : null;
+  if (!found) return `<div class="mama-item">${head(day.subject, day.title)}</div>`;
+  const l = found.lesson;
+  const list = (items) => "<ul>" + items.map((t) => `<li>${esc(t)}</li>`).join("") + "</ul>";
+  const checks = (l.questions || []).slice(0, 2).map((qq) =>
+    `<li>${esc(qq.q)} — <b>${esc(qq.options[qq.correct || 0])}</b></li>`).join("");
+  return `<div class="mama-item">
+    ${head(day.subject, day.title)}
+    <p class="mama-sub">Урок на сайте: «${esc(l.title)}». ${esc(l.goal || "")}</p>
+    <p class="mama-label">Главное</p>${list(l.teach || [])}
+    ${l.walk && l.walk.length ? `<p class="mama-label">Пример из урока</p><p>${esc(l.walk.join(" "))}</p>` : ""}
+    ${l.corrective && l.corrective.length ? `<p class="mama-label">Если ошибается</p>${list(l.corrective)}` : ""}
+    ${checks ? `<p class="mama-label">Спросите после урока</p><ul>${checks}</ul>` : ""}
+  </div>`;
+}
+
+function renderMamaWeek() {
+  const title = document.getElementById("mama-title");
+  const host = document.getElementById("mama-week");
+  const friday = addDaysISO(mamaMonday, 4);
+  title.textContent = "Неделя " + formatPlanDate(mamaMonday) + " — " + formatPlanDate(friday);
+  const days = planDays();
+  let html = "";
+  for (let i = 0; i < 5; i++) {
+    const date = addDaysISO(mamaMonday, i);
+    const items = days.filter((d) => d.date === date);
+    html += `<div class="mama-day"><h3>${esc(formatPlanDate(date))}</h3>`;
+    if (!items.length) html += `<p class="hint">Занятий нет.</p>`;
+    else if (items.every((d) => d.kind === "rest")) html += `<p class="hint">${esc(items[0].title)}.</p>`;
+    else html += items.filter((d) => d.kind !== "rest").map(mamaItem).join("");
+    html += "</div>";
+  }
+  host.innerHTML = html;
+}
+
+function renderMamaPage() {
+  loadData().then(() => {
+    mamaMonday = mamaStartWeek();
+    renderMamaWeek();
   }).catch(showLoadError);
 }
