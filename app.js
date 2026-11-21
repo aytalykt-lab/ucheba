@@ -98,6 +98,7 @@ function isLessonUnlocked(subject, index) {
   }
   if (softModeActive()) return true;
   if (index === 0) return true;
+  if (scheduledByNow(subject.lessons[index].id)) return true;
   const prev = subject.lessons[index - 1];
   return getLessonState(prev.id).passed === true;
 }
@@ -1308,7 +1309,7 @@ const CONTROL_KEY = "study_control_v1";
 const QUARTERS = [
   { id: "q2", name: "2 четверть", from: "2026-11-05", to: "2026-12-30" },
   { id: "q3", name: "3 четверть", from: "2027-01-11", to: "2027-03-26" },
-  { id: "q4", name: "4 четверть, годовая", from: "2026-11-05", to: "2027-05-15", opens: "2027-05-05" },
+  { id: "q4", name: "4 четверть, годовая", from: "2026-11-05", to: "2027-05-28", opens: "2027-05-17" },
 ];
 const CONTROL_MIN_TOPICS = 3;
 const CONTROL_MAX_QUESTIONS = 12;
@@ -1749,7 +1750,8 @@ function uploadProgress(input) {
 }
 
 function dayKindLabel(kind) {
-  if (kind === "lesson") return "Новый урок";
+  if (kind === "lesson") return "Урок и учебник";
+  if (kind === "book") return "Учебник";
   if (kind === "return") return "Повтор";
   if (kind === "mama") return "С мамой";
   if (kind === "rest") return "Выходной";
@@ -1794,14 +1796,16 @@ function renderTutorCalendar() {
     table.innerHTML = "<thead><tr><th>Дата</th><th>Вид</th><th>Занятие</th><th>Итог</th></tr></thead>";
     const body = document.createElement("tbody");
     month.days.forEach((day) => {
-      const passed = day.lessonId && getLessonState(day.lessonId).passed;
+      const counts = day.kind === "book" || !!day.lessonId;
+      const passed = counts && planDone(day);
       const row = document.createElement("tr");
       row.className = "plan-row mom-day kind-" + day.kind + (day.date === today ? " is-today" : "") + (passed ? " is-done" : "");
-      const title = day.kind === "lesson" || day.kind === "return"
+      const title = day.kind === "lesson" || day.kind === "return" || day.kind === "book"
         ? day.subject + ". " + day.title
         : day.title;
-      const topic = day.lessonId ? lessonGoal(day.lessonId) : (day.text || "");
-      const result = !day.lessonId ? "" : (passed ? "усвоено" : "ещё нет");
+      const goal = day.lessonId ? lessonGoal(day.lessonId) : (day.text || "");
+      const topic = [bookPages(day), goal].filter(Boolean).join(". ");
+      const result = !counts ? "" : (passed ? "сделано" : "ещё нет");
       row.innerHTML = `
         <td class="plan-date">${esc(formatPlanDate(day.date))}</td>
         <td>${esc(dayKindLabel(day.kind))}</td>
@@ -2233,7 +2237,7 @@ function weekOf(iso) {
 }
 
 function planDayText(day) {
-  if (day.kind === "lesson") return day.subject + ". " + day.title;
+  if (day.kind === "lesson" || day.kind === "book") return day.subject + ". " + day.title;
   if (day.kind === "review") return day.title + (day.text ? ". " + day.text : "");
   if (day.text) return day.title + ". " + day.text;
   return day.title;
@@ -2262,12 +2266,66 @@ function homeChoices() {
   return { primary, alternative };
 }
 
-const LESSONS_PER_DAY = 3;
+const LESSONS_PER_DAY = 4;
 let studyOnRest = false;
 
+/* ================= УЧЕБНИК ================= */
+/* Урок по графику = тема учебника. Если к теме есть урок сайта, сначала он, потом страницы
+   электронного учебника на LECTA и кнопка «Готово». Отметки «Готово» хранятся здесь. */
+const BOOK_KEY = "study_book_v1";
+
+function readBooks() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(BOOK_KEY) || "{}");
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function bookDone(id) {
+  return !!readBooks()[id];
+}
+
+function finishBook(id) {
+  const books = readBooks();
+  books[id] = todayISO();
+  try {
+    localStorage.setItem(BOOK_KEY, JSON.stringify(books));
+  } catch (e) {
+    window.alert("Отметка не сохранилась: браузер не даёт записывать данные.");
+    return;
+  }
+  renderToday();
+}
+
+function openBook(bookId) {
+  const book = DATA && DATA.books && DATA.books[bookId];
+  if (book) window.open(book.url, "_blank", "noopener");
+}
+
+function bookPages(day) {
+  const b = day && day.book;
+  if (!b) return "";
+  const pages = b.from === b.to ? "страница " + b.from : "страницы " + b.from + "–" + b.to;
+  return "Учебник, часть " + b.part + ", " + pages;
+}
+
+function scheduledByNow(lessonId) {
+  const today = todayISO();
+  return planDays().some((day) => day.kind === "lesson" && day.lessonId === lessonId && day.date <= today);
+}
+
 function planItemDone(day, state) {
-  if (day.kind === "lesson") return state.passed === true;
+  if (day.kind === "book") return bookDone(day.id);
+  if (day.kind === "lesson") return state.passed === true && (!day.book || bookDone(day.id));
   return state.passed === true && !!state.lastQuizAt && state.lastQuizAt >= day.date;
+}
+
+function planDone(day) {
+  if (day.kind === "book") return bookDone(day.id);
+  if (!day.lessonId) return false;
+  return planItemDone(day, getLessonState(day.lessonId));
 }
 
 /* Уроки дня: что уже сделано сегодня и что дальше по графику. Не больше трёх в день;
@@ -2279,10 +2337,17 @@ function dayList() {
   const restDay = days.find((day) => day.date === today && day.kind === "rest");
   const rest = !!restDay || weekday === 0 || weekday === 6;
   const progress = loadProgress();
+  const books = readBooks();
   const done = [];
+  /* Уроки сайта, привязанные к учебнику, засчитываются только после «Готово» в учебнике. */
+  const withBook = new Set(days.filter((day) => day.kind === "lesson" && day.book).map((day) => day.lessonId));
+  days.forEach((day) => {
+    if (day.date > today || books[day.id] !== today) return;
+    if (day.kind === "book" || (day.kind === "lesson" && planDone(day))) done.push({ subject: day.subject, title: day.title });
+  });
   Object.keys(progress).forEach((id) => {
     const state = progress[id];
-    if (!state || state.lastQuizAt !== today || state.passed !== true) return;
+    if (!state || state.lastQuizAt !== today || state.passed !== true || withBook.has(id)) return;
     const found = findLesson(id);
     if (found) done.push({ lessonId: id, subject: found.subject.name, title: found.lesson.title });
   });
@@ -2290,13 +2355,17 @@ function dayList() {
   const oldest = shiftISO(today, -7);
   for (const day of days) {
     if (day.date > today) break;
+    if (day.kind === "book") {
+      if (!books[day.id] && !pending.some((item) => item.id === day.id)) pending.push(day);
+      continue;
+    }
     if (!day.lessonId || (day.kind !== "lesson" && day.kind !== "return")) continue;
     const found = findLesson(day.lessonId);
     if (!found) continue;
     const state = getLessonState(day.lessonId);
     if (planItemDone(day, state)) continue;
     if (day.kind === "return" && state.passed === true && day.date < oldest) continue;
-    if (state.lastQuizAt === today && state.passed === true) continue;
+    if (day.kind === "return" && state.lastQuizAt === today && state.passed === true) continue;
     if (!isLessonUnlocked(found.subject, found.index)) continue;
     if (pending.some((item) => item.lessonId === day.lessonId)) continue;
     pending.push(day);
@@ -2306,9 +2375,30 @@ function dayList() {
   return { rest, restTitle: restDay ? restDay.title : "Выходной", done, next: pending.slice(0, slots), waiting: pending.length, mama };
 }
 
-function dayRow(number, state, subject, title, action) {
+function dayRow(number, state, subject, title, action, note) {
   const mark = state === "done" ? "✓" : number;
-  return `<li class="day-row is-${state}"><span class="lesson-num" aria-hidden="true">${mark}</span><span class="subject-text"><span class="card-status">${esc(subject)}</span><span class="card-title">${esc(title)}</span></span>${action || ""}</li>`;
+  const extra = note ? `<span class="book-note">${esc(note)}</span>` : "";
+  return `<li class="day-row is-${state}"><span class="lesson-num" aria-hidden="true">${mark}</span><span class="subject-text"><span class="card-status">${esc(subject)}</span><span class="card-title">${esc(title)}</span>${extra}</span>${action || ""}</li>`;
+}
+
+/* Что нажимать в строке урока: сначала урок сайта, потом учебник и «Готово». */
+function dayAction(day) {
+  const siteFirst = day.lessonId && (day.kind === "return" || getLessonState(day.lessonId).passed !== true);
+  if (siteFirst) {
+    return `<button type="button" class="start-day" onclick="openScheduledLesson('${esc(day.lessonId)}', ${day.kind === "return"})">Начать</button>`;
+  }
+  const open = day.book
+    ? `<button type="button" class="start-day" onclick="openBook('${esc(day.book.id)}')">Открыть учебник</button>`
+    : "";
+  return `<div class="book-step">${open}<button type="button" class="start-day${day.book ? " is-second" : ""}" onclick="finishBook('${esc(day.id)}')">Готово</button></div>`;
+}
+
+function dayNote(day) {
+  if (day.book) {
+    const site = day.lessonId && day.kind === "lesson" && getLessonState(day.lessonId).passed !== true;
+    return site ? "Сначала урок здесь, потом у" + bookPages(day).slice(1) : bookPages(day);
+  }
+  return day.kind === "book" ? day.text || "" : "";
 }
 
 function renderToday() {
@@ -2356,9 +2446,8 @@ function renderToday() {
       number += 1;
       const asReturn = day.kind === "return";
       const subject = (day.subject || "") + (asReturn ? ". Повторение" : "");
-      const open = `openScheduledLesson('${esc(day.lessonId)}', ${asReturn})`;
       rows.push(i === 0 && !factsFirst
-        ? dayRow(number, "now", subject, day.title, `<button type="button" class="start-day" onclick="${open}">Начать</button>`)
+        ? dayRow(number, "now", subject, day.title, dayAction(day), dayNote(day))
         : dayRow(number, "later", subject, day.title, ""));
     });
     list.mama.forEach((day) => {
@@ -2402,7 +2491,9 @@ function renderTutorToday() {
   list.done.forEach((item) => rows.push(`<tr><td><span class="status-done">сделано сегодня</span></td><td>${esc(item.subject)}. ${esc(item.title)}</td></tr>`));
   list.next.forEach((day) => {
     const late = day.date < todayISO() ? " (с " + formatPlanDate(day.date) + ")" : "";
-    rows.push(`<tr><td><span class="status-work">${day.kind === "return" ? "повтор" : "новый урок"}${esc(late)}</span></td><td>${esc(planDayText(day))}</td></tr>`);
+    const kind = day.kind === "return" ? "повтор" : day.book ? "учебник" : "новый урок";
+    const pages = day.book ? ". " + bookPages(day) : "";
+    rows.push(`<tr><td><span class="status-work">${kind}${esc(late)}</span></td><td>${esc(planDayText(day) + pages)}</td></tr>`);
   });
   list.mama.forEach((day) => rows.push(`<tr><td>с мамой</td><td>${esc(planDayText(day))}</td></tr>`));
   const behind = list.waiting - list.next.length;
@@ -2418,7 +2509,9 @@ function renderPlanPage() {
   loadData().then(() => {
     const lead = document.getElementById("plan-lead");
     const plan = DATA.plan || {};
-    lead.textContent = plan.pace === "three"
+    lead.textContent = plan.pace === "books"
+      ? "Программа 2 класса по учебникам «Школа России» (Моро, Канакина, Климанова, Плешаков), «Английский в фокусе» и саха тыла. С понедельника по пятницу четыре урока в день по 20–30 минут, с переменами. Урок — тема из учебника по порядку. Если к теме есть урок на сайте, сначала проходится он, потом страницы электронного учебника на LECTA и кнопка «Готово». В пятницу один повтор темы, пройденной неделю назад или раньше. Несделанное переходит на следующий день. Каникулы: 31 декабря – 8 января, 23 февраля, 8 марта, 29 марта – 2 апреля, 3 и 10 мая. Контрольные в конце каждой четверти, годовая с 17 мая. График до " + formatPlanDate(plan.lessonsUntil) + "."
+      : plan.pace === "three"
       ? "Сайт заменяет школьный день: " + plan.perDay + " урока в день с понедельника по пятницу, каждый 15–25 минут, между ними перемена. Первый круг до " + formatPlanDate(plan.lessonsUntil) + ": с понедельника по четверг три новые темы по разным предметам, в пятницу два повтора недели и занятие с мамой. Второй круг с января: короткая проверка каждой темы ещё раз и по два урока 3 класса в неделю. Третий круг с марта: повторение перед годовой контрольной. Несданный урок переходит на следующий день, больше трёх уроков в день сайт не даёт. Каникулы: 31 декабря – 8 января, 23 февраля, 8 марта, 29 марта – 2 апреля, 10 мая. График до " + formatPlanDate(plan.reviewUntil) + "."
       : plan.pace === "slow"
       ? "Темп для медленного усвоения. С понедельника по четверг — один новый урок, около 30 минут. Пятница — диктант или чтение вслух с мамой. Суббота — около 20 минут повтора темы, которая уже была. Новую тему не начинаем, пока прошлый урок не пройден: график подождёт. Таблица умножения идёт по одному числу за урок. Жи-ши, ча-ща и чу-щу — тремя уроками. Новые уроки до " + formatPlanDate(plan.lessonsUntil) + ", повторы до " + formatPlanDate(plan.reviewUntil) + ". Каникулы: 31 декабря – 10 января, 23 февраля, 8 марта, 27 марта – 4 апреля."
@@ -2426,11 +2519,24 @@ function renderPlanPage() {
 
     const subjects = document.getElementById("plan-subjects");
     subjects.innerHTML = "";
-    DATA.subjects.forEach((subject) => {
+    const bySubject = [];
+    planDays().forEach((day) => {
+      if (day.kind !== "lesson" && day.kind !== "book") return;
+      let group = bySubject.find((item) => item.id === day.subjectId);
+      if (!group) bySubject.push(group = { id: day.subjectId, name: day.subject, days: [] });
+      group.days.push(day);
+    });
+    bySubject.forEach((group) => {
       const block = document.createElement("div");
       block.className = "plan-subject";
-      const items = (subject.lessons || []).map((lesson) => `<li>${esc(lesson.title)}</li>`).join("");
-      block.innerHTML = `<h3>${esc(subject.name)} <span class="hint">${esc(lessonsWord(subject.lessons.length))}</span></h3><ol>${items}</ol>`;
+      const first = group.days.find((day) => day.book);
+      const book = first && DATA.books ? DATA.books[first.book.id] : null;
+      const source = book ? book.title.replace(/^[^.]*\.\s*/, "") : "по учебнику с мамой";
+      const items = group.days.map((day) => {
+        const pages = day.book ? ` <span class="hint">ч. ${day.book.part}, с. ${day.book.from}${day.book.to > day.book.from ? "–" + day.book.to : ""}</span>` : "";
+        return `<li>${esc(day.title)}${pages}</li>`;
+      }).join("");
+      block.innerHTML = `<h3>${esc(group.name)} <span class="hint">${esc(source)}, ${esc(lessonsWord(group.days.length))}</span></h3><ol>${items}</ol>`;
       subjects.appendChild(block);
     });
 
@@ -2448,18 +2554,18 @@ function renderPlanPage() {
         h.textContent = MONTHS_NOM[d.getMonth()] + " " + d.getFullYear();
         calendar.appendChild(h);
       }
-      const passed = day.lessonId && getLessonState(day.lessonId).passed;
+      const passed = (day.kind === "book" || day.lessonId) && planDone(day);
       const cls = ["plan-row", "kind-" + day.kind];
       if (day.date === today) cls.push("is-today");
       if (passed) cls.push("is-done");
-      const label = day.kind === "lesson"
-        ? day.subject + ". " + day.title
+      const label = day.kind === "lesson" || day.kind === "book"
+        ? day.subject + ". " + day.title + (day.book ? ". " + bookPages(day) : "")
         : day.kind === "return"
           ? "Повтор. " + day.subject + ". " + day.title
           : day.title + (day.text ? ". " + day.text : "");
       const marks = [];
       if (day.date === today) marks.push("сегодня");
-      if (passed) marks.push("усвоено");
+      if (passed) marks.push("сделано");
       const mark = marks.length ? `<span class="plan-mark">${esc(marks.join(" · "))}</span>` : "";
       if (day.kind === "lesson" || day.kind === "return") {
         const link = document.createElement("a");

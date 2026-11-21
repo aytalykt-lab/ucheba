@@ -1107,3 +1107,12 @@ body.tutor-page #tutor-controls button {
   padding: 14px 16px;
   font-size: 1.25rem;
 }
+
+/* ===== Шаг с учебником ===== */
+.book-note { margin-top: 4px; font-size: 1rem; font-weight: 700; color: var(--sea); }
+.book-step { flex-basis: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+.book-step .start-day { margin: 0; min-height: 60px; }
+.book-step .start-day:only-child { grid-column: 1 / -1; }
+.start-day.is-second { background: var(--rice); }
+.start-day.is-second:hover { background: var(--rice); filter: brightness(0.92); }
+@media (max-width: 480px) { .book-step { grid-template-columns: 1fr; } }
