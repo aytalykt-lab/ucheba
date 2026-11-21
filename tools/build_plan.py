@@ -26,13 +26,18 @@ HOLIDAYS = {
     "Праздник весны": (dt.date(2027, 5, 3), dt.date(2027, 5, 3)),
     "День Победы": (dt.date(2027, 5, 10), dt.date(2027, 5, 10)),
 }
-# Четыре урока в день, порядок предметов по дням недели (пн = 0).
+# Неделя по ФГОС (ФОП НОО, федеральный учебный план, вариант 3: русский язык обучения
+# с изучением родного языка), 2 класс, 23 урока: русский 5, литературное чтение 3,
+# родной язык и литературное чтение на родном (саха) 2, английский 2, математика 4,
+# окружающий мир 2, ИЗО 1, музыка 1, труд 1, физкультура 2.
+# Сначала трудные предметы, в конце дня — творческие и подвижные.
+# В понедельник после уроков — короткий повтор старой темы на сайте (10 минут, сверх ФГОС).
 WEEK = {
-    0: ["math", "russian", "reading", "english"],
-    1: ["math", "russian", "reading", "world"],
-    2: ["math", "russian", "world", "sakha"],
-    3: ["math", "russian", "reading", "english"],
-    4: ["world", "reading", "sakha", "return"],
+    0: ["math", "russian", "reading", "english", "return"],
+    1: ["math", "russian", "world", "pe"],
+    2: ["math", "russian", "reading", "sakha", "izo"],
+    3: ["math", "russian", "world", "english", "trud"],
+    4: ["russian", "reading", "sakharead", "music", "pe"],
 }
 # 1 четверть дочка прошла в школе до переезда. Темы до этих страниц в график
 # не входят, а их уроки на сайте открыты для повторения и попадают в пятничные повторы.
@@ -46,7 +51,65 @@ FIRST_PAGE = {
 NAMES = {
     "math": "Математика", "russian": "Русский язык", "reading": "Литературное чтение",
     "world": "Окружающий мир", "english": "Английский язык", "sakha": "Саха тыла",
+    "sakharead": "Чтение на саха тыла", "izo": "ИЗО", "music": "Музыка",
+    "trud": "Труд", "pe": "Физкультура",
 }
+# Предметы без учебника на LECTA: темы по порядку из tools/extra_subjects.json.
+EXTRA = json.loads((ROOT / "tools" / "extra_subjects.json").read_text(encoding="utf-8"))
+# Домашнее задание: номера заданий по страницам учебников (собраны в LECTA).
+HW_PAGES = json.loads((ROOT / "tools" / "homework_pages.json").read_text(encoding="utf-8"))
+
+
+def pages_word(a, b):
+    return f"с. {a}" if a == b else f"с. {a}–{b}"
+
+
+def from_pages(a, b):
+    return f"со страницы {a}" if a == b else f"со страниц {a}–{b}"
+
+
+def homework_for(book, a, b):
+    """Домашка в тетрадь для урока на страницах a–b: номера из учебника или общее задание."""
+    subj = book.split("-")[0]
+    src = HW_PAGES.get(book, {"ex": {}, "text": {}})
+    for p in range(a, b + 1):
+        if str(p) in src["text"]:
+            return src["text"][str(p)]
+    ex = [(p, n, lab) for p in range(a, b + 1) for n, lab in src["ex"].get(str(p), [])]
+    keep = {"math": 2, "russian": 2 if b - a >= 2 else 1}.get(subj, 1)
+    if subj == "english":
+        written = [e for e in ex if e[2] == "письменно"]
+        ex = written or ex
+    ex = ex[-keep:]
+
+    def grp(word):
+        by = {}
+        for p, n, _ in ex:
+            by.setdefault(p, []).append(str(n))
+        return "; ".join(f"с. {p}, {word} " + " и ".join(ns) for p, ns in by.items())
+
+    pages, frm = pages_word(a, b), from_pages(a, b)
+    if subj == "math":
+        return f"В тетради: {grp('№')}." if ex else f"В тетради: 2 задания {frm}, которые не успели на уроке (выбирает мама)."
+    if subj == "russian":
+        if not ex:
+            return f"В тетради: одно упражнение {frm}, которое не делали на уроке (выбирает мама)."
+        ps = [p for p, _, _ in ex]
+        return f"В тетради: упр. {' и '.join(str(n) for _, n, _ in ex)} ({pages_word(min(ps), max(ps))})."
+    if subj == "reading":
+        return (f"Перечитай вслух {pages}. В тетради: {grp('вопрос')} — ответ 2–3 предложениями." if ex
+                else f"Перечитай вслух {pages} и перескажи маме. В тетради: 2–3 предложения — о чём текст и кто из героев понравился.")
+    if subj == "world":
+        return (f"Перечитай {pages}. В тетради: {grp('вопрос')} — ответ 1–2 предложениями." if ex
+                else f"Перечитай {pages}. В тетради: 2 предложения о том, что нового узнала, и рисунок по теме.")
+    words = f"Выпиши в тетрадь 3–5 новых слов {frm} с переводом и прочитай их вслух."
+    if not ex:
+        return words
+    if ex[0][2] == "письменно":
+        return f"В тетради: {grp('упр.')}. " + words
+    if ex[0][2] == "рисунок":
+        return f"{grp('упр.')}: рисунок в тетради. " + words
+    return f"Прочитай вслух маме: {grp('упр.')}. " + words
 
 VIEWER = "https://media.prosv.ru/static/books-viewer/index.html?path=/media/ebook/{}/"
 BOOKS = {
@@ -513,12 +576,6 @@ SITE = {
     },
 }
 
-SAKHA = [
-    ("Саха тыла с мамой", "Учебник Петровой и Игнатьевой, 2 класс. 20 минут: прочитать вслух, ответить на вопросы по-якутски, написать 3–4 строки."),
-    ("Саха тыла: разговор", "15 минут говорим только по-якутски: что было сегодня, что на столе, какая погода. Мама подсказывает слова."),
-]
-
-
 def school_days():
     days, rest = [], []
     d = START
@@ -604,8 +661,6 @@ def main():
     data_path = ROOT / "data.json"
     data = json.loads(data_path.read_text(encoding="utf-8"))
     site_ids = {l["id"] for s in data["subjects"] for l in s["lessons"]}
-    # Домашние задания в тетрадь: номера из учебников LECTA (собраны по страницам плана).
-    homework = json.loads((ROOT / "tools" / "homework.json").read_text(encoding="utf-8"))
 
     days, rest = school_days()
     slots = [(d, subj) for d in days for subj in WEEK[EXTRA_DAYS.get(d, d.weekday())]]
@@ -654,11 +709,19 @@ def main():
                 plan.append({"date": iso, "kind": "mama", "title": "Чтение вслух с мамой",
                              "text": "10 минут вслух любую книгу. В конце дочка рассказывает: кто герой и что случилось."})
             continue
-        if subj == "sakha":
-            title, text = SAKHA[cursor["sakha"] % len(SAKHA)]
-            cursor["sakha"] += 1
-            plan.append({"date": iso, "kind": "book", "subjectId": "sakha", "subject": NAMES["sakha"],
-                         "id": f"sakha-{iso}", "title": title, "text": text})
+        if subj in EXTRA:
+            topics = EXTRA[subj]
+            k = cursor[subj]
+            cursor[subj] += 1
+            if subj == "pe":
+                # Во вторник новая тема, в пятницу повторяем её и играем.
+                title, text = topics[(k // 2) % len(topics)]
+                if k % 2:
+                    title, text = title + ": повторяем", "Повторить упражнения вторника и поиграть в подвижную игру 10 минут. " + text
+            else:
+                title, text = topics[k % len(topics)]
+            plan.append({"date": iso, "kind": "book", "subjectId": subj, "subject": NAMES[subj],
+                         "id": f"{subj}-{iso}", "title": title, "text": text})
             continue
         u = units[subj][cursor[subj]]
         cursor[subj] += 1
@@ -666,8 +729,7 @@ def main():
         item = {"date": iso, "kind": "lesson" if u.get("lessonId") else "book", "subjectId": subj,
                 "subject": NAMES[subj], "id": f"{u['book']}-{u['from']}", "title": u["title"],
                 "book": {"id": u["book"], "part": b[1], "from": u["from"], "to": u["to"]}}
-        if item["id"] in homework:
-            item["homework"] = homework[item["id"]]
+        item["homework"] = homework_for(u["book"], u["from"], u["to"])
         if u.get("lessonId"):
             item["lessonId"] = u["lessonId"]
             seen_site.append((iso, u["lessonId"], subj))
@@ -689,7 +751,7 @@ def main():
     data["practice"] = json.loads((ROOT / "tools" / "practice.json").read_text(encoding="utf-8"))
     data["books"] = {k: {"title": v[0], "part": v[1], "url": VIEWER.format(v[2])} for k, v in BOOKS.items()}
     data["plan"] = {"from": START.isoformat(), "lessonsUntil": END.isoformat(), "reviewUntil": END.isoformat(),
-                    "pace": "books", "perDay": 4, "days": plan,
+                    "pace": "books", "perDay": 5, "days": plan,
                     "studied": [x for s in TOC for x in studied[s]]}
     data_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     text = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
