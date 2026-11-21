@@ -604,6 +604,8 @@ def main():
     data_path = ROOT / "data.json"
     data = json.loads(data_path.read_text(encoding="utf-8"))
     site_ids = {l["id"] for s in data["subjects"] for l in s["lessons"]}
+    # Домашние задания в тетрадь: номера из учебников LECTA (собраны по страницам плана).
+    homework = json.loads((ROOT / "tools" / "homework.json").read_text(encoding="utf-8"))
 
     days, rest = school_days()
     slots = [(d, subj) for d in days for subj in WEEK[EXTRA_DAYS.get(d, d.weekday())]]
@@ -664,6 +666,8 @@ def main():
         item = {"date": iso, "kind": "lesson" if u.get("lessonId") else "book", "subjectId": subj,
                 "subject": NAMES[subj], "id": f"{u['book']}-{u['from']}", "title": u["title"],
                 "book": {"id": u["book"], "part": b[1], "from": u["from"], "to": u["to"]}}
+        if item["id"] in homework:
+            item["homework"] = homework[item["id"]]
         if u.get("lessonId"):
             item["lessonId"] = u["lessonId"]
             seen_site.append((iso, u["lessonId"], subj))

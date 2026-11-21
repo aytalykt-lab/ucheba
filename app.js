@@ -1806,7 +1806,7 @@ function renderTutorCalendar() {
         ? day.subject + ". " + day.title
         : day.title;
       const goal = day.lessonId ? lessonGoal(day.lessonId) : (day.text || "");
-      const topic = [bookPages(day), goal].filter(Boolean).join(". ");
+      const topic = [bookPages(day), goal, day.homework ? "Домашнее: " + day.homework : ""].filter(Boolean).join(". ");
       const result = !counts ? "" : (passed ? "сделано" : "ещё нет");
       row.innerHTML = `
         <td class="plan-date">${esc(formatPlanDate(day.date))}</td>
@@ -2398,7 +2398,8 @@ function dayAction(day) {
 function dayNote(day) {
   if (day.book) {
     const site = day.lessonId && day.kind === "lesson" && getLessonState(day.lessonId).passed !== true;
-    return site ? "Сначала урок здесь, потом у" + bookPages(day).slice(1) : bookPages(day);
+    if (site) return "Сначала урок здесь, потом у" + bookPages(day).slice(1);
+    return bookPages(day) + (day.homework ? ". Домашнее задание. " + day.homework : "");
   }
   return day.kind === "book" ? day.text || "" : "";
 }
@@ -2494,7 +2495,7 @@ function renderTutorToday() {
   list.next.forEach((day) => {
     const late = day.date < todayISO() ? " (с " + formatPlanDate(day.date) + ")" : "";
     const kind = day.kind === "return" ? "повтор" : day.book ? "учебник" : "новый урок";
-    const pages = day.book ? ". " + bookPages(day) : "";
+    const pages = (day.book ? ". " + bookPages(day) : "") + (day.homework ? ". Домашнее: " + day.homework : "");
     rows.push(`<tr><td><span class="status-work">${kind}${esc(late)}</span></td><td>${esc(planDayText(day) + pages)}</td></tr>`);
   });
   list.mama.forEach((day) => rows.push(`<tr><td>с мамой</td><td>${esc(planDayText(day))}</td></tr>`));
@@ -2561,7 +2562,7 @@ function renderPlanPage() {
       if (day.date === today) cls.push("is-today");
       if (passed) cls.push("is-done");
       const label = day.kind === "lesson" || day.kind === "book"
-        ? day.subject + ". " + day.title + (day.book ? ". " + bookPages(day) : "")
+        ? day.subject + ". " + day.title + (day.book ? ". " + bookPages(day) : "") + (day.homework ? ". Домашнее: " + day.homework : "")
         : day.kind === "return"
           ? "Повтор. " + day.subject + ". " + day.title
           : day.title + (day.text ? ". " + day.text : "");
@@ -2632,6 +2633,7 @@ function mamaShift(step) {
 
 function mamaItem(day) {
   const pages = bookPages(day);
+  const homework = day.homework ? `<p class="mama-label">Домашнее задание</p><p class="mama-homework">${esc(day.homework)}</p>` : "";
   const head = (subject, title) =>
     `<p class="mama-head"><b>${esc(subject)}</b> — ${esc(title)}</p>` + (pages ? `<p class="mama-pages">${esc(pages)}</p>` : "");
   if (day.kind === "mama") {
@@ -2641,10 +2643,10 @@ function mamaItem(day) {
     return `<div class="mama-item">${head(day.subject, "повтор: " + day.title)}<p>Сайт сам даст короткую проверку темы. Если ошибок много, перечитайте вместе «Главное» этого урока.</p></div>`;
   }
   if (day.kind === "book") {
-    return `<div class="mama-item">${head(day.subject, day.title)}<p>Урока на сайте нет: только учебник. Задания — устно или в тетради. Проверьте и только потом нажмите «Готово».</p></div>`;
+    return `<div class="mama-item">${head(day.subject, day.title)}<p>Урока на сайте нет: только учебник. Задания — устно или в тетради. Проверьте и только потом нажмите «Готово».</p>${homework}</div>`;
   }
   const found = day.lessonId ? findLesson(day.lessonId) : null;
-  if (!found) return `<div class="mama-item">${head(day.subject, day.title)}</div>`;
+  if (!found) return `<div class="mama-item">${head(day.subject, day.title)}${homework}</div>`;
   const l = found.lesson;
   const list = (items) => "<ul>" + items.map((t) => `<li>${esc(t)}</li>`).join("") + "</ul>";
   const checks = (l.questions || []).slice(0, 2).map((qq) =>
@@ -2656,6 +2658,7 @@ function mamaItem(day) {
     ${l.walk && l.walk.length ? `<p class="mama-label">Пример из урока</p><p>${esc(l.walk.join(" "))}</p>` : ""}
     ${l.corrective && l.corrective.length ? `<p class="mama-label">Если ошибается</p>${list(l.corrective)}` : ""}
     ${checks ? `<p class="mama-label">Спросите после урока</p><ul>${checks}</ul>` : ""}
+    ${homework}
   </div>`;
 }
 

@@ -1210,3 +1210,6 @@ body.mama-page .mama-label { font-weight: 650; margin-top: 8px !important; }
   body.mama-page .mama-item { break-inside: avoid; border-color: #bbb; }
   body.mama-page .mama-day { break-inside: auto; }
 }
+
+/* Домашнее задание в шпаргалке для мамы. */
+body.mama-page .mama-homework { padding: 6px 10px; border-left: 4px solid var(--sea); background: rgba(0, 0, 0, 0.03); border-radius: 6px; }
